@@ -1,0 +1,928 @@
+generalized_tables: {}
+tables:
+  accessarea:
+    fields:
+    - {key: area, name: area, type: bool}
+    - {key: access, name: access, type: string}
+    - {key: name, name: name, type: string}
+    - {name: z_order, type: wayzorder}
+    - {name: way_area, type: area}
+    - {name: osm_id, type: id}
+    - {name: way, type: validated_geometry}
+    filters:
+      reject:
+        highway: [__any__]
+      require:
+        access: [__any__]
+    mapping:
+      access: [__any__]
+    type: polygon
+  adminboundary:
+    fields:
+    - {key: area, name: area, type: bool}
+    - {key: name, name: name, type: string}
+    - {key: int_name, name: int_name, type: string}
+    - {key: 'name:en', name: 'name:en', type: string}
+    - {key: 'name:de', name: 'name:de', type: string}
+    - {key: 'name:cs', name: 'name:cs', type: string}
+    - {key: admin_level, name: admin_level, type: integer}
+    - {name: z_order, type: wayzorder}
+    - {name: way_area, type: area}
+    - {name: osm_id, type: id}
+    - {name: way, type: validated_geometry}
+    filters:
+      require:
+        boundary: [administrative]
+    mapping: null
+    type: polygon
+  aerialpoint:
+    fields:
+    - {key: area, name: area, type: bool}
+    - {key: aerialway, name: aerialway, type: string}
+    - {key: name, name: name, type: string}
+    - {key: bridge, name: bridge, type: bool}
+    - {key: tunnel, name: tunnel, type: bool}
+    - {key: layer, name: layer, type: integer}
+    - {key: 'piste:lift', name: 'piste:lift', type: string}
+    - {name: z_order, type: wayzorder}
+    - {name: osm_id, type: id}
+    - {name: way, type: validated_geometry}
+    mapping:
+      aerialway: [__any__]
+    type: point
+  aerialway:
+    fields:
+    - {key: area, name: area, type: bool}
+    - {key: aerialway, name: aerialway, type: string}
+    - {key: name, name: name, type: string}
+    - {key: bridge, name: bridge, type: bool}
+    - {key: tunnel, name: tunnel, type: bool}
+    - {key: layer, name: layer, type: integer}
+    - {key: 'piste:lift', name: 'piste:lift', type: string}
+    - {name: z_order, type: wayzorder}
+    - {name: way_area, type: area}
+    - {name: osm_id, type: id}
+    - {name: way, type: validated_geometry}
+    mapping:
+      aerialway: [__any__]
+    type: linestring
+  aeroarea:
+    fields:
+    - {key: area, name: area, type: bool}
+    - {key: aeroway, name: aeroway, type: string}
+    - {key: name, name: name, type: string}
+    - {key: bridge, name: bridge, type: string}
+    - {key: tunnel, name: tunnel, type: string}
+    - {key: layer, name: layer, type: integer}
+    - {name: z_order, type: wayzorder}
+    - {name: way_area, type: area}
+    - {name: osm_id, type: id}
+    - {name: way, type: validated_geometry}
+    mapping:
+      aeroway: [taxiway, runway]
+    type: polygon
+  aeroway:
+    fields:
+    - {key: area, name: area, type: bool}
+    - {key: aeroway, name: aeroway, type: string}
+    - {key: name, name: name, type: string}
+    - {key: bridge, name: bridge, type: string}
+    - {key: tunnel, name: tunnel, type: string}
+    - {key: layer, name: layer, type: integer}
+    - {name: z_order, type: wayzorder}
+    - {name: way_area, type: area}
+    - {name: osm_id, type: id}
+    - {name: way, type: validated_geometry}
+    mapping:
+      aeroway: [taxiway, runway]
+    type: linestring
+  barrier:
+    fields:
+    - {key: area, name: area, type: bool}
+    - {key: barrier, name: barrier, type: string}
+    - {key: name, name: name, type: string}
+    - {key: bridge, name: bridge, type: string}
+    - {key: tunnel, name: tunnel, type: string}
+    - {key: layer, name: layer, type: integer}
+    - {key: wikipedia, name: wikipedia, type: string}
+    - {key: website, name: website, type: string}
+    - {key: fence_type, name: fence_type, type: string}
+    - {key: height, name: height, type: integer}
+    - {key: stile, name: stile, type: string}
+    - {key: material, name: material, type: string}
+    - {name: z_order, type: wayzorder}
+    - {name: way_area, type: area}
+    - {name: osm_id, type: id}
+    - {name: way, type: validated_geometry}
+    mapping:
+      barrier: [__any__]
+    type: linestring
+  barrierpoint:
+    fields:
+    - {key: area, name: area, type: bool}
+    - {key: barrier, name: barrier, type: string}
+    - {key: name, name: name, type: string}
+    - {key: bridge, name: bridge, type: string}
+    - {key: tunnel, name: tunnel, type: string}
+    - {key: layer, name: layer, type: integer}
+    - {name: z_order, type: wayzorder}
+    - {name: osm_id, type: id}
+    - {name: way, type: validated_geometry}
+    mapping:
+      barrier: [__any__]
+    type: point
+  building:
+    fields:
+    - {key: area, name: area, type: bool}
+    - {key: building, name: building, type: string}
+    - {key: wall, name: wall, type: string}
+    - {key: 'building:material', name: 'building:material', type: string}
+    - {key: 'building:levels', name: 'building:levels', type: string}
+    - {key: 'building:use', name: 'building:use', type: string}
+    - {key: 'building:roof', name: 'building:roof', type: string}
+    - {key: 'building:roof:shape', name: 'building:roof:shape', type: string}
+    - {key: 'building:walls', name: 'building:walls', type: string}
+    - {key: 'building:structure', name: 'building:structure', type: string}
+    - {key: 'building:type', name: 'building:type', type: string}
+    - {key: 'building:height', name: 'building:height', type: string}
+    - {key: 'building:cladding', name: 'building:cladding', type: string}
+    - {key: 'building:orientation', name: 'building:orientation', type: string}
+    - {key: 'building:roof:orientation', name: 'building:roof:orientation', type: string}
+    - {key: 'building:architecture', name: 'building:architecture', type: string}
+    - {key: 'building:levels:aboveground', name: 'building:levels:aboveground', type: string}
+    - {key: 'building:levels:underground', name: 'building:levels:underground', type: string}
+    - {key: 'building:facade:material', name: 'building:facade:material', type: string}
+    - {key: 'building:roof:material', name: 'building:roof:material', type: string}
+    - {key: 'building:levels:top', name: 'building:levels:top', type: string}
+    - {key: name, name: name, type: string}
+    - {key: description, name: description, type: string}
+    - {key: height, name: height, type: string}
+    - {key: bridge, name: bridge, type: string}
+    - {key: tunnel, name: tunnel, type: string}
+    - {key: layer, name: layer, type: string}
+    - {name: z_order, type: wayzorder}
+    - {name: way_area, type: area}
+    - {name: osm_id, type: id}
+    - {name: way, type: validated_geometry}
+    filters:
+      reject:
+        bridge: ['yes', 'true', '1', 'Yes', 'True']
+        building: ['no', '0', 'false', 'No', 'False', bridge, tunnel]
+        tunnel: ['yes', 'true', '1', 'Yes', 'True']
+    mapping:
+      building: [__any__]
+    type: polygon
+  ferry:
+    fields:
+    - {key: area, name: area, type: bool}
+    - {key: route, name: route, type: string}
+    - {key: ref, name: ref, type: string}
+    - {key: name, name: name, type: string}
+    - {key: duration, name: duration, type: string}
+    - {key: operator, name: operator, type: string}
+    - {key: access, name: access, type: string}
+    - {key: foot, name: foot, type: string}
+    - {key: ski, name: ski, type: string}
+    - {key: 'ski:nordic', name: 'ski:nordic', type: string}
+    - {key: 'ski:alpine', name: 'ski:alpine', type: string}
+    - {key: 'ski:telemark', name: 'ski:telemark', type: string}
+    - {key: inline_skates, name: inline_skates, type: string}
+    - {key: ice_skates, name: ice_skates, type: string}
+    - {key: horse, name: horse, type: string}
+    - {key: vehicle, name: vehicle, type: string}
+    - {key: bicycle, name: bicycle, type: string}
+    - {key: carriage, name: carriage, type: string}
+    - {key: trailer, name: trailer, type: string}
+    - {key: caravan, name: caravan, type: string}
+    - {key: motor_vehicle, name: motor_vehicle, type: string}
+    - {key: motorcycle, name: motorcycle, type: string}
+    - {key: moped, name: moped, type: string}
+    - {key: mofa, name: mofa, type: string}
+    - {key: motorcar, name: motorcar, type: string}
+    - {key: motorhome, name: motorhome, type: string}
+    - {key: psv, name: psv, type: string}
+    - {key: bus, name: bus, type: string}
+    - {key: atv, name: atv, type: string}
+    - {key: taxi, name: taxi, type: string}
+    - {key: tourist_bus, name: tourist_bus, type: string}
+    - {key: goods, name: goods, type: string}
+    - {key: hgv, name: hgv, type: string}
+    - {key: agricultural, name: agricultural, type: string}
+    - {key: ATV, name: ATV, type: string}
+    - {key: snowmobile, name: snowmobile, type: string}
+    - {name: z_order, type: wayzorder}
+    - {name: osm_id, type: id}
+    - {name: way, type: validated_geometry}
+    filters:
+      require:
+        route: [ferry]
+    mapping: null
+    type: linestring
+  highway:
+    fields:
+    - {key: area, name: area, type: bool}
+    - {key: highway, name: highway, type: string}
+    - {key: ref, name: ref, type: string}
+    - {key: int_ref, name: int_ref, type: string}
+    - {key: lanes, name: lanes, type: integer}
+    - {key: maxspeed, name: maxspeed, type: integer}
+    - {key: width, name: width, type: integer}
+    - {key: lit, name: lit, type: string}
+    - {key: sidewalk, name: sidewalk, type: string}
+    - {key: footway, name: footway, type: string}
+    - {key: cycleway, name: cycleway, type: string}
+    - {key: 'mtb:scale', name: 'mtb:scale', type: integer}
+    - {key: sac_scale, name: sac_scale, type: integer}
+    - {key: attribution, name: attribution, type: string}
+    - {key: bridge, name: bridge, type: string}
+    - {key: tunnel, name: tunnel, type: string}
+    - {key: construction, name: construction, type: string}
+    - {key: proposed, name: proposed, type: string}
+    - {key: junction, name: junction, type: string}
+    - {key: smoothness, name: smoothness, type: string}
+    - {key: surface, name: surface, type: string}
+    - {key: layer, name: layer, type: integer}
+    - {key: tracktype, name: tracktype, type: string}
+    - {key: service, name: service, type: string}
+    - {key: access, name: access, type: string}
+    - {key: foot, name: foot, type: string}
+    - {key: ski, name: ski, type: string}
+    - {key: 'ski:nordic', name: 'ski:nordic', type: string}
+    - {key: 'ski:alpine', name: 'ski:alpine', type: string}
+    - {key: 'ski:telemark', name: 'ski:telemark', type: string}
+    - {key: inline_skates, name: inline_skates, type: string}
+    - {key: ice_skates, name: ice_skates, type: string}
+    - {key: horse, name: horse, type: string}
+    - {key: vehicle, name: vehicle, type: string}
+    - {key: bicycle, name: bicycle, type: string}
+    - {key: carriage, name: carriage, type: string}
+    - {key: trailer, name: trailer, type: string}
+    - {key: caravan, name: caravan, type: string}
+    - {key: motor_vehicle, name: motor_vehicle, type: string}
+    - {key: motorcycle, name: motorcycle, type: string}
+    - {key: moped, name: moped, type: string}
+    - {key: mofa, name: mofa, type: string}
+    - {key: motorcar, name: motorcar, type: string}
+    - {key: motorhome, name: motorhome, type: string}
+    - {key: psv, name: psv, type: string}
+    - {key: bus, name: bus, type: string}
+    - {key: atv, name: atv, type: string}
+    - {key: taxi, name: taxi, type: string}
+    - {key: tourist_bus, name: tourist_bus, type: string}
+    - {key: goods, name: goods, type: string}
+    - {key: hgv, name: hgv, type: string}
+    - {key: agricultural, name: agricultural, type: string}
+    - {key: ATV, name: ATV, type: string}
+    - {key: snowmobile, name: snowmobile, type: string}
+    - {key: name, name: name, type: string}
+    - {key: oneway, name: oneway, type: string}
+    - {key: wikipedia, name: wikipedia, type: string}
+    - {name: z_order, type: wayzorder}
+    - {name: osm_id, type: id}
+    - {name: way, type: validated_geometry}
+    mapping:
+      highway: [__any__]
+    type: linestring
+  highway_area:
+    fields:
+    - {key: area, name: area, type: bool}
+    - {key: highway, name: highway, type: string}
+    - {key: ref, name: ref, type: string}
+    - {key: int_ref, name: int_ref, type: string}
+    - {key: lanes, name: lanes, type: integer}
+    - {key: maxspeed, name: maxspeed, type: integer}
+    - {key: width, name: width, type: integer}
+    - {key: lit, name: lit, type: string}
+    - {key: sidewalk, name: sidewalk, type: string}
+    - {key: footway, name: footway, type: string}
+    - {key: cycleway, name: cycleway, type: string}
+    - {key: 'mtb:scale', name: 'mtb:scale', type: integer}
+    - {key: sac_scale, name: sac_scale, type: integer}
+    - {key: attribution, name: attribution, type: string}
+    - {key: bridge, name: bridge, type: string}
+    - {key: tunnel, name: tunnel, type: string}
+    - {key: construction, name: construction, type: string}
+    - {key: proposed, name: proposed, type: string}
+    - {key: junction, name: junction, type: string}
+    - {key: smoothness, name: smoothness, type: string}
+    - {key: surface, name: surface, type: string}
+    - {key: layer, name: layer, type: integer}
+    - {key: tracktype, name: tracktype, type: string}
+    - {key: service, name: service, type: string}
+    - {key: access, name: access, type: string}
+    - {key: foot, name: foot, type: string}
+    - {key: ski, name: ski, type: string}
+    - {key: 'ski:nordic', name: 'ski:nordic', type: string}
+    - {key: 'ski:alpine', name: 'ski:alpine', type: string}
+    - {key: 'ski:telemark', name: 'ski:telemark', type: string}
+    - {key: inline_skates, name: inline_skates, type: string}
+    - {key: ice_skates, name: ice_skates, type: string}
+    - {key: horse, name: horse, type: string}
+    - {key: vehicle, name: vehicle, type: string}
+    - {key: bicycle, name: bicycle, type: string}
+    - {key: carriage, name: carriage, type: string}
+    - {key: trailer, name: trailer, type: string}
+    - {key: caravan, name: caravan, type: string}
+    - {key: motor_vehicle, name: motor_vehicle, type: string}
+    - {key: motorcycle, name: motorcycle, type: string}
+    - {key: moped, name: moped, type: string}
+    - {key: mofa, name: mofa, type: string}
+    - {key: motorcar, name: motorcar, type: string}
+    - {key: motorhome, name: motorhome, type: string}
+    - {key: psv, name: psv, type: string}
+    - {key: bus, name: bus, type: string}
+    - {key: atv, name: atv, type: string}
+    - {key: taxi, name: taxi, type: string}
+    - {key: tourist_bus, name: tourist_bus, type: string}
+    - {key: goods, name: goods, type: string}
+    - {key: hgv, name: hgv, type: string}
+    - {key: agricultural, name: agricultural, type: string}
+    - {key: ATV, name: ATV, type: string}
+    - {key: snowmobile, name: snowmobile, type: string}
+    - {key: name, name: name, type: string}
+    - {key: oneway, name: oneway, type: string}
+    - {key: wikipedia, name: wikipedia, type: string}
+    - {name: z_order, type: wayzorder}
+    - {name: way_area, type: area}
+    - {name: osm_id, type: id}
+    - {name: way, type: validated_geometry}
+    mapping:
+      highway: [__any__]
+    type: polygon
+  highway_point:
+    fields:
+    - {name: osm_id, type: id}
+    - {name: way, type: validated_geometry}
+    - {key: highway, name: highway, type: string}
+    - {key: ref, name: ref, type: string}
+    - {key: name, name: name, type: string}
+    mapping:
+      highway: [__any__]
+    type: point
+  landcover:
+    fields:
+    - {key: area, name: area, type: bool}
+    - {key: natural, name: natural, type: string}
+    - {key: landuse, name: landuse, type: string}
+    - {key: leisure, name: leisure, type: string}
+    - {key: amenity, name: amenity, type: string}
+    - {key: sport, name: sport, type: string}
+    - {key: name, name: name, type: string}
+    - {key: wood, name: wood, type: string}
+    - {key: type, name: type, type: string}
+    - {key: religion, name: religion, type: string}
+    - {key: building, name: building, type: string}
+    - {key: power, name: power, type: string}
+    - {key: tourism, name: tourism, type: string}
+    - {key: historic, name: historic, type: string}
+    - {key: place, name: place, type: string}
+    - {key: wikipedia, name: wikipedia, type: string}
+    - {key: website, name: website, type: string}
+    - {key: ele, name: ele, type: string}
+    - {key: attribution, name: attribution, type: string}
+    - {key: species, name: species, type: string}
+    - {key: operator, name: operator, type: string}
+    - {name: z_order, type: wayzorder}
+    - {name: way_area, type: area}
+    - {name: osm_id, type: id}
+    - {name: way, type: validated_geometry}
+    filters:
+      reject:
+        landuse: [basin, reservoir]
+        natural: [wetland, marsh, water]
+    mapping:
+      amenity: [__any__]
+      historic: [__any__]
+      landuse: [__any__]
+      leisure: [__any__]
+      natural: [__any__]
+      place: [__any__]
+      power: [__any__]
+      tourism: [__any__]
+    type: polygon
+  landcover_line:
+    fields:
+    - {key: area, name: area, type: bool}
+    - {key: natural, name: natural, type: string}
+    - {key: name, name: name, type: string}
+    - {key: wood, name: wood, type: string}
+    - {key: type, name: type, type: string}
+    - {key: wikipedia, name: wikipedia, type: string}
+    - {key: website, name: website, type: string}
+    - {name: z_order, type: wayzorder}
+    - {name: way_area, type: area}
+    - {name: osm_id, type: id}
+    - {name: way, type: validated_geometry}
+    mapping:
+      natural: [__any__]
+    type: linestring
+  landcover_point:
+    fields:
+    - {key: area, name: area, type: string}
+    - {key: natural, name: natural, type: string}
+    - {key: name, name: name, type: string}
+    - {key: wood, name: wood, type: string}
+    - {key: type, name: type, type: string}
+    - {key: species, name: species, type: string}
+    - {key: genus, name: genus, type: string}
+    - {key: taxon, name: taxon, type: string}
+    - {key: denotation, name: denotation, type: string}
+    - {key: attribution, name: attribution, type: string}
+    - {key: wikipedia, name: wikipedia, type: string}
+    - {key: website, name: website, type: string}
+    - {name: z_order, type: wayzorder}
+    - {name: osm_id, type: id}
+    - {name: way, type: validated_geometry}
+    mapping:
+      natural: [__any__]
+    type: point
+  paboundary:
+    fields:
+    - {key: area, name: area, type: bool}
+    - {key: boundary, name: boundary, type: string}
+    - {key: landuse, name: landuse, type: string}
+    - {key: military, name: military, type: string}
+    - {key: leisure, name: leisure, type: string}
+    - {key: name, name: name, type: string}
+    - {key: protect_class, name: protect_class, type: integer}
+    - {key: iucn_level, name: iucn_level, type: string}
+    - {key: protection_title, name: protection_title, type: string}
+    - {key: protection_object, name: protection_object, type: string}
+    - {key: protection_aim, name: protection_aim, type: string}
+    - {key: protection_ban, name: protection_ban, type: string}
+    - {key: protection_instruction, name: protection_instruction, type: string}
+    - {key: related_law, name: related_law, type: string}
+    - {key: site_zone, name: site_zone, type: string}
+    - {key: valid_from, name: valid_from, type: string}
+    - {key: start_date, name: start_date, type: string}
+    - {key: end_date, name: end_date, type: string}
+    - {key: opening_hours, name: opening_hours, type: string}
+    - {key: operator, name: operator, type: string}
+    - {key: governance_type, name: governance_type, type: string}
+    - {key: site_ownership, name: site_ownership, type: string}
+    - {key: site_status, name: site_status, type: string}
+    - {key: protection_award, name: protection_award, type: string}
+    - {key: contamination, name: contamination, type: string}
+    - {key: ethnic_group, name: ethnic_group, type: string}
+    - {key: period, name: period, type: string}
+    - {key: scale, name: scale, type: string}
+    - {key: ownership, name: ownership, type: string}
+    - {key: owner, name: owner, type: string}
+    - {key: attribution, name: attribution, type: string}
+    - {key: type, name: type, type: string}
+    - {key: wikipedia, name: wikipedia, type: string}
+    - {key: website, name: website, type: string}
+    - {name: z_order, type: wayzorder}
+    - {name: way_area, type: area}
+    - {name: osm_id, type: id}
+    - {name: way, type: validated_geometry}
+    mapping:
+      boundary: [protected_area, national_park]
+      landuse: [military]
+      leisure: [nature_reserve]
+      military: [danger_area, range]
+    type: polygon
+  peaks:
+    fields:
+    - {key: area, name: area, type: string}
+    - {key: name, name: name, type: string}
+    - {key: int_name, name: int_name, type: string}
+    - {key: 'name:en', name: 'name:en', type: string}
+    - {key: 'name:de', name: 'name:de', type: string}
+    - {key: 'name:cs', name: 'name:cs', type: string}
+    - {key: ele, name: ele, type: integer}
+    - {key: natural, name: natural, type: string}
+    - {name: z_order, type: wayzorder}
+    - {name: osm_id, type: id}
+    - {name: way, type: validated_geometry}
+    filters:
+      require:
+        natural: [peak]
+    mapping: null
+    type: point
+  pistearea:
+    fields:
+    - {key: area, name: area, type: bool}
+    - {key: 'piste:type', name: 'piste:type', type: string}
+    - {key: 'piste:difficulty', name: 'piste:difficulty', type: string}
+    - {key: 'piste:grooming', name: 'piste:grooming', type: string}
+    - {key: 'piste:name', name: 'piste:name', type: string}
+    - {key: colour, name: colour, type: string}
+    - {key: symbol, name: symbol, type: string}
+    - {key: osmcsymbol, name: osmcsymbol, type: string}
+    - {key: description, name: description, type: string}
+    - {key: distance, name: distance, type: string}
+    - {key: operator, name: operator, type: string}
+    - {key: network, name: network, type: string}
+    - {key: ref, name: ref, type: string}
+    - {key: website, name: website, type: string}
+    - {key: name, name: name, type: string}
+    - {key: bridge, name: bridge, type: string}
+    - {key: tunnel, name: tunnel, type: string}
+    - {key: layer, name: layer, type: integer}
+    - {name: z_order, type: wayzorder}
+    - {name: way_area, type: area}
+    - {name: osm_id, type: id}
+    - {name: way, type: validated_geometry}
+    mapping:
+      piste:type: [downhill]
+      route: [piste]
+    type: polygon
+  pisteway:
+    fields:
+    - {key: area, name: area, type: bool}
+    - {key: 'piste:type', name: 'piste:type', type: string}
+    - {key: 'piste:difficulty', name: 'piste:difficulty', type: string}
+    - {key: 'piste:grooming', name: 'piste:grooming', type: string}
+    - {key: 'piste:name', name: 'piste:name', type: string}
+    - {key: colour, name: colour, type: string}
+    - {key: symbol, name: symbol, type: string}
+    - {key: osmcsymbol, name: osmcsymbol, type: string}
+    - {key: description, name: description, type: string}
+    - {key: distance, name: distance, type: string}
+    - {key: operator, name: operator, type: string}
+    - {key: network, name: network, type: string}
+    - {key: ref, name: ref, type: string}
+    - {key: website, name: website, type: string}
+    - {key: name, name: name, type: string}
+    - {key: bridge, name: bridge, type: string}
+    - {key: tunnel, name: tunnel, type: string}
+    - {key: layer, name: layer, type: integer}
+    - {name: z_order, type: wayzorder}
+    - {name: way_area, type: area}
+    - {name: osm_id, type: id}
+    - {name: way, type: validated_geometry}
+    mapping:
+      piste:type: [downhill]
+      route: [piste]
+    type: linestring
+  place:
+    fields:
+    - {key: area, name: area, type: string}
+    - {key: name, name: name, type: string}
+    - {key: int_name, name: int_name, type: string}
+    - {key: 'name:en', name: 'name:en', type: string}
+    - {key: 'name:de', name: 'name:de', type: string}
+    - {key: 'name:cs', name: 'name:cs', type: string}
+    - {key: population, name: population, type: integer}
+    - {key: ele, name: ele, type: integer}
+    - {key: wikipedia, name: wikipedia, type: string}
+    - {key: place, name: place, type: string}
+    - {name: z_order, type: wayzorder}
+    - {name: osm_id, type: id}
+    - {name: way, type: validated_geometry}
+    mapping:
+      place: [city, town, village, hamlet, isolated_dwelling, farm, suburb, neighbourhood,
+        locality, island, islet]
+    type: point
+  power:
+    fields:
+    - {key: area, name: area, type: bool}
+    - {key: power, name: power, type: string}
+    - {key: ref, name: ref, type: string}
+    - {key: note, name: note, type: string}
+    - {key: line, name: line, type: string}
+    - {key: length, name: length, type: string}
+    - {key: location, name: location, type: string}
+    - {key: voltage, name: voltage, type: string}
+    - {key: cables, name: cables, type: string}
+    - {key: wires, name: wires, type: string}
+    - {key: frequency, name: frequency, type: string}
+    - {key: operator, name: operator, type: string}
+    - {key: name, name: name, type: string}
+    - {key: construction, name: construction, type: string}
+    - {key: proposed, name: proposed, type: string}
+    - {key: bridge, name: bridge, type: string}
+    - {key: tunnel, name: tunnel, type: string}
+    - {key: layer, name: layer, type: integer}
+    - {name: z_order, type: wayzorder}
+    - {name: way_area, type: area}
+    - {name: osm_id, type: id}
+    - {name: way, type: validated_geometry}
+    mapping:
+      power: [line, minor_line, cable]
+    type: linestring
+  powerpoint:
+    fields:
+    - {key: area, name: area, type: string}
+    - {key: power, name: power, type: string}
+    - {key: name, name: name, type: string}
+    - {key: ref, name: ref, type: string}
+    - {key: material, name: material, type: string}
+    - {key: structure, name: structure, type: string}
+    - {key: height, name: height, type: string}
+    - {key: colour, name: colour, type: string}
+    - {key: 'tower:type', name: 'tower:type', type: string}
+    - {key: design, name: design, type: string}
+    - {key: 'design:name', name: 'design:name', type: string}
+    - {key: 'design:incomplete', name: 'design:incomplete', type: string}
+    - {key: bridge, name: bridge, type: string}
+    - {key: tunnel, name: tunnel, type: string}
+    - {key: layer, name: layer, type: integer}
+    - {name: z_order, type: wayzorder}
+    - {name: osm_id, type: id}
+    - {name: way, type: validated_geometry}
+    mapping:
+      power: [__any__]
+    type: point
+  railway:
+    fields:
+    - {key: area, name: area, type: bool}
+    - {key: railway, name: railway, type: string}
+    - {key: ref, name: ref, type: string}
+    - {key: bridge, name: bridge, type: string}
+    - {key: tunnel, name: tunnel, type: string}
+    - {key: construction, name: construction, type: string}
+    - {key: proposed, name: proposed, type: string}
+    - {key: layer, name: layer, type: integer}
+    - {key: usage, name: usage, type: string}
+    - {key: service, name: service, type: string}
+    - {key: cutting, name: cutting, type: string}
+    - {key: embankment, name: embankment, type: string}
+    - {key: electrified, name: electrified, type: string}
+    - {key: frequency, name: frequency, type: string}
+    - {key: voltage, name: voltage, type: string}
+    - {key: gauge, name: gauge, type: integer}
+    - {key: operator, name: operator, type: string}
+    - {key: maxspeed, name: maxspeed, type: string}
+    - {key: wikipedia, name: wikipedia, type: string}
+    - {key: website, name: website, type: string}
+    - {key: transport, name: transport, type: string}
+    - {key: colour, name: colour, type: string}
+    - {key: public_transport, name: public_transport, type: string}
+    - {key: tram, name: tram, type: string}
+    - {key: name, name: name, type: string}
+    - {key: width, name: width, type: integer}
+    - {key: surface, name: surface, type: string}
+    - {name: z_order, type: wayzorder}
+    - {name: osm_id, type: id}
+    - {name: way, type: validated_geometry}
+    mapping:
+      railway: [__any__]
+    type: linestring
+  route:
+    fields:
+    - {key: area, name: area, type: bool}
+    - {key: highway, name: highway, type: string}
+    - {key: ref, name: ref, type: string}
+    - {key: int_ref, name: int_ref, type: string}
+    - {key: bridge, name: bridge, type: string}
+    - {key: tunnel, name: tunnel, type: string}
+    - {key: construction, name: construction, type: string}
+    - {key: oneway, name: oneway, type: string}
+    - {key: junction, name: junction, type: string}
+    - {key: smoothness, name: smoothness, type: string}
+    - {key: surface, name: surface, type: string}
+    - {key: layer, name: layer, type: integer}
+    - {key: tracktype, name: tracktype, type: string}
+    - {key: route, name: route, type: string}
+    - {key: 'mtb:scale', name: 'mtb:scale', type: string}
+    - {key: 'mtb:scale:uphill', name: 'mtb:scale:uphill', type: string}
+    - {key: sac_scale, name: sac_scale, type: string}
+    - {key: network, name: network, type: string}
+    - {key: 'osmc:symbol', name: 'osmc:symbol', type: string}
+    - {key: access, name: access, type: string}
+    - {key: bicycle, name: bicycle, type: string}
+    - {key: foot, name: foot, type: string}
+    - {key: horse, name: horse, type: string}
+    - {key: lcn_ref, name: lcn_ref, type: string}
+    - {key: rcn_ref, name: rcn_ref, type: string}
+    - {key: ncn_ref, name: ncn_ref, type: string}
+    - {key: lcn, name: lcn, type: string}
+    - {key: rcn, name: rcn, type: string}
+    - {key: ncn, name: ncn, type: string}
+    - {key: lwn_ref, name: lwn_ref, type: string}
+    - {key: rwn_ref, name: rwn_ref, type: string}
+    - {key: nwn_ref, name: nwn_ref, type: string}
+    - {key: lwn, name: lwn, type: string}
+    - {key: rwn, name: rwn, type: string}
+    - {key: nwn, name: nwn, type: string}
+    - {key: route_pref_color, name: route_pref_color, type: string}
+    - {key: route_name, name: route_name, type: string}
+    - {key: mtb, name: mtb, type: string}
+    - {key: name, name: name, type: string}
+    - {key: color, name: color, type: string}
+    - {key: colour, name: colour, type: string}
+    - {key: kct_red, name: kct_red, type: string}
+    - {key: kct_green, name: kct_green, type: string}
+    - {key: kct_blue, name: kct_blue, type: string}
+    - {key: kct_yellow, name: kct_yellow, type: string}
+    - {name: z_order, type: wayzorder}
+    - {name: way_area, type: area}
+    - {name: osm_id, type: id}
+    - {name: way, type: validated_geometry}
+    mapping:
+      route: [mtb, horse, ski, bicycle, horse, hiking, mountain hiking, foot]
+    type: linestring
+  symbol_polygon:
+    fields:
+    - {key: area, name: area, type: string}
+    - {key: name, name: name, type: string}
+    - {key: int_name, name: int_name, type: string}
+    - {key: 'name:en', name: 'name:en', type: string}
+    - {key: 'name:de', name: 'name:de', type: string}
+    - {key: 'name:cs', name: 'name:cs', type: string}
+    - {key: historic, name: historic, type: string}
+    - {key: leisure, name: leisure, type: string}
+    - {key: man_made, name: man_made, type: string}
+    - {key: shop, name: shop, type: string}
+    - {key: sport, name: sport, type: string}
+    - {key: tourism, name: tourism, type: string}
+    - {key: amenity, name: amenity, type: string}
+    - {key: ruins, name: ruins, type: string}
+    - {key: castle_type, name: castle_type, type: string}
+    - {key: building, name: building, type: string}
+    - {key: natural, name: natural, type: string}
+    - {key: military, name: military, type: string}
+    - {key: 'tower:type', name: 'tower:type', type: string}
+    - {key: information, name: information, type: string}
+    - {key: place_of_worship, name: place_of_worship, type: string}
+    - {key: 'place_of_worship:type', name: 'place_of_worship:type', type: string}
+    - {key: highway, name: highway, type: string}
+    - {key: railway, name: railway, type: string}
+    - {key: aeroway, name: aeroway, type: string}
+    - {key: power, name: power, type: string}
+    - {key: wikipedia, name: wikipedia, type: string}
+    - {key: website, name: website, type: string}
+    - {key: colour, name: colour, type: string}
+    - {key: cuisine, name: cuisine, type: string}
+    - {key: parking, name: parking, type: string}
+    - {key: maxheight, name: maxheight, type: string}
+    - {key: fee, name: fee, type: string}
+    - {key: surveillance, name: surveillance, type: string}
+    - {key: memorial, name: memorial, type: string}
+    - {key: operator, name: operator, type: string}
+    - {key: cargo, name: cargo, type: string}
+    - {key: transport, name: transport, type: string}
+    - {key: public_transport, name: public_transport, type: string}
+    - {name: z_order, type: wayzorder}
+    - {name: osm_id, type: id}
+    - {name: way, type: validated_geometry}
+    mapping:
+      aeroway: [__any__]
+      amenity: [__any__]
+      building: [church, chapel]
+      highway: [__any__]
+      historic: [__any__]
+      leisure: [__any__]
+      man_made: [__any__]
+      military: [__any__]
+      natural: [cave_entrance]
+      power: [generator]
+      railway: [__any__]
+      shop: [__any__]
+      sport: [__any__]
+      tourism: [__any__]
+    type: polygon
+  symbol_point:
+    fields:
+      - {key: area, name: area, type: string}
+      - {key: name, name: name, type: string}
+      - {key: int_name, name: int_name, type: string}
+      - {key: 'name:en', name: 'name:en', type: string}
+      - {key: 'name:de', name: 'name:de', type: string}
+      - {key: 'name:cs', name: 'name:cs', type: string}
+      - {key: historic, name: historic, type: string}
+      - {key: leisure, name: leisure, type: string}
+      - {key: man_made, name: man_made, type: string}
+      - {key: shop, name: shop, type: string}
+      - {key: sport, name: sport, type: string}
+      - {key: tourism, name: tourism, type: string}
+      - {key: amenity, name: amenity, type: string}
+      - {key: ruins, name: ruins, type: string}
+      - {key: castle_type, name: castle_type, type: string}
+      - {key: building, name: building, type: string}
+      - {key: natural, name: natural, type: string}
+      - {key: military, name: military, type: string}
+      - {key: 'tower:type', name: 'tower:type', type: string}
+      - {key: information, name: information, type: string}
+      - {key: place_of_worship, name: place_of_worship, type: string}
+      - {key: 'place_of_worship:type', name: 'place_of_worship:type', type: string}
+      - {key: highway, name: highway, type: string}
+      - {key: railway, name: railway, type: string}
+      - {key: aeroway, name: aeroway, type: string}
+      - {key: power, name: power, type: string}
+      - {key: wikipedia, name: wikipedia, type: string}
+      - {key: website, name: website, type: string}
+      - {key: colour, name: colour, type: string}
+      - {key: cuisine, name: cuisine, type: string}
+      - {key: parking, name: parking, type: string}
+      - {key: maxheight, name: maxheight, type: string}
+      - {key: fee, name: fee, type: string}
+      - {key: surveillance, name: surveillance, type: string}
+      - {key: memorial, name: memorial, type: string}
+      - {key: operator, name: operator, type: string}
+      - {key: cargo, name: cargo, type: string}
+      - {key: transport, name: transport, type: string}
+      - {key: public_transport, name: public_transport, type: string}
+      - {name: z_order, type: wayzorder}
+      - {name: osm_id, type: id}
+      - {name: way, type: validated_geometry}
+    mapping:
+      aeroway: [__any__]
+      amenity: [__any__]
+      building: [church, chapel]
+      highway: [__any__]
+      historic: [__any__]
+      leisure: [__any__]
+      man_made: [__any__]
+      military: [__any__]
+      natural: [cave_entrance]
+      power: [generator]
+      railway: [__any__]
+      shop: [__any__]
+      sport: [__any__]
+      tourism: [__any__]
+    type: point
+  waterarea:
+    fields:
+    - {key: area, name: area, type: bool}
+    - {key: waterway, name: waterway, type: string}
+    - {key: natural, name: natural, type: string}
+    - {key: landuse, name: landuse, type: string}
+    - {key: wetland, name: wetland, type: string}
+    - {key: name, name: name, type: string}
+    - {key: layer, name: layer, type: integer}
+    - {key: bridge, name: bridge, type: string}
+    - {key: tunnel, name: tunnel, type: string}
+    - {key: building, name: building, type: string}
+    - {key: website, name: website, type: string}
+    - {key: wikipedia, name: wikipedia, type: string}
+    - {name: z_order, type: wayzorder}
+    - {name: way_area, type: area}
+    - {name: osm_id, type: id}
+    - {name: way, type: validated_geometry}
+    mapping:
+      landuse: [basin, reservoir]
+      natural: [wetland, marsh, water]
+      waterway: [dock, riverbank, dam, weir]
+    type: polygon
+  waterpoint_point:
+    fields:
+    - {key: area, name: area, type: string}
+    - {key: waterway, name: waterway, type: string}
+    - {key: name, name: name, type: string}
+    - {key: layer, name: layer, type: integer}
+    - {key: bridge, name: bridge, type: string}
+    - {key: tunnel, name: tunnel, type: string}
+    - {key: building, name: building, type: string}
+    - {name: z_order, type: wayzorder}
+    - {name: osm_id, type: id}
+    - {name: way, type: validated_geometry}
+    mapping:
+      waterway: [weir, dam, lock_gate]
+    type: point
+  waterway:
+    fields:
+    - {key: area, name: area, type: bool}
+    - {key: waterway, name: waterway, type: string}
+    - {key: name, name: name, type: string}
+    - {key: int_name, name: int_name, type: string}
+    - {key: 'name:en', name: 'name:en', type: string}
+    - {key: 'name:de', name: 'name:de', type: string}
+    - {key: 'name:cs', name: 'name:cs', type: string}
+    - {key: bridge, name: bridge, type: string}
+    - {key: tunnel, name: tunnel, type: string}
+    - {key: layer, name: layer, type: integer}
+    - {key: wikipedia, name: wikipedia, type: string}
+    - {key: website, name: website, type: string}
+    - {name: z_order, type: wayzorder}
+    - {name: way_area, type: area}
+    - {name: osm_id, type: id}
+    - {name: way, type: validated_geometry}
+    mapping:
+      waterway: [river, stream, ditch, canal]
+    type: linestring
+  waterway2:
+    fields:
+    - {key: area, name: area, type: bool}
+    - {key: waterway, name: waterway, type: string}
+    - {key: name, name: name, type: string}
+    - {key: int_name, name: int_name, type: string}
+    - {key: 'name:en', name: 'name:en', type: string}
+    - {key: 'name:de', name: 'name:de', type: string}
+    - {key: 'name:cs', name: 'name:cs', type: string}
+    - {key: bridge, name: bridge, type: string}
+    - {key: tunnel, name: tunnel, type: string}
+    - {key: layer, name: layer, type: integer}
+    - {key: wikipedia, name: wikipedia, type: string}
+    - {key: website, name: website, type: string}
+    - {name: z_order, type: wayzorder}
+    - {name: way_area, type: area}
+    - {name: osm_id, type: id}
+    - {name: way, type: validated_geometry}
+    mapping:
+      waterway: [dam, lock_gate]
+    type: linestring
+
+tags:
+  include: ['name:ar', 'name:az', 'name:be', 'name:bg', 'name:br', 'name:bs', 'name:ca',
+    'name:co', 'name:cs', 'name:cy', 'name:da', 'name:de', 'name:el', 'name:en', 'name:eo',
+    'name:es', 'name:et', 'name:eu', 'name:fi', 'name:fr', 'name:fy', 'name:ga', 'name:gd',
+    'name:he', 'name:hr', 'name:hu', 'name:hy', 'name:id', 'name:is', 'name:it', 'name:ja',
+    'name:ja_kana', 'name:ja_rm', 'name:ka', 'name:kk', 'name:kn', 'name:ko', 'name:ko_rm',
+    'name:la', 'name:lb', 'name:lt', 'name:lv', 'name:mk', 'name:mt', 'name:ml', 'name:nl',
+    'name:no', 'name:oc', 'name:pl', 'name:pt', 'name:rm', 'name:ro', 'name:ru', 'name:sk',
+    'name:sl', 'name:sq', 'name:sr', 'name:sr-Latn', 'name:sv', 'name:th', 'name:tr',
+    'name:uk', 'name:zh', int_name, loc_name, name, wikidata, wikipedia]
+
