@@ -49,6 +49,14 @@ services:
       - ./build/symbol:/symbol
       - ./build/cartocss:/cartocss
       - ./data/stylesheets:/stylesheets
+  compile-cartocss:
+    build: "./compile-cartocss"
+    env_file: .env
+    networks:
+      - postgres_conn
+    volumes:
+      - ./build/mapnik:/mapnik
+      - ./build/cartocss:/cartocss
   import-sql:
     build: "./import-sql"
     env_file: .env

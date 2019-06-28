@@ -1,16 +1,17 @@
-FROM php:7.2-cli
+FROM ubuntu:18.04
 
-RUN apt-get update && apt-get install -y --no-install-recommends libmagickwand-dev \
-    && pecl install imagick \
-    && docker-php-ext-enable imagick \
-    && rm -rf /var/lib/apt/lists/*
+ENV DEBIAN_FRONTEND noninteractive
 
-VOLUME /shield
-VOLUME /symbol
-VOLUME /pattern
-VOLUME /cartocss
+RUN apt-get update && \
+    apt-get install -y apt-transport-https ca-certificates && \
+    apt-get install -y --no-install-recommends gdal-bin libgdal-dev nodejs npm && \
+    rm -rf /var/lib/apt/lists/*
+
+RUN npm install -g carto
+
+VOLUME /mapnik
 
 COPY . /usr/src/app/
 WORKDIR /usr/src/app
 
-CMD ["./generate_cartocss.sh"]
+CMD ["./compile_cartocss.sh"]

@@ -7,6 +7,7 @@ build:
 	mkdir -p build/symbol
 	mkdir -p build/shield
 	mkdir -p build/cartocss
+	mkdir -p build/mapnik
 
 clean-docker:
 	docker-compose down -v --remove-orphans
@@ -27,6 +28,9 @@ generate-sql: db-start
 
 generate-cartocss: db-start
 	docker-compose run --rm  generate-cartocss
+
+compile-cartocss: db-start
+	docker-compose run --rm  compile-cartocss
 
 generate-vodak-sql: db-start
 	docker-compose run --rm  generate-vodak-sql
