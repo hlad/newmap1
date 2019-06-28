@@ -3,6 +3,10 @@
 build:
 	mkdir -p build/sql
 	mkdir -p build/osmcsymbol
+	mkdir -p build/pattern
+	mkdir -p build/symbol
+	mkdir -p build/shield
+	mkdir -p build/cartocss
 
 clean-docker:
 	docker-compose down -v --remove-orphans
@@ -20,6 +24,9 @@ import-osm: db-start
 
 generate-sql: db-start
 	docker-compose run --rm  generate-sql
+
+generate-cartocss: db-start
+	docker-compose run --rm  generate-cartocss
 
 generate-vodak-sql: db-start
 	docker-compose run --rm  generate-vodak-sql

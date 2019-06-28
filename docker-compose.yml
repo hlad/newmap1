@@ -38,6 +38,17 @@ services:
       - postgres_conn
     volumes:
       - ./build/sql:/sql
+  generate-cartocss:
+    build: "./generate-cartocss"
+    env_file: .env
+    networks:
+      - postgres_conn
+    volumes:
+      - ./build/pattern:/pattern
+      - ./build/shield:/shield
+      - ./build/symbol:/symbol
+      - ./build/cartocss:/cartocss
+      - ./data/stylesheets:/stylesheets
   import-sql:
     build: "./import-sql"
     env_file: .env
