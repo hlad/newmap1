@@ -38,6 +38,9 @@ generate-vodak-sql: db-start
 import-sql: db-start
 	docker-compose run --rm import-sql
 
+import-dem: db-start
+	docker-compose run --rm import-dem
+
 generate-osmcsymbols: db-start
 	docker-compose run --rm  generate-osmcsymbols
 
@@ -50,6 +53,9 @@ relations2lines: db-start
 import-osmsql: db-start
 	docker-compose run --rm import-osm
 	docker-compose run --rm import-sql
+
+render-map: db-start
+	docker-compose run --rm render-map
 
 psql-list-tables:
 	docker-compose run --rm import-osm /usr/src/app/psql.sh  -P pager=off  -c "\d+"
