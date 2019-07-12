@@ -2,3 +2,8 @@
 /build
 /data/*.pbf
 /data/dem/*.tif
+
+/jupyter-notebooks/.ipynb_checkpoints
+/jupyter-notebooks/.ipython
+/jupyter-notebooks/.jupyter
+/jupyter-notebooks/.local
