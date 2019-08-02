@@ -1,5 +1,6 @@
 /.idea
 /build
+/data/shp
 /data/*.pbf
 /data/dem/*.tif
 /venv
