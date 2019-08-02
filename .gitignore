@@ -2,6 +2,7 @@
 /build
 /data/*.pbf
 /data/dem/*.tif
+/venv
 
 /jupyter-notebooks/.ipynb_checkpoints
 /jupyter-notebooks/.ipython
