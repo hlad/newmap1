@@ -26,7 +26,7 @@
 		<?php echo ds_pgis(sql_waterarea_short($layer));?>
 	}
 <?php endif?>
-<?php if ( $RENDER_WATERWAY && $TILE ): ?>
+<?php if ( $RENDER_WATERWAY ): ?>
 	,
 	{
 		"id": "waterway2-layer<?php echo $layer?>",

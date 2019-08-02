@@ -30,10 +30,7 @@ EOD;
 }
 
 function sql_text_waterway_short($priority) {
-	global $TILE;
-	$db = explode('.',$TILE);
-	$table = $db[0].'_'.$db[1];
-	return "SELECT * FROM text_waterway_$table";
+	return "SELECT * FROM text_waterway";
 }
 
 

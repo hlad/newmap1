@@ -16,7 +16,7 @@
 			shield-opacity: 0.9;
 			shield-min-distance: <?php echo round(exponential($ROUTE_REF_MINIMUM_DISTANCE[$grade],$zoom))?>;
 			shield-spacing: 200;			
-			shield-file: url('../../general/shield/~route-ref-<?php echo $zoom?>-<?php echo $grade?>-[ref_length].svg');			
+			shield-file: url('/shield/~route-ref-<?php echo $zoom?>-<?php echo $grade?>-[ref_length].svg');
 		}
 	<?php endforeach;?>	
 	<?php foreach ( $ROUTE_NAME_PRIORITIES[$zoom] as $grade => $priority ):?>	
@@ -42,7 +42,7 @@
 			shield-opacity: 0.9;
 			shield-min-distance: <?php echo round(exponential($ROUTE_OSMCSYMBOL_MINDISTANCE,$zoom))?>;
 			shield-spacing: 300;			
-			shield-file: url('../../../../osmcsymbol/generated/[file].png');
+			shield-file: url('/osmcsymbol/generated/[file].png');
 		}
 	<?php endif; ?>
 <?php endforeach;?>

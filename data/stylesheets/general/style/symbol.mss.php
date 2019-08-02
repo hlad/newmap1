@@ -10,7 +10,7 @@
 		.priority<?php echo $pr ?> {
 		    [type = <?php echo $i?>] {
 			<?php if ( !empty($a['symbol-file']) ): ?>
-			     point-file: url('../../general/symbol/~<?php echo $a['symbol-file']?>-<?php echo $zoom?>-<?php echo empty($a['symbol-color']) ? '#000000' : linear($a['symbol-color'],$zoom)?>.png');			 
+			     point-file: url('/symbol/~<?php echo $a['symbol-file']?>-<?php echo $zoom?>-<?php echo empty($a['symbol-color']) ? '#000000' : linear($a['symbol-color'],$zoom)?>.png');
 			<?php endif; ?>
 		    }
 		}

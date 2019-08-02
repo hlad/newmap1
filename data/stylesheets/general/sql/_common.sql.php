@@ -24,6 +24,21 @@ function _getLayerSql() {
 	";
 }
 
+function _getLayerSql2() {
+	$isBridgeSql = _isBridgeSql();
+	$isTunnelSql = _isTunnelSql();
+	return "
+		(
+			CASE
+				WHEN layer IN ('-5','-4','-3','-2','-1','0','1','2','3','4','5') THEN CAST(round(CAST(layer AS float)) AS integer)
+				WHEN bridge THEN 1
+				WHEN tunnel THEN -1
+				ELSE 0
+			END
+		)
+	";
+}
+
 function _getnewLayerSql() {
 	$isBridgeSql = _isBridgeSql();
 	$isTunnelSql = _isTunnelSql();

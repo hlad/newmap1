@@ -1,29 +1,46 @@
 #!/bin/bash
 
-for ((ZOOMS=MIN_ZOOM;ZOOMS<=MAX_ZOOM;ZOOMS++)); do
-    echo ""
-    echo "================================"
-    echo "ZOOM: \"$ZOOMS\""
-    echo "================================"
-    echo ""
-    export ZOOMS
-    echo ""
-    echo "Compiling cartocss"
-    echo "--------------------------------"
-    if [ $ZOOMS -ge 9 ]; then
+compile_layer(){
+  ZOOMS=$1
+  LAYER=$2
+
+  RENDER_LAYER=$LAYER
+  export RENDER_LAYER
+  printf "/cartocss/$ZOOMS/~map-$LAYER.mml "
+  mkdir -p "/mapnik-styles/$ZOOMS/"
+  carto "/cartocss/$ZOOMS/~map-$LAYER.mml" | grep -v "^\\[millstone\\]" > "/mapnik-styles/$ZOOMS/~map-$LAYER.xml"
+
+  sed -i "s/'\\\\a'/'\n'/g"  "/mapnik-styles/$ZOOMS/~map-$LAYER.xml"
+  sed -i "s/background-color=\"#[A-Fa-f0-9]*\"/background-color=\"transparent\"/g"  "/mapnik-styles/$ZOOMS/~map-$LAYER.xml"
+}
+
+compile_layers(){
+  ZOOMS=$1
+
+  echo ""
+  echo "================================"
+  echo "ZOOM: \"$ZOOMS\""
+  echo "================================"
+  echo ""
+  export ZOOMS
+  echo ""
+  echo "Compiling cartocss"
+  echo "--------------------------------"
+  if [ $ZOOMS -ge 9 ]; then
 		OUTPUT_LAYERS="landcover countryfill hillshade building accessarea boundary route way ferry contour fishnet symbol text"
 	else
 		OUTPUT_LAYERS="landcover countryfill hillshade boundary way,fishnet,symbol text,countrytext gridinfo"
 	fi
 
 	for LAYER in $OUTPUT_LAYERS; do
-		RENDER_LAYER=$LAYER
-		export RENDER_LAYER
-		printf "/cartocss/$ZOOMS/~map-$LAYER.mml "
-		mkdir -p "/mapnik/$ZOOMS/"
-		carto "/cartocss/$ZOOMS/~map-$LAYER.mml" | grep -v "^\\[millstone\\]" > "/mapnik/$ZOOMS/~map-$LAYER.mml"
+    compile_layer $ZOOMS $LAYER &
+  done
 
-		sed -i "s/'\\\\a'/'\n'/g"  "/mapnik/$ZOOMS/~map-$LAYER.mml"
-		sed -i "s/background-color=\"#[A-Fa-f0-9]*\"/background-color=\"transparent\"/g"  "/mapnik/$ZOOMS/~map-$LAYER.mml"
-	done
+  wait
+}
+
+for ((ZOOMS=MIN_ZOOM;ZOOMS<=MAX_ZOOM;ZOOMS++)); do
+	compile_layers $ZOOMS &
 done
+
+wait

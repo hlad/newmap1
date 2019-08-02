@@ -59,7 +59,7 @@ services:
     networks:
       - postgres_conn
     volumes:
-      - ./build/mapnik:/mapnik
+      - ./build/mapnik-styles:/mapnik-styles
       - ./build/cartocss:/cartocss
   import-sql:
     build: "./import-sql"
@@ -110,9 +110,35 @@ services:
     networks:
       - postgres_conn
     volumes:
-      - ./build/dem:/dem
-      - ./build/mapnik:/mapnik
+      - ./data/shp:/shp
+      - ./data/fonts:/fonts
+      - ./build/pattern:/pattern
+      - ./build/shield:/shield
+      - ./build/symbol:/symbol
+      - ./build/osmcsymbol:/osmcsymbol
+      - ./build/highway-access:/highway-access
+      - ./build/mapnik-styles:/mapnik-styles
       - ./build/render:/render
+  jupyter:
+    build: "./jupyter"
+    image: map1/jupyter
+    depends_on:
+      - render-map
+    env_file: .env
+    networks:
+      - postgres_conn
+    volumes:
+      - ./data/shp:/shp
+      - ./data/fonts:/fonts
+      - ./build/pattern:/pattern
+      - ./build/shield:/shield
+      - ./build/symbol:/symbol
+      - ./build/osmcsymbol:/osmcsymbol
+      - ./build/highway-access:/highway-access
+      - ./build/dem:/dem
+      - ./build/mapnik-styles:/mapnik-styles
+      - ./build/render:/render
+      - ./jupyter-notebooks:/notebooks
 networks:
   postgres_conn:
     driver: bridge

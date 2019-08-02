@@ -22,7 +22,7 @@
 			<?php echo $selector?> {
 			    ::level<?php echo $a['level']?> {
 				<?php if ( !empty($a['pattern-file']) ): ?>
-				    polygon-pattern-file: url('../../general/pattern/~<?php echo $a['pattern-file']?>-<?php echo $zoom?>.png');
+				    polygon-pattern-file: url('/pattern/~<?php echo $a['pattern-file']?>-<?php echo $zoom?>.png');
 				<?php else: ?>
 				    polygon-pattern-file: url('<?php echo
 					    getPatternFile($a['pattern'],

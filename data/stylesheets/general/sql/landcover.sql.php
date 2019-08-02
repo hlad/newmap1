@@ -44,8 +44,7 @@ return <<<EOD
 		$cols
 	FROM osm_landcover
 	WHERE
-				($propertyWhereQuery)
-			AND building IS NULL
+			(building IS NULL OR building='')
 			AND ($where)	
 	ORDER BY way_area DESC
 EOD;

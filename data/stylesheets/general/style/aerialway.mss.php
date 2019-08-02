@@ -8,7 +8,7 @@
 	    <?php if ( !empty($a['zooms']) && in_array($zoom,$a['zooms']) ): ?>
 		<?php echo $selector?> {
 		    <?php if ( !empty($a['pattern-file']) ): ?>			
-			line-pattern-file: url('../../general/pattern/~<?php echo $a['pattern-file']?>-<?php echo $zoom?>.png');
+			line-pattern-file: url('/pattern/~<?php echo $a['pattern-file']?>-<?php echo $zoom?>.png');
 		    <?php endif; ?>		    
 		    line-color: <?php echo empty($a['color']) ? '#000000' : linear($a['color'],$zoom)?>;
 		    line-width: <?php echo empty($a['width']) ? 1.0 : linear($a['width'],$zoom)?>;
@@ -22,7 +22,7 @@
 	    <?php if ( !empty($a['zooms']) && in_array($zoom,$a['zooms']) ): ?>
 		<?php echo $selector?> {
 		    <?php if ( !empty($a['point-file']) ): ?>			
-			point-file: url('../../general/pattern/~<?php echo $a['point-file']?>-<?php echo $zoom?>.png');
+			point-file: url('/pattern/~<?php echo $a['point-file']?>-<?php echo $zoom?>.png');
 		    <?php endif; ?>
 		}
 	    <?php endif; ?>

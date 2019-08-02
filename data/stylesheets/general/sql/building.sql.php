@@ -25,7 +25,7 @@ return <<<EOD
 		$cols
 	FROM osm_building
 	WHERE			
-		building IS NOT NULL
+		building IS NOT NULL AND building<>''
 		AND NOT ($isBridgeSql)
 		AND NOT ($isTunnelSql)
 		AND building NOT IN ('bridge','tunnel')

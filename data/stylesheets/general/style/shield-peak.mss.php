@@ -16,7 +16,7 @@
 			<?php if( $priority == 4 ): ?>					
 				shield-min-distance: 25px;
 			<?php endif; ?>		
-			shield-file: url('../../general/shield/~peak-<?php echo $zoom?>-<?php echo $grade?>.svg');
+			shield-file: url('/shield/~peak-<?php echo $zoom?>-<?php echo $grade?>.svg');
 			shield-line-spacing: 6;
 			shield-dy: -1;
 		}

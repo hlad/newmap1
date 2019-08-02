@@ -9,7 +9,7 @@ RUN apt-get update && \
 
 RUN npm install -g carto
 
-VOLUME /mapnik
+VOLUME /mapnik-styles
 
 COPY . /usr/src/app/
 WORKDIR /usr/src/app

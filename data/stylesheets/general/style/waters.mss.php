@@ -33,7 +33,7 @@
 							
 						<?php echo $selector?>::level<?php echo $a['level']?> {
 							<?php if ( !empty($a['pattern-file']) ): ?>
-								polygon-pattern-file: url('../../general/pattern/~<?php echo $a['pattern-file']?>-<?php echo $zoom?>.png');
+								polygon-pattern-file: url('/pattern/~<?php echo $a['pattern-file']?>-<?php echo $zoom?>.png');
 							<?php else: ?>
 								polygon-pattern-file: url('<?php echo
 									getPatternFile($a['pattern'],
@@ -56,7 +56,7 @@
 			<?php if ( !empty($a['zooms']) && in_array($zoom,$a['zooms']) ): ?>
 			<?php echo $selector?> {
 				<?php if ( !empty($a['symbol-file']) ): ?>
-							 point-file: url('../../general/symbol/~<?php echo $a['symbol-file']?>-<?php echo $zoom?>-<?php echo empty($a['symbol-color']) ? '#000000' : linear($a['symbol-color'],$zoom)?>.png');			 
+							 point-file: url('/symbol/~<?php echo $a['symbol-file']?>-<?php echo $zoom?>-<?php echo empty($a['symbol-color']) ? '#000000' : linear($a['symbol-color'],$zoom)?>.png');
 				<?php endif; ?>
 					}
 			<?php endif; ?>

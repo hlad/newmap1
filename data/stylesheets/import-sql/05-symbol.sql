@@ -18,5 +18,19 @@ SELECT
     z_order,ST_Centroid(way) AS way
 FROM osm_symbol_polygon
 
+CREATE INDEX osm_symbol__osm_id_idx ON osm_symbol(osm_id);
+CREATE INDEX osm_symbol__historic__idx ON osm_symbol(historic);
+CREATE INDEX osm_symbol__amenity__idx ON osm_symbol(amenity);
+CREATE INDEX osm_symbol__leisure__idx ON osm_symbol(leisure);
+CREATE INDEX osm_symbol__sport__idx ON osm_symbol(sport);
+CREATE INDEX osm_symbol__man_made__idx ON osm_symbol(man_made);
+CREATE INDEX osm_symbol__military__idx ON osm_symbol(military);
+CREATE INDEX osm_symbol__railway__idx ON osm_symbol(railway);
+CREATE INDEX osm_symbol__aeroway__idx ON osm_symbol(aeroway);
+CREATE INDEX osm_symbol__highway__idx ON osm_symbol(highway);
+CREATE INDEX osm_symbol__tourism__idx ON osm_symbol(tourism);
+CREATE INDEX osm_symbol__building__idx ON osm_symbol(building);
 
+
+CREATE INDEX osm_symbol__way__idx ON osm_symbol USING GIST (way);
 

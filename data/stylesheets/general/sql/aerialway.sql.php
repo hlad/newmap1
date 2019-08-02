@@ -8,7 +8,7 @@ require_once "sql/_common.sql.php";
 
 function sql_aerialway($where = '1 = 1',$order = 'z_order') {
 	global $AERIALWAY;
-	$layerSql = _getLayerSql();
+	$layerSql = _getLayerSql2();
 	$propertyWhereQuery = getPropertyWhereQuery($AERIALWAY);
 return <<<EOD
     SELECT
@@ -34,15 +34,15 @@ function sql_aerialway_short($layer,$where = '1 = 1',$order = 'z_order') {
 function sql_aerialway_text($priority,$where = '1 = 1',$order = 'z_order') {
     $layerSql = _getLayerSql();
     return "
-	SELECT way,name,osm_id,'' AS difficulty FROM aerialway WHERE COALESCE(name,'') <> ''
+	SELECT way,name,osm_id,'' AS difficulty FROM osm_aerialway WHERE COALESCE(name,'') <> ''
 	UNION
-	SELECT way,COALESCE(name,\"piste:name\") AS name,osm_id,\"piste:difficulty\" AS difficulty FROM pisteway WHERE  COALESCE(name,'') <> ''
+	SELECT way,COALESCE(name,\"piste:name\") AS name,osm_id,\"piste:difficulty\" AS difficulty FROM osm_pisteway WHERE  COALESCE(name,'') <> ''
     ";
 }
 
 
 function sql_aerialpoint($cols = '0',$where = '1 = 1',$order = 'z_order') {
-	$layerSql = _getLayerSql();
+	$layerSql = _getLayerSql2();
 return <<<EOD
     SELECT
 	way,	  

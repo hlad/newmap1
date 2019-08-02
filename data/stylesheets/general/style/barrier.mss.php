@@ -10,7 +10,7 @@
 		    <?php if ( !empty($a['pattern-file']) ): ?>	
 		    
 		    [length > <?php echo getPixelSize($zoom)*exponential($BARRIER_SYMBOL_LENGTH_VISIBILITY,$zoom)?>] {		
-					line-pattern-file: url('../../general/pattern/~<?php echo $a['pattern-file']?>-<?php echo $zoom?>.png');
+					line-pattern-file: url('/pattern/~<?php echo $a['pattern-file']?>-<?php echo $zoom?>.png');
 				}
 		    <?php endif; ?>
 		    line-color: <?php echo empty($a['color']) ? '#000000' : linear($a['color'],$zoom)?>;
@@ -34,7 +34,7 @@
 			<?php if ( !empty($a['zooms']) && in_array($zoom,$a['zooms']) ): ?>
 			<?php echo $selector?> {
 				<?php if ( !empty($a['symbol-file']) ): ?>
-							 point-file: url('../../general/symbol/~<?php echo $a['symbol-file']?>-<?php echo $zoom?>-<?php echo empty($a['symbol-color']) ? '#000000' : linear($a['symbol-color'],$zoom)?>.png');			 
+							 point-file: url('/symbol/~<?php echo $a['symbol-file']?>-<?php echo $zoom?>-<?php echo empty($a['symbol-color']) ? '#000000' : linear($a['symbol-color'],$zoom)?>.png');
 				<?php endif; ?>
 					}
 			<?php endif; ?>

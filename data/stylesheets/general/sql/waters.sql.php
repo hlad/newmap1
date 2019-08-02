@@ -25,7 +25,7 @@ function sql_waterway_short($layer, $cols = '0',$where = '1 = 1',$order = 'z_ord
 
 function sql_waterway2($layer, $cols = '0',$where = '1 = 1',$order = 'z_order') {
     $layerSql = _getNewLayerSql();		
-    return "SELECT * FROM waterway2 WHERE $layerSql = $layer";
+    return "SELECT * FROM osm_waterway2 WHERE $layerSql = $layer";
 }
 
 function sql_waterway_short_notrect($layer, $cols = '0',$where = '1 = 1',$order = 'z_order') {
@@ -91,7 +91,7 @@ return <<<EOD
 	$layerSql AS layer,
 	name,
 	$cols
-    FROM osm_waterpoint
+    FROM osm_waterpoint_point
     WHERE
 	($propertyWhereQuery)			
 	AND ($where)	

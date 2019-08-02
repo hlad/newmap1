@@ -61,13 +61,9 @@ render-map: db-start
 	docker-compose run --rm render-map
 
 jupyter: db-start
-	docker build -t map1/jupyter --network $$(basename $(pwd))_postgres_conn $$(pwd)/jupyter
-	docker run --rm --name jupyter --user "$${UID}:$${GID}" \
-		-v $$(pwd)/jupyter-notebooks:/home/jovyan \
-		-v $$(pwd)/build/dem:/dem \
-		-v $$(pwd)/build/mapnik:/mapnik \
-		-v $$(pwd)/build/render:/render \
-		-p 42500:8888 jupyter/minimal-notebook
+	echo ${UID}:${GID}
+	docker-compose build jupyter
+	docker-compose run -p 42500:8888 --user $(GID):$(UID) --rm jupyter
 
 psql-list-tables:
 	docker-compose run --rm import-osm /usr/src/app/psql.sh  -P pager=off  -c "\d+"

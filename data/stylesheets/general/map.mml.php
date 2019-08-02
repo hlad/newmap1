@@ -165,18 +165,19 @@
 				require "layer/route.mml.php";
 			}
 			
-			if ( $RENDER_WAY ) {			
+			if ( $RENDER_WAY ) {
+			    $first = true;
 				foreach ($RENDER_LAYERS as $layer) {
-					
+
 					if ( $RENDER_WATERS ) {
 						if ( !$first ) echo ','; $first = false;
 						require "layer/waters.mml.php";
 					}
-					if ( $RENDER_PISTEWAY && $TILE ) {
+					if ( $RENDER_PISTEWAY ) {
 						if ( !$first ) echo ','; $first = false;
 						require "layer/pisteway.mml.php";
 					}
-					if ( $RENDER_AEROWAY && $TILE ) {
+					if ( $RENDER_AEROWAY ) {
 						if ( !$first ) echo ','; $first = false;
 						require "layer/aeroway.mml.php";
 					}					
@@ -184,19 +185,19 @@
 						if ( !$first ) echo ','; $first = false;
 						require "layer/highway.mml.php";
 					}
-					if ( $RENDER_RAILWAY && $TILE ) {
+					if ( $RENDER_RAILWAY ) {
 						if ( !$first ) echo ','; $first = false;
 						require "layer/railway.mml.php";
 					}
-					if ( $RENDER_BARRIER && $TILE ) {
+					if ( $RENDER_BARRIER ) {
 						if ( !$first ) echo ','; $first = false;
 						require "layer/barrier.mml.php";
 					}
-					if ( $RENDER_POWER && $TILE ) {
+					if ( $RENDER_POWER ) {
 						if ( !$first ) echo ','; $first = false;
 						require "layer/power.mml.php";
 					}					
-					if ( $RENDER_AERIALWAY && $TILE ) {
+					if ( $RENDER_AERIALWAY ) {
 						if ( !$first ) echo ','; $first = false;
 						require "layer/aerialway.mml.php";
 					}
@@ -225,32 +226,32 @@
 														
 			if ( $RENDER_TEXT ) {
 				$clearCache = true;
-				foreach (array_merge($RENDER_TEXT_PRIORITIES ,array(-1)) as $priority) {					
+				foreach (array_merge($RENDER_TEXT_PRIORITIES ,array(-1)) as $priority) {
 					if ( $RENDER_TEXT_PLACE ) {
 						if ( !$first ) echo ','; $first = false;
 						require "layer/text-place.mml.php";
 					}
-					if ( $RENDER_SYMBOL && $TILE ) {
+					if ( $RENDER_SYMBOL ) {
 						if ( !$first ) echo ','; $first = false;
 						require "layer/symbol.mml.php";
 					}										
-					if ( $RENDER_SHIELD_PEAK && $TILE  ) {
+					if ( $RENDER_SHIELD_PEAK  ) {
 						if ( !$first ) echo ','; $first = false;
 						require "layer/shield-peak.mml.php";
 					}					
-					if ( $RENDER_TEXT_ROUTE && $TILE  ) {
+					if ( $RENDER_TEXT_ROUTE AND false  ) {
 						if ( !$first ) echo ','; $first = false;
 						require "layer/text-route.mml.php";
 					}
-					if ( $RENDER_TEXT_HIGHWAY && $TILE  ) {
+					if ( $RENDER_TEXT_HIGHWAY  ) {
 						if ( !$first ) echo ','; $first = false;
 						require "layer/text-highway.mml.php";
 					}
-					if ( $RENDER_TEXT_RAILWAY && $TILE  ) {
+					if ( $RENDER_TEXT_RAILWAY  ) {
 						if ( !$first ) echo ','; $first = false;
 						require "layer/text-railway.mml.php";
 					}
-					if ( $RENDER_TEXT_AERIALWAY && $TILE  ) {
+					if ( $RENDER_TEXT_AERIALWAY  ) {
 						if ( !$first ) echo ','; $first = false;
 						require "layer/text-aerialway.mml.php";
 					}
@@ -258,23 +259,23 @@
 						if ( !$first ) echo ','; $first = false;
 						require "layer/text-waters.mml.php";
 					}
-					if ( $RENDER_TEXT_LANDCOVER  && $TILE ) {
+					if ( $RENDER_TEXT_LANDCOVER ) {
 						if ( !$first ) echo ','; $first = false;
 						require "layer/text-landcover.mml.php";
 					}
-					if ( $RENDER_TEXT_BOUNDARY && $TILE ) {
+					if ( $RENDER_TEXT_BOUNDARY ) {
 						if ( !$first ) echo ','; $first = false;
 						require "layer/text-boundary.mml.php";
 					}
-					if ( $RENDER_TEXT_BUILDING && $TILE  ) {
+					if ( $RENDER_TEXT_BUILDING  ) {
 						if ( !$first ) echo ','; $first = false;
 						require "layer/text-building.mml.php";
 					}
-					if ( $RENDER_TEXT_SYMBOL && $TILE  ) {
+					if ( $RENDER_TEXT_SYMBOL  ) {
 						if ( !$first ) echo ','; $first = false;
 						require "layer/text-symbol.mml.php";
 					}
-					if ( $RENDER_TEXT_CONTOUR && $TILE  ) {
+					if ( $RENDER_TEXT_CONTOUR  ) {
 						if ( !$first ) echo ','; $first = false;
 						require "layer/text-contour.mml.php";
 					}										

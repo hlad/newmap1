@@ -20,7 +20,7 @@ php /stylesheets/general/prepare-db/get-sql-fishnet.php $LON_START $LAT_START $L
 echo "Generating /sql/30-sql.sql"
 php /stylesheets/general/prepare-db/get-sql.php $LON_START $LAT_START $LON_END $LAT_END $MIN_ZOOM $MAX_ZOOM > /sql/30-sql.sql
 
-echo "Generating /sql/40-sql-rect.sql"
-php /stylesheets/general/prepare-db/get-sql-rect.php $LON_START $LAT_START $LON_END $LAT_END $MIN_ZOOM $MAX_ZOOM > /sql/40-sql-rect.sql
+#echo "Generating /sql/40-sql-rect.sql"
+#php /stylesheets/general/prepare-db/get-sql-rect.php $LON_START $LAT_START $LON_END $LAT_END $MIN_ZOOM $MAX_ZOOM > /sql/40-sql-rect.sql
 
 

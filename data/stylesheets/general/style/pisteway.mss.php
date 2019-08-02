@@ -9,7 +9,7 @@
 	    <?php if ( !empty($a['zooms']) && in_array($zoom,$a['zooms']) ): ?>
 		<?php echo $selector?> {
 		    <?php if ( !empty($a['pattern-file']) ): ?>			
-			line-pattern-file: url('../../general/pattern/~<?php echo $a['pattern-file-png']?>-<?php echo $zoom?>.png');
+			line-pattern-file: url('/pattern/~<?php echo $a['pattern-file-png']?>-<?php echo $zoom?>.png');
 		    <?php endif; ?>		    
 		    line-color: <?php echo empty($a['color']) ? '#000000' : linear($a['color'],$zoom)?>;
 		    line-width: <?php echo empty($a['width']) ? 1.0 : linear($a['width'],$zoom)?>;
@@ -25,7 +25,7 @@
 		    <?php endif;?>
 		    <?php if ( !empty($a['pattern-zooms']) && in_array($zoom,$a['pattern-zooms']) ): ?>			
 			    <?php if ( !empty($a['pattern-file']) ): ?>
-				polygon-pattern-file: url('../../general/pattern/~<?php echo $a['pattern-file']?>-<?php echo $zoom?>.png');
+				polygon-pattern-file: url('/pattern/~<?php echo $a['pattern-file']?>-<?php echo $zoom?>.png');
 			    <?php else: ?>
 				polygon-pattern-file: url('<?php echo
 					getPatternFile($a['pattern'],

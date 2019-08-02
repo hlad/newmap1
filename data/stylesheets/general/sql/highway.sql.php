@@ -209,11 +209,11 @@ function sql_highway_norect($layer) {
     $layerSql = _getNewLayerSql();
     return sql_highway_query('0',"	
 		($layerSql) = $layer
-    ",'highway',true);
+    ",'osm_highway',true);
 }
 
 function sql_highway_area($cols = '0',$where = '1 = 1') {
-    return sql_highway_query('way_area,'.$cols,$where,'highway_area');
+    return sql_highway_query('way_area,'.$cols,$where,'osm_highway_area');
 }
 
 function sql_highway_area_short($layer,$cols = '0',$where = '1 = 1') {
@@ -253,7 +253,7 @@ function sql_highway_steps($layer, $cols = '0',$order = 'grade') {
 }
 
 function sql_highway_point($layer) {
-    return "SELECT * FROM highway_point";
+    return "SELECT * FROM osm_highway_point";
 }
 
 function sql_highway_infogrid($layer) {

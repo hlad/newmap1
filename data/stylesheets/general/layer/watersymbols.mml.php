@@ -3,7 +3,7 @@
 	require_once "sql/waters.sql.php";
 	require_once "conf/sqlite.php";	
 ?>
-<?php if ( $RENDER_WATERWAY && $TILE ): ?>	
+<?php if ( $RENDER_WATERWAY ): ?>
 	{
 		"id": "waterpoint-layer<?php echo $layer?>",
 		"name": "waterpoint-layer<?php echo $layer?>",

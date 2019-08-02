@@ -14,7 +14,7 @@
 			<?php if ( !empty($a['zooms']) && in_array($zoom,$a['zooms']) ): ?>
 				<?php echo $selector?> {
 					<?php if ( !empty($a['point-file']) ): ?>			
-						point-file: url('../../general/pattern/~<?php echo $a['point-file']?>-<?php echo $zoom?>.png');
+						point-file: url('/pattern/~<?php echo $a['point-file']?>-<?php echo $zoom?>.png');
 					<?php endif; ?>
 				}
 			<?php endif; ?>

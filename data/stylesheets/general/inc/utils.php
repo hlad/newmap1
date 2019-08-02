@@ -8,7 +8,7 @@ function getPixelSize($zoom) {
 function interpolate($def,$zoom, $transport, $transportI)  {
 	
 	if ( !is_array($def) )
-		throw new Exception("Need definition");	
+		throw new Exception("Need definition");
 		
 	$convert = function ($z,$a) use($transport) {
 		

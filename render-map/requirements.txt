@@ -1,5 +1,3 @@
 numpy
-mapnik
 Pillow
-pysqlite
 asyncpg

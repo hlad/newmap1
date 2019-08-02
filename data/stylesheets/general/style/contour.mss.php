@@ -5,7 +5,7 @@
 
 <?php foreach ( $CONTOUR_MODULOS as $zoom => $modulos ):?>
 	<?php foreach ( $modulos as $modulo ):?>
-		.contour[zoom = <?php echo $zoom?>][<?php echo justModulo('ele',$modulo) ?>]::modulo-<?php echo $modulo?> {		
+		.contour[zoom = <?php echo $zoom?>][modulo = <?php echo $modulo ?>]::modulo-<?php echo $modulo?> {
 			line-color: <?php echo linear($CONTOUR_COLOR[$modulo],$zoom)?>;
 			line-width: <?php echo linear($CONTOUR_WIDTH[$modulo],$zoom)?>;
 			line-opacity: <?php echo linear($CONTOUR_OPACITY[$modulo],$zoom)?>;

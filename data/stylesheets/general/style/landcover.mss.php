@@ -25,7 +25,7 @@
 			<?php echo $selector?> {
 			    ::level<?php echo $a['level']?> {
 				<?php if ( !empty($a['pattern-file']) ): ?>
-				    polygon-pattern-file: url('../../general/pattern/~<?php echo $a['pattern-file']?>-<?php echo $zoom?>.png');
+				    polygon-pattern-file: url('/pattern/~<?php echo $a['pattern-file']?>-<?php echo $zoom?>.png');
 				<?php else: ?>
 				    polygon-pattern-file: url('<?php echo
 					    getPatternFile($a['pattern'],
@@ -48,7 +48,7 @@
 	    <?php if ( !empty($a['zooms']) && in_array($zoom,$a['zooms']) ): ?>
 		<?php echo $selector?> {
 		    <?php if ( !empty($a['pattern-file']) ): ?>			
-			line-pattern-file: url('../../general/pattern/~<?php echo $a['pattern-file']?>-<?php echo $zoom?>.png');
+			line-pattern-file: url('/pattern/~<?php echo $a['pattern-file']?>-<?php echo $zoom?>.png');
 		    <?php endif; ?>		    
 		    line-color: <?php echo empty($a['color']) ? '#000000' : linear($a['color'],$zoom)?>;
 		    line-width: <?php echo empty($a['width']) ? 1.0 : linear($a['width'],$zoom)?>;
@@ -63,7 +63,7 @@
 	    <?php if ( !empty($a['zooms']) && in_array($zoom,$a['zooms']) ): ?>
 		<?php echo $selector?> {
 		    <?php if ( !empty($a['symbol-file']) ): ?>
-                         point-file: url('../../general/symbol/~<?php echo $a['symbol-file']?>-<?php echo $zoom?>-<?php echo empty($a['symbol-color']) ? '#000000' : linear($a['symbol-color'],$zoom)?>.png');			 
+                         point-file: url('/symbol/~<?php echo $a['symbol-file']?>-<?php echo $zoom?>-<?php echo empty($a['symbol-color']) ? '#000000' : linear($a['symbol-color'],$zoom)?>.png');
 		    <?php endif; ?>
                 }
 	    <?php endif; ?>
@@ -91,7 +91,7 @@
 			marker-allow-overlap: true;			
 			<?php endif; ?>
 		    <?php else: ?>
-			point-file: url('../../general/pattern/~place-<?php echo $zoom?>-<?php echo $grade?>.png');
+			point-file: url('/pattern/~place-<?php echo $zoom?>-<?php echo $grade?>.png');
 		    <?php endif; ?>
 		}		
 	    <?php endforeach; ?>
