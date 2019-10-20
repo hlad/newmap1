@@ -5,17 +5,23 @@ $PGIS_TBL_PREFIX = 'planet_osm';
 
 function ds_pgis($table, $geometry_field = 'way') {
 	return '"Datasource": ' . json_encode(array(
-		'table'           => '(' . trim($table) . ') AS data',
-		'type'            => 'postgis',
-		'password'        => $_ENV['POSTGRES_PASSWORD'],
-		'host'            => $_ENV['POSTGRES_HOST'],
-		'port'            => $_ENV['POSTGRES_PORT'],
-		'user'            => $_ENV['POSTGRES_USER'],
-		'dbname'          => $_ENV['POSTGRES_DB'],
-		'estimate_extent' => false,
+		'table'              => '(' . trim($table) . ') AS data',
+		'type'               => 'postgis',
+		'password'           => $_ENV['POSTGRES_PASSWORD'],
+		'host'               => $_ENV['POSTGRES_HOST'],
+		'port'               => $_ENV['POSTGRES_PORT'],
+		'user'               => $_ENV['POSTGRES_USER'],
+		'dbname'             => $_ENV['POSTGRES_DB'],
+		'persist_connection' => true,
+		'cache-features'     => true,
+		'connect_timeout'    => 60,
+		'max_size'           => 10,
+		'initial_size'       => 10,
+		'estimate_extent'    => false,
 		'extent'          => '-20037508,-19929239,20037508,19929239',
-		'geometry_field'  => $geometry_field,
-		'srid'            => 900913,
+		'max_async_connection' => 4,
+		'geometry_field'     => $geometry_field,
+		'srid'               => 900913,
 	));
 }
 

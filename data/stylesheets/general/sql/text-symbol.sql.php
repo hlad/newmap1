@@ -22,7 +22,7 @@ function sql_text_symbol_short($priority) {
     return "
 			SELECT way,type,count,name FROM symbols S
 			JOIN symbol_density D ON S.osm_id = D.osm_id
-			WHERE name IS NOT NULL AND count < $count AND $types
+			WHERE (name IS NOT NULL AND name <> '')  AND count < $count AND $types
 			ORDER BY grade DESC
     ";
 }

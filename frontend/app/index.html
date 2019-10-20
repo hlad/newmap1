@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>	
+        <meta name="viewport" id="metaViewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />	
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+        <meta name="description" content="All-purpose map of europe based on Openstreetmap data."/>
+	
+	<meta property="og:url" content="http://map1.eu"/>
+	<meta property="og:image" content='http://map1.eu/image/logo-fb.png' />
+	
+        <title data-i18n="">Map of Europe</title>	        
+        <link rel="stylesheet" href="css/openlayers.css" type="text/css">
+        <link rel="stylesheet" href="css/map.css" type="text/css">
+	
+	<script type="text/javascript">version=5</script>
+	<script type="text/javascript">var switchTo5x=true;</script>
+	<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+	<script type="text/javascript">stLight.options({publisher: "e6cae8cc-2ef8-4ad4-af06-e68effe290ce", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
+	
+	<script>var region = '$__europe__$'</script>
+	<script type="text/javascript" src="js/bootstrap.js?5"></script>
+	
+    </head>
+    <body>
+  <img src="image/marker1.svg" id="cursor" />    
+        <div id="map"></div>
+  <div id="button-start" class="panel">
+      <img src="image/start-icon.png" id="start-icon" />
+      <img src="image/logo18.png" id="logo" />
+      <div class="help" style="display: none">
+	<div class="shadow"></div>
+	<img src="image/button-start-help.png" alt="START"/>
+      </div>
+  </div>  
+  
+  <div id="share" class="panel" style="visibility: hidden">    
+    <span class='close'>X</span>
+    <span class='st_facebook_large' displayText='Facebook'></span>
+    <span class='st_twitter_large' displayText='Tweet'></span>
+    <span class='st_linkedin_large' displayText='LinkedIn'></span>
+    <span class='st_googleplus_large' displayText='Google +'></span>
+    <span class='st_email_large' displayText='Email'></span>
+    <span class='st_fbrec_large' displayText='Facebook Recommend'></span>
+    <a class='donate' data-i18n="" href="/donation.html"><img src="/image/donate.png" alt="Donate"/></a>
+    <p data-i18n="">This project will die soon without your help. Please share it or donate us. Thank you.</p>
+  </div>
+  
+  <div id="panel-search" class="panel">
+      <div id="wayPoints"></div>      
+      <div id="routeInfo"></div>      
+  </div>
+  
+  <div id="sidebar" class="panel">
+      <div id="zoom">
+    <img src="image/plus.png" class="plus" onclick="map.zoomIn()"/>
+    <img src="image/minus.png" class="minus" onclick="map.zoomOut()"/>
+      </div>
+       <div data-i18n="" class="help" id="button-navigation-help">Find the route</div>
+      <img src="image/navigation.svg" id="button-navigation" />     
+      <div data-i18n="" class="help" id="button-print-help">Print the map</div>
+      <img src="image/print.svg" class="button-print" id="button-print" />
+      <div data-i18n="" class="help" id="button-gpx-help">Show gpx track</div>
+      <img src="image/gpx.svg" class="button-gpx" id="button-gpx" />     
+      <div data-i18n="" class="help" id="button-about-help">About map1.eu</div> 
+      <img src="image/about.svg" class="button-about" id="button-about" />
+      <div data-i18n="" class="help" id="button-donate-help">Donate map1.eu</div> 
+      <a href="/donation.html" target="_blank" id="button-donate"><img src="image/donation.svg" class="button-donation" /></a>
+  </div>
+  
+  <div id="gridinfo" class="panel">
+    <div class="sticked">
+    </div>
+    <div class="current">
+    </div>
+  </div>  
+  
+  <div id="gridinfo-power" class="panel">
+    <img src="/image/gridinfo.png" alt="i" i18n-data-title="" title="Click to turn off/on"/>
+  </div>
+  
+  <script id="searchitem" type="text/html">
+      <form action="" method="get" class="search">
+    <div class="query">
+        <img src="image/number1.png" class="number" />
+        <input type="text" name="query" class="searchQuery" autocomplete="off" />
+        <div class="info"></div>
+        <input type="image" class="submit" value="search" src="image/search.png" />
+    </div>
+    <div class="searchResult"></div>
+    <div class="vehicle">
+        <input type="image" class="submit dosearch" value="search" src="image/search.png" />
+        <ul>
+           <li data-vehicle="motorcar"><img src="image/route-motorcar.png"/></li> 
+           <li data-vehicle="bicycle"><img src="image/route-bicycle.png"/></li> 
+           <li data-vehicle="foot"><img src="image/route-foot.png"/></li>       
+        </ul>
+    </div>
+    
+    <input type="image" class="submit add" value="search" src="image/add.png" />
+    <input type="image" class="submit close" value="search" src="image/close.png" />
+      </form>
+  </script>
+  
+  <script id="searchresult" type="text/html">
+      <ul>
+     {{#result}}
+     <li>
+        <a href="">      
+      <span class="name">{{key}}</span>
+      <span class="desc">{{locality}}</span>
+        </a>
+    </li>    
+    {{/result}}
+      </ul>
+  </script>
+  
+  <script id="routeinfo" type="text/html">      
+    {{#distance}}
+      <div class="distance">
+        <span class="title">distance</span><br/>{{distance}}<span>km</span>
+      </div>
+      <div data-i18n="" class="button-directions" onclick="map.directionsDialog.open()">Instructions</div>
+      <div class="time">
+        <span class="title">estimatet time</span><br/>
+        {{hours}}<span>hod</span> {{minutes}}<span>min</span>
+      </div>
+    {{/distance}}
+  </script>
+  
+  
+  <script id="directions" type="text/html">      
+      <ul>
+    {{#directions}}
+        <li>
+      <h3><img src="image/number{{from}}.png" alt="{{from}}" /> => <img src="image/number{{to}}.png" alt="{{to}}" /></h3>
+      <ol>
+      {{#instructions}}
+          <li>{{.}}</li>
+      {{/instructions}}
+      </ol>        
+        </li>
+    {{/directions}}
+      </ul>
+  </script>
+  
+  
+  <div id="dialog-print" class="dialog dialog-print">
+      <div class="header">
+    <img src="image/print.png" class="icon" />
+    <h2 data-i18n="">Print the map</h2>
+    <h3 data-i18n="">(Select bounding box)</h3>
+    <span class="close" data-i18n="">X</span>
+      </div>
+      <div class="content">
+    <p>
+        <img src="image/ctrl_mouse.png"/> 
+        <span data-i18n="">print-dialog-1.text</span>         
+    </p>
+      </div>
+      <div class="footer">    
+    <span class="next button" data-i18n="">Select print format</span>
+      </div>      
+  </div>
+  
+  <div id="dialog-print-2" class="dialog dialog-print">
+    <div class="header">
+      <img src="image/print.png" class="icon" />
+      <h2 data-i18n="">Print the map</h2>
+      <h3 data-i18n="">(Select print format)</h3>
+      <span class="close" data-i18n="">X</span>
+    </div>
+    <div class="content">
+      <p data-i18n="">print-dialog-2.text</p>
+      <form>
+          <label for="print-measure" data-i18n="">Map measure:</label>
+          <select id="print-measure">
+            <option value="12500">1:12 500</option>
+            <option value="25000">1:25 000</option>
+            <option value="50000">1:50 000</option>
+            <option value="100000">1:100 000</option>
+            <option value="200000" selected="1">1:200 000</option>      
+            <option value="400000">1:400 000</option>
+            <option value="800000">1:800 000</option>
+            <option value="1600000">1:1 600 000</option>
+            <option value="3200000">1:3 200 000</option>
+            <option value="6400000">1:6 400 000</option>
+          </select>
+          <label for="print-paper-format" data-i18n="">Paper format:</label>
+          <select id="print-paper-format">          
+            <option value="A3" data-i18n="">A3</option>
+            <option value="A4" selected="1" data-i18n="">A4</option>
+            <option value="A5" data-i18n="">A5</option>      
+          </select>
+          <label for="print-paper-orientation" data-i18n="">Orientation:</label>
+          <select id="print-paper-orientation">          
+            <option value="landscape" data-i18n="">landscape</option>
+            <option value="portrait" selected="1" data-i18n="">portrait</option>          
+          </select>
+          <div id="pages">            
+            <div class="count"><span data-i18n="">Page count</span>: <span class="val"></span></div>
+            <div class="warning" data-i18n="">Printed document is too big.</div>
+            <div class="overview"></div>
+          </div>
+      </form>    
+    </div>
+    <div class="footer">
+      <span class="prev button" data-i18n="">Select bounding box</span>
+      <span class="finish button" data-i18n="">Prepare pdf</span>
+    </div>      
+  </div>
+  
+  <div id="dialog-print-3" class="dialog dialog-print">
+      <div class="header">
+    <img src="image/print.png" class="icon" />
+    <h2 data-i18n="">Print the map</h2>
+    <h3 data-i18n="">(print completed)</h3>
+    <span class="close" data-i18n="">X</span>
+      </div>
+      <div class="content">
+    <p data-i18n="">print-dialog-3.text</p>      
+      </div>
+      <div class="footer">
+    <span class="prev button" data-i18n="">Select print format</span>
+    <span class="close button" data-i18n="">Finish</span>
+      </div>      
+  </div>
+
+  <div id="dialog-gpx" class="dialog dialog-gpx">
+    <div class="header">
+      <img src="image/gpx.png" class="icon" />
+      <h2 data-i18n="">Show gpx track</h2>
+      <h3 data-i18n="">(Upload gpx file)</h3>
+      <span class="close" data-i18n="">X</span>
+    </div>
+    <div class="content">
+      <p>        
+        <span data-i18n="">gpx-dialog-1.text</span>
+      </p>
+      <form>
+	<input type="file" id="gpx-files" name="gpx-files"/>
+      </form>
+    </div>
+    <div class="footer">    
+      <span id="print-gpx" class="button float" data-i18n="">Print</span>
+      <span id="show-gpx" class="button float" data-i18n="">Show gpx</span>
+    </div>      
+  </div>
+  
+  <div id="dialog-about" class="dialog">
+	  <div class="header">
+		<img src="image/about.svg" class="icon"/>		
+		<h1 data-i18n="">Map of $__europe__$</h1>		
+		
+		<span class="close" data-i18n="">X</span>
+	    </div>
+	    <div class="content">	
+	    <p>
+			The aim of Map1.eu is to provide an all-purpose map of the whole Europe in such a quality close to the printed map's standard.
+		</p>	
+		<h3>Licence</h3>
+		<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/"><img alt="Creative Commons License" style="border-width:0; float: right; margin: 5px;" src="http://i.creativecommons.org/l/by-nc-nd/3.0/88x31.png" /></a>
+		<h4>Tiles licence</h4>
+		<p>
+		    <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">map1.eu tiles</span> by Pavel Klinger are licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/">Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License</a>.<br />Based on a work at <a xmlns:dct="http://purl.org/dc/terms/" href="http://map1.eu" rel="dct:source">map1.eu</a>.
+		</p>
+		<h4>Map data</h4>
+		<p>
+		    <a href="http://www.openstreetmap.org/copyright">© OpenStreetMap contributors</a>
+		</p>		
+		<h3>Map1.eu elsewhere</h3>
+		<p>
+		    * Bug tracking and more on <a href="https://github.com/bigr/map1">github</a><br />
+		    * Please follow us on <a href="https://twitter.com/map1eu">twitter</a><br />
+		    * And visit our <a href="https://facebook.com/Map1eu">facebook page</a><br />
+		</p>
+		<h3>Donations</h3>
+		<p>
+		    <a href="donation.html"><strong>Please help Map1.eu come to life and donate now.</strong></a>
+		</p>	
+		<h3>Share</h3>	
+		<p class="share">
+		    <span class='st_facebook_large' displayText='Facebook'></span>
+		    <span class='st_twitter_large' displayText='Tweet'></span>
+		    <span class='st_linkedin_large' displayText='LinkedIn'></span>
+		    <span class='st_googleplus_large' displayText='Google +'></span>
+		    <span class='st_email_large' displayText='Email'></span>		   
+		</p>		
+	    </div>
+	    <div class="footer">		
+		<span class="close button" data-i18n="">Close</span>
+	    </div>
+	</div>
+  
+  <div id="dialog-info" class="dialog">
+      <div class="header">
+    <img src="image/about.svg" class="icon"/>
+    <h2 data-i18n="">Feature information</h2>
+    <span class="close" data-i18n="">X</span>
+      </div>
+      <div class="content">
+      </div>
+      <div class="footer">    
+    <span class="close button" data-i18n="">Close</span>
+      </div>
+  </div>
+  
+  
+  <div id="dialog-directions" class="dialog">
+      <div class="header">
+    <img src="image/navigation.svg" class="icon"/>
+    <h2 data-i18n="">Instructions</h2>
+    <span class="close" data-i18n="">X</span>
+      </div>
+      <div class="content">    
+    
+    
+      </div>
+      <div class="footer">    
+    <span class="close button" data-i18n="">Close</span>
+      </div>
+  </div>
+  
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-42062255-1', 'map1.eu');
+	  //ga('send', 'pageview');
+
+	</script>
+  
+    </body>
+</html>

@@ -52,7 +52,7 @@ $_SYMBOl_ZOOMS_TINY    = array(                                    15 => 4, 16 =
  * Zoom x symbol look maping
  */
 $SYMBOL = array(
-	"[historic='castle'][castle_type='no'][ruins='no'],[historic='castle'][castle_type='stately'][ruins='no'],[historic='castle'][castle_type='schloss'][ruins='no'],[historic='castle'][castle_type='burg;schloss'][ruins='no']" => array(
+	"[historic='castle'][castle_type='no'][ruins='no'],[historic='castle'][castle_type='stately'][ruins='no'],[historic='castle'][castle_type='schloss'][ruins='no'],[historic='castle'][castle_type='burg;schloss'][ruins='no'],[historic='castle'][castle_type='palace'][ruins='no'],[historic='castle'][castle_type='manor'][ruins='no'],[historic='castle'][castle_type='castle'][ruins='no'],[historic='castle'][castle_type='defensive;stately'][ruins='no'],[historic='castle'][castle_type='chateau'][ruins='no'],[historic='castle'][castle_type='kremlin'][ruins='no']  " => array(
 			'zooms'        => $_SYMBOl_ZOOMS_HUGE,
 			'symbol-file'  => 'castle-stately',
 			'symbol-size'  => $_SYMBOl_SIZE_HUGE,
@@ -61,9 +61,9 @@ $SYMBOL = array(
 			'text-color'   => $_SYMBOL_HISTORIC_COLOR,
 			'symbol-halo'  => $_SYMBOL_HISTORIC_HALO_COLOR,
 			'halo-color'   => $_SYMBOL_HISTORIC_HALO_COLOR,
-		),	
-	
-	"[historic='castle'][castle_type='defensive'],[historic='castle'][castle_type='burg'],[historic='castle'][castle_type='fortress'],[historic='castle'][castle_type='festung']" => array(
+		),
+
+	"[historic='castle'][castle_type='defensive'],[historic='castle'][castle_type='burg'],[historic='castle'][castle_type='fortress'],[historic='castle'][castle_type='festung'],[historic='castle'][castle_type='tower'],[historic='castle'][castle_type='tower'],[historic='castle'][castle_type='castrum'],[historic='castle'][castle_type='mansion'],[historic='castle'][castle_type='citadel'],[historic='castle'][castle_type='fortification'],[historic='castle'][castle_type='medieval']" => array(
 			'zooms'        => $_SYMBOl_ZOOMS_HUGE,
 			'symbol-file'  => 'castle-defensive',
 			'symbol-size'  => $_SYMBOl_SIZE_HUGE,
@@ -73,9 +73,9 @@ $SYMBOL = array(
 			'symbol-halo'  => $_SYMBOL_HISTORIC_HALO_COLOR,
 			'halo-color'   => $_SYMBOL_HISTORIC_HALO_COLOR,
 		),
-	
-		
-	"[ruins!='no'][historic='castle'],[ruins='castle']" => array(			
+
+
+	"[ruins!='no'][historic='castle'],[ruins='castle']" => array(
 			'zooms'        => $_SYMBOl_ZOOMS_HUGE,
 			'symbol-file'  => 'ruins',
 			'symbol-size'  => $_SYMBOl_SIZE_BIG,
@@ -84,8 +84,8 @@ $SYMBOL = array(
 			'text-color'   => $_SYMBOL_HISTORIC_COLOR,
 			'symbol-halo'  => $_SYMBOL_HISTORIC_HALO_COLOR,
 			'halo-color'   => $_SYMBOL_HISTORIC_HALO_COLOR,
-		),	
-	
+		),
+
 	"[building='church'],[amenity='place_of_worship'][historic!='monastery'][historic!='wayside_shrine'][historic!='wayside_cross'][building!='chapel'][\"place_of_worship:type\"!='chapel'][place_of_worship!='chapel'][\"place_of_worship:type\"!='monastery'][place_of_worship!='monastery']" => array(
 			'zooms'        => $_SYMBOl_ZOOMS_BIG,
 			'symbol-file'  => 'church',
@@ -95,9 +95,9 @@ $SYMBOL = array(
 			'text-color'   => $_SYMBOL_HISTORIC_COLOR,
 			'symbol-halo'  => $_SYMBOL_HISTORIC_HALO_COLOR,
 			'halo-color'   => $_SYMBOL_HISTORIC_HALO_COLOR,
-		),	
-		
-	"[building='chapel'],[\"place_of_worship:type\"='chapel'],[place_of_worship='chapel']"=> array(			
+		),
+
+	"[building='chapel'],[\"place_of_worship:type\"='chapel'],[place_of_worship='chapel']"=> array(
 			'zooms'        => $_SYMBOl_ZOOMS_NORMAL,
 			'symbol-file'  => 'chapel',
 			'symbol-size'  => $_SYMBOl_SIZE_SMALL,
@@ -106,8 +106,8 @@ $SYMBOL = array(
 			'text-color'   => $_SYMBOL_HISTORIC_COLOR,
 			'symbol-halo'  => $_SYMBOL_HISTORIC_HALO_COLOR,
 			'halo-color'   => $_SYMBOL_HISTORIC_HALO_COLOR,
-		),	
-	"[military='bunker'][historic='yes']" => array(			
+		),
+	"[military='bunker'][historic='yes']" => array(
 			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
 			'symbol-file'  => 'military_bunker',
 			'symbol-size'  => $_SYMBOl_SIZE_TINY,
@@ -116,8 +116,8 @@ $SYMBOL = array(
 			'text-color'   => $_SYMBOL_HISTORIC_COLOR,
 			'symbol-halo'  => $_SYMBOL_HISTORIC_HALO_COLOR,
 			'halo-color'   => $_SYMBOL_HISTORIC_HALO_COLOR,
-		),	
-	"[historic='monastery'],[\"place_of_worship:type\"='monastery'],[place_of_worship='monastery']"=> array(			
+		),
+	"[historic='monastery'],[\"place_of_worship:type\"='monastery'],[place_of_worship='monastery']"=> array(
 			'zooms'        => $_SYMBOl_ZOOMS_HUGE,
 			'symbol-file'  => 'monastery',
 			'symbol-size'  => $_SYMBOl_SIZE_BIG,
@@ -126,8 +126,8 @@ $SYMBOL = array(
 			'text-color'   => $_SYMBOL_HISTORIC_COLOR,
 			'symbol-halo'  => $_SYMBOL_HISTORIC_HALO_COLOR,
 			'halo-color'   => $_SYMBOL_HISTORIC_HALO_COLOR,
-		),		
-	"[historic='archaeological_site']" => array(			
+		),
+	"[historic='archaeological_site']" => array(
 			'zooms'        => $_SYMBOl_ZOOMS_BIG,
 			'symbol-file'  => 'archaeological_site',
 			'symbol-size'  => $_SYMBOl_SIZE_NORMAL,
@@ -137,7 +137,7 @@ $SYMBOL = array(
 			'symbol-halo'  => $_SYMBOL_HISTORIC_HALO_COLOR,
 			'halo-color'   => $_SYMBOL_HISTORIC_HALO_COLOR,
 		),
-	"[historic='city_gate']" => array(			
+	"[historic='city_gate']" => array(
 			'zooms'        => $_SYMBOl_ZOOMS_BIG,
 			'symbol-file'  => 'city_gate',
 			'symbol-size'  => $_SYMBOl_SIZE_NORMAL,
@@ -147,7 +147,7 @@ $SYMBOL = array(
 			'symbol-halo'  => $_SYMBOL_HISTORIC_HALO_COLOR,
 			'halo-color'   => $_SYMBOL_HISTORIC_HALO_COLOR,
 		),
-	"[historic='monument']" => array(			
+	"[historic='monument']" => array(
 			'zooms'        => $_SYMBOl_ZOOMS_BIG,
 			'symbol-file'  => 'monument',
 			'symbol-size'  => $_SYMBOl_SIZE_NORMAL,
@@ -156,8 +156,8 @@ $SYMBOL = array(
 			'text-color'   => $_SYMBOL_HISTORIC_COLOR,
 			'symbol-halo'  => $_SYMBOL_HISTORIC_HALO_COLOR,
 			'halo-color'   => $_SYMBOL_HISTORIC_HALO_COLOR,
-		),	
-	"[historic='memorial'],[historic='heritage']" => array(			
+		),
+	"[historic='memorial'],[historic='heritage']" => array(
 			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
 			'symbol-file'  => 'memorial',
 			'symbol-size'  => $_SYMBOl_SIZE_TINY,
@@ -167,7 +167,7 @@ $SYMBOL = array(
 			'symbol-halo'  => $_SYMBOL_HISTORIC_HALO_COLOR,
 			'halo-color'   => $_SYMBOL_HISTORIC_HALO_COLOR,
 		),
-	"[historic='wayside_cross'],[amenity='place_of_worship'][historic='no'][building='no']" => array(			
+	"[historic='wayside_cross'],[amenity='place_of_worship'][historic='no'][building='no']" => array(
 			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
 			'symbol-file'  => 'waysidecross',
 			'symbol-size'  => $_SYMBOl_SIZE_TINY,

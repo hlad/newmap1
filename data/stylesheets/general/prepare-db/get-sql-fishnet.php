@@ -25,7 +25,7 @@ DROP TABLE IF EXISTS fishnet<?php echo $size?>;
 CREATE TABLE fishnet<?php echo $size?> (
     osm_id INTEGER 
 );
-SELECT AddGeometryColumn('public', 'fishnet<?php echo $size?>', 'way', 900913, 'GEOMETRY', 2);
+SELECT AddGeometryColumn('public', 'fishnet<?php echo $size?>', 'way', 3857, 'GEOMETRY', 2);
 
 <?php
 $conn = pg_connect("host=$dbhost port=$dbport dbname=$dbname user=$dbuser password=$dbpass");
@@ -51,7 +51,7 @@ INSERT INTO fishnet<?php echo $size?> (osm_id,way) SELECT osm_id,ST_Collect((
                         ST_SetSRID(ST_MakePoint((SELECT ST_XMIN(ST_Transform(ST_Envelope(B.way),4326))), y::float/1000000.0),4326),
                         ST_SetSRID(ST_MakePoint((SELECT ST_XMAX(ST_Transform(ST_Envelope(B.way),4326))), y::float/1000000.0),4326)
                     ),
-                    900913
+                    3857
                 )
                 ,B.way
             )) AS way
@@ -62,7 +62,7 @@ INSERT INTO fishnet<?php echo $size?> (osm_id,way) SELECT osm_id,ST_Collect((
                 (SELECT
                     <?php echo $size?> * ceiling(
                         1000000 /
-                            ST_Distance_Sphere(
+                            ST_DistanceSphere(
                                ST_Centroid((ST_Transform(ST_Envelope(B.way),4326))),
                                ST_Translate(ST_Centroid((ST_Transform(ST_Envelope(B.way),4326))),0,1)
                             )
@@ -77,7 +77,7 @@ INSERT INTO fishnet<?php echo $size?> (osm_id,way) SELECT osm_id,ST_Collect((
                         ST_SetSRID(ST_MakePoint(y::float/1000000.0,(SELECT ST_YMIN(ST_Transform(ST_Envelope(B.way),4326)))),4326),
                         ST_SetSRID(ST_MakePoint(y::float/1000000.0,(SELECT ST_YMAX(ST_Transform(ST_Envelope(B.way),4326)))),4326)
                     ),
-                    900913
+                    3857
                 )
                 ,B.way
             )) AS way
@@ -88,7 +88,7 @@ INSERT INTO fishnet<?php echo $size?> (osm_id,way) SELECT osm_id,ST_Collect((
                 (SELECT
                     <?php echo $size?> * ceiling(
                         1000000 /
-                            ST_Distance_Sphere(
+                            ST_DistanceSphere(
                                ST_Centroid((ST_Transform(ST_Envelope(B.way),4326))),
                                ST_Translate(ST_Centroid((ST_Transform(ST_Envelope(B.way),4326))),1,0)
                             )
@@ -97,7 +97,7 @@ INSERT INTO fishnet<?php echo $size?> (osm_id,way) SELECT osm_id,ST_Collect((
             ) AS y
 )) AS way
             
-    FROM adminboundary B WHERE osm_id = <?php echo $osm_id ?> ORDER BY way_area DESC LIMIT 1;
+    FROM osm_adminboundary B WHERE osm_id = <?php echo $osm_id ?> ORDER BY way_area DESC LIMIT 1;
 
 <?php endforeach; ?>
 

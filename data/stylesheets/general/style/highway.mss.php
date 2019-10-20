@@ -101,7 +101,7 @@
 				}				
 				<?php endif; ?>
 				<?php if ( $grade >= 1 && $zoom >= 12): ?>
-					.layer0[is_link != 'yes'][is_bridge != 'yes'][junction = 'no'][is_construction = 'no'] {
+					.layer0[is_link != 'yes'][is_bridge != 'yes'][junction = ''][is_construction = 'no'] {
 						<?php foreach ( range(2,7) as $smoothness ): ?>					
 							[smoothness = <?php echo $smoothness?>] {
 								line-dasharray: <?php echo implode(exponential($HIGHWAY_SMOOTHNESS_CASING[$smoothness],$zoom),',')?>;

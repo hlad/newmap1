@@ -82,24 +82,25 @@ while True:
 			elif access in ['false','0','no','private','dismount']:
 				access = 'no'
 							
-			if not os.path.isfile('/tmp/access_%s.png' % access):
+			if not os.path.isfile('/highway_access/access_%s.png' % access):
 				print "Unknown access: '%s'" % access
 				continue						
 			
-			im2 = Image.open('/tmp/access_%s.png' % access	,'r')
+			im2 = Image.open('/highway_access/access_%s.png' % access	,'r')
 			im2.convert('RGBA')
 			im2 = im2.resize((SIZE,SIZE),Image.ANTIALIAS)			
-			im.paste(im2,(offsetX,offsetY),im2.split()[-1])		
+			im.paste(im2,(offsetX,offsetY),im2)
 					
 			
-			im3 = Image.open('/tmp/%s.png' % col,'r')
+			im3 = Image.open('/highway_access/%s.png' % col,'r')
 			im3.convert('RGBA')
 			im3 = im3.resize((SIZE,SIZE),Image.ANTIALIAS)
 			if access == 'yes':
 				im3 = colorize(im3,'#ffffff')		
-			im.paste(im3,(offsetX,offsetY),im3.split()[-1])
+			im.paste(im3,(offsetX,offsetY),im3)
 			fileName.append("%s_%s" % (access,col))
 		except:
+			raise
 			print "Unexpected error:", sys.exc_info()[0]
 		i += 1
 

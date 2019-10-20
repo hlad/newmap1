@@ -45,7 +45,7 @@ return <<<EOD
 	$cols
     FROM osm_power
     WHERE
-	    power IS NOT NULL	
+	    power IS NOT NULL AND power <> ''
 	AND ($where)
 EOD;
 }

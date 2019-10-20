@@ -88,7 +88,7 @@ return <<<EOD
 			    way_length
 		FROM osm_railway
 		WHERE
-				    railway IS NOT NULL
+				    railway IS NOT NULL AND railway<>''
 			    AND ($where)
 		ORDER BY ($railwayGradeSql), osm_id DESC
 EOD;

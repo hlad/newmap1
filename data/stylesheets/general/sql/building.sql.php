@@ -39,5 +39,5 @@ function sql_building_short($where = '1 = 1',$order = 'z_order') {
 }
 
 function sql_text_building_short($priority,$where = '1 = 1',$order = 'z_order') {
-    return "SELECT way,name,way_area FROM buildings WHERE name IS NOT NULL ORDER BY way_area DESC";
+    return "SELECT way,name,way_area FROM buildings WHERE (name IS NOT NULL AND name<>'') ORDER BY way_area DESC";
 }

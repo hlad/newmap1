@@ -6,12 +6,14 @@ require_once "conf/sqlite.php";
 
 function sql_text_highway_e($priority = null) {
     return "
-	SELECT way,int_ref AS number,(CHAR_LENGTH(int_ref::text)+1) AS number_length FROM highways
+	SELECT way,int_ref AS number,(CHAR_LENGTH(int_ref::text)+1) AS number_length
+	FROM highways
+	WHERE int_ref IS NOT NULL AND int_ref <> ''
     ";
 }
 
 function sql_text_highway_short($priority,$cols = '0',$order = 'grade') {
-    return "SELECT * FROM highways WHERE (ref IS NOT NULL OR name IS NOT NULL OR int_ref IS NOT NULL) ORDER BY $order";
+    return "SELECT * FROM highways WHERE (ref IS NOT NULL AND ref <> '' ) OR (name IS NOT NULL AND name <> '') OR (int_ref IS NOT NULL AND int_ref <> '') ORDER BY $order";
 }
 
 

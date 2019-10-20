@@ -76,8 +76,8 @@ return <<<EOD
 	$cols			
     FROM osm_place P
     WHERE
-	    P.place IS NOT NULL			   
-	AND P.name IS NOT NULL
+	    P.place IS NOT NULL AND P.place <> ''
+	AND P.name IS NOT NULL AND P.name <> ''
 	AND ($where)
     ORDER BY ($placeGradeSql) DESC
 EOD;

@@ -185,8 +185,7 @@ return <<<EOD
 	    intref_length,
 	    $onewaySql		
 		(CASE 
-		    WHEN name IS NULL THEN 'no'
-		    WHEN name = '' THEN 'no'
+		    WHEN (name IS NULL OR name = '') THEN 'no'
 		    ELSE 'yes'
 		END) AS
 	    has_name,
@@ -197,7 +196,7 @@ return <<<EOD
 	    $cols			
     FROM $table
     WHERE
-			highway IS NOT NULL AND ($where)
+			(highway IS NOT NULL AND highway <> '') AND ($where)
 EOD;
 }
 

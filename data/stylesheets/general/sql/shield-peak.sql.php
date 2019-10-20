@@ -45,7 +45,7 @@ return <<<EOD
 	FROM osm_peaks P
 	WHERE 
 		    P."natural" = 'peak'
-		AND (P.name IS NOT NULL OR P.ele IS NOT NULL)
+		AND ((P.name IS NOT NULL AND P.name<>'') OR P.ele IS NOT NULL)
 		AND ($where)
 	ORDER BY P.ele IS NULL, P.ele DESC	
 EOD;

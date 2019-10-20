@@ -43,13 +43,13 @@ function sql_boundary_pa($cols = '0',$where = '1 = 1') {
 		way,			
 		(CASE
 			WHEN protect_class IS NOT NULL THEN protect_class
-			WHEN iucn_level IS NOT NULL AND btrim(iucn_level) IN ('I','Ia','Ib','1','1a','1b') THEN 1			
-			WHEN iucn_level IS NOT NULL AND btrim(iucn_level) IN ('II','2') THEN 2
-			WHEN iucn_level IS NOT NULL AND btrim(iucn_level) IN ('III','3') THEN 3
-			WHEN iucn_level IS NOT NULL AND btrim(iucn_level) IN ('IV','4') THEN 4
-			WHEN iucn_level IS NOT NULL AND btrim(iucn_level) IN ('V','5') THEN 5
-			WHEN iucn_level IS NOT NULL AND btrim(iucn_level) IN ('VI','6') THEN 6
-			WHEN iucn_level IS NOT NULL AND btrim(iucn_level) IN ('VII','7') THEN 7			
+			WHEN iucn_level IS NOT NULL AND iucn_level!='' AND btrim(iucn_level) IN ('I','Ia','Ib','1','1a','1b') THEN 1
+			WHEN iucn_level IS NOT NULL AND iucn_level!='' AND btrim(iucn_level) IN ('II','2') THEN 2
+			WHEN iucn_level IS NOT NULL AND iucn_level!='' AND btrim(iucn_level) IN ('III','3') THEN 3
+			WHEN iucn_level IS NOT NULL AND iucn_level!='' AND btrim(iucn_level) IN ('IV','4') THEN 4
+			WHEN iucn_level IS NOT NULL AND iucn_level!='' AND btrim(iucn_level) IN ('V','5') THEN 5
+			WHEN iucn_level IS NOT NULL AND iucn_level!='' AND btrim(iucn_level) IN ('VI','6') THEN 6
+			WHEN iucn_level IS NOT NULL AND iucn_level!='' AND btrim(iucn_level) IN ('VII','7') THEN 7
 			WHEN COALESCE(boundary,'') = 'national_park' THEN 2
 			WHEN COALESCE(leisure,'') = 'nature_reserve' THEN 4
 			WHEN COALESCE(military,'') IN ('danger_area','range') THEN 25
@@ -107,5 +107,5 @@ function sql_boundary_pa_short($class) {
 }
 
 function sql_boundary_pa_text_short() {	
-	return "SELECT * FROM paboundaries WHERE name IS NOT NULL ORDER BY way_area DESC";			
+	return "SELECT * FROM paboundaries WHERE (name IS NOT NULL AND name != '') ORDER BY way_area DESC";
 }

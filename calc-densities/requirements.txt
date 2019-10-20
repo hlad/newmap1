@@ -1,0 +1,5 @@
+numpy
+asyncpg
+tqdm
+gdal
+rasterio

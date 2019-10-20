@@ -46,16 +46,21 @@ connection = connect("dbname='{}' user='{}' password='{}' port='{}' host='{}'".f
 ))
 
 cCursor = connection.cursor()
+
+cCursor.execute("DROP TABLE IF EXISTS osmcsymbols")
+cCursor.execute("CREATE TABLE osmcsymbols (osm_id BIGINT, file TEXT)")
+cCursor.close()
+
 cursor = connection.cursor()
 
 cursor.execute('''
-	SELECT osm_id,osmcsymbol0,osmcsymbol1,osmcsymbol2,osmcsymbol3,osmcsymbol4,osmcsymbol5,osmcsymbol6,osmcsymbol7
-	FROM routes WHERE COALESCE(osmcsymbol0,osmcsymbol1,osmcsymbol2,osmcsymbol3,osmcsymbol4,osmcsymbol5,osmcsymbol6,osmcsymbol7,'') <> ''
-''');
+        SELECT member_id, array_agg("osmc:symbol" ORDER BY osm_id)
+        FROM osm_route R
+        WHERE "osmc:symbol" <> ''
+        GROUP BY R.member_id
+''')
 
-cCursor.execute("DROP TABLE IF EXISTS osmcsymbols")
-cCursor.execute("CREATE TABLE osmcsymbols (osm_id INT, file TEXT)")
-cCursor.close()
+
 
 while True:
 
@@ -64,7 +69,7 @@ while True:
 	if not row_raw:
 		break
 
-	row = map(lambda a: map(lambda b: b.split('_'),a.split(':')[1:]),filter(lambda a: a and 'mtb' not in a,list(set(row_raw[1:]))))
+	row = map(lambda a: map(lambda b: b.split('_'),a.split(':')[1:]),filter(lambda a: a and 'mtb' not in a,list(set(row_raw[1]))))
 
 	if not row:
 		continue
@@ -87,18 +92,18 @@ while True:
 			if not part or len(part) == 1 and part[0].strip() == '': continue;
 			shape = "_".join(part).strip()
 			color = SHAPE_DEFAULT_COLORS[shape] if shape in SHAPE_DEFAULT_COLORS else 'black'
-			if not os.path.isfile('/tmp/%s.png' % shape):
+			if not os.path.isfile('/osmcsymbol_png/%s.png' % shape):
 				shape = "_".join(part[1:]).strip()
 				if shape == '':
 					shape = 'full'
 				color = part[0].strip()
 				if color not in COLORS:
-					print "not found color: %s" % "_".join(part)
+					#print "not found color: %s" % "_".join(part)
 					continue
-				if not os.path.isfile('/tmp/%s.png' % shape):
-					print "not found shape: %s" % "_".join(part)
+				if not os.path.isfile('/osmcsymbol_png/%s.png' % shape):
+					#print "not found shape: %s" % "_".join(part)
 					continue;
-			im2 = Image.open('/tmp/%s.png' % shape,'r')
+			im2 = Image.open('/osmcsymbol_png/%s.png' % shape,'r')
 			im2.convert('RGBA')
 			im2 = im2.resize((SIZE,SIZE),Image.ANTIALIAS)
 			im2 = colorize(im2,COLORS[color])
@@ -109,14 +114,14 @@ while True:
 			draw.line((0, SIZE-1,SIZE-1,SIZE-1), fill=BORDER_COLOR)
 			im.paste(im2,(offsetX,offsetY),im2.split()[-1])
 
-	fileName = ";".join(filter(lambda a: a,row_raw[1:]));
+	fileName = ";".join(filter(lambda a: a,row_raw[1]));
 
 	iCursor = connection.cursor()
-	iCursor.execute("INSERT INTO osmcsymbols (osm_id,file) VALUES ('%s','%s')" % (row_raw[0],fileName))
+	iCursor.execute("INSERT INTO osmcsymbols (osm_id,file) VALUES (%s,%s)",(row_raw[0],fileName))
 	iCursor.close()
 
 	try:
-		im.save('/build/%s/%s.png' % (sys.argv[1],fileName));
+		im.save('/build/%s.png' % fileName);
 	except KeyError, e:
 		print "KEY ERROR: '/build/%s.png'" % fileName
 	except IOError, e:

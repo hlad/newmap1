@@ -22,7 +22,7 @@ return <<<EOD
 	WHERE
 				waterway IS NOT NULL
 			AND L.osm_id > 0
-			AND name IS NOT NULL
+			AND name IS NOT NULL AND name <> ''
 			AND ($where)
 			AND way IS NOT NULL
 	GROUP BY S.spring_id,($waterwayGradeSql),name

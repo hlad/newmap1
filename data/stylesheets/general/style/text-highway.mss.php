@@ -17,7 +17,8 @@
 				text-halo-fill: fadeout(<?php echo linear($ROAD_FILL_COLOR[$grade],$zoom)?>,40);
 			}
 			text-placement: line;
-			text-dy: 1;
+			text-vertical-alignment: middle;
+			text-dy: 0;
 			text-label-position-tolerance: 100;
 			[is_tunnel = 'yes'][is_construction = 'no'] {
 				text-halo-fill: fadeout(lighten(desaturate(<?php echo linear($ROAD_FILL_COLOR[$grade],$zoom)?>,50),15),60);

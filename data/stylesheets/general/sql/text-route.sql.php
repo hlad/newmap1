@@ -19,7 +19,7 @@ return <<<EOD
 	FROM osm_route
 	WHERE
 		    route IN ('bicycle','mtb')
-	    AND COALESCE(ncn_ref,rcn_ref,lcn_ref,ref) IS NOT NULL
+	    AND COALESCE(ncn_ref,rcn_ref,lcn_ref,ref) IS NOT NULL AND (ncn_ref<>'' OR rcn_ref<>'' OR lcn_ref<>'' OR ref<>'')
 	    AND ($where)
 	ORDER BY $grade, $order
 EOD;
@@ -55,8 +55,8 @@ return <<<EOD
     SELECT
 	way,
 	file
-    FROM routes R
-    JOIN osmcsymbols O ON O.osm_id = R.osm_id
+    FROM osm_route R
+    JOIN osmcsymbols O ON O.osm_id = R.member_id
     ORDER BY $order
 EOD;
 }

@@ -30,10 +30,8 @@ tables:
     - {name: way_area, type: area}
     - {name: osm_id, type: id}
     - {name: way, type: validated_geometry}
-    filters:
-      require:
-        boundary: [administrative]
-    mapping: null
+    mapping:
+      boundary: [administrative]
     type: polygon
   aerialpoint:
     fields:
@@ -212,12 +210,15 @@ tables:
     - {key: snowmobile, name: snowmobile, type: string}
     - {name: z_order, type: wayzorder}
     - {name: osm_id, type: id}
+    - {name: member_id, type: member_id}
+    - {name: member_index, type: member_index}
+    - {name: member_role, type: member_role}
+    - {name: member_type, type: member_type}
     - {name: way, type: validated_geometry}
-    filters:
-      require:
+    relation_types: [route]
+    mapping:
         route: [ferry]
-    mapping: null
-    type: linestring
+    type: relation_member
   highway:
     fields:
     - {key: area, name: area, type: bool}
@@ -495,10 +496,8 @@ tables:
     - {name: z_order, type: wayzorder}
     - {name: osm_id, type: id}
     - {name: way, type: validated_geometry}
-    filters:
-      require:
+    mapping:
         natural: [peak]
-    mapping: null
     type: point
   pistearea:
     fields:
@@ -551,6 +550,10 @@ tables:
     - {name: z_order, type: wayzorder}
     - {name: way_area, type: area}
     - {name: osm_id, type: id}
+    - {name: member_id, type: member_id}
+    - {name: member_index, type: member_index}
+    - {name: member_role, type: member_role}
+    - {name: member_type, type: member_type}
     - {name: way, type: validated_geometry}
     mapping:
       piste:type: [downhill]
@@ -710,10 +713,15 @@ tables:
     - {name: z_order, type: wayzorder}
     - {name: way_area, type: area}
     - {name: osm_id, type: id}
+    - {name: member_id, type: member_id}
+    - {name: member_index, type: member_index}
+    - {name: member_role, type: member_role}
+    - {name: member_type, type: member_type}
     - {name: way, type: validated_geometry}
+    relation_types: [route]
     mapping:
       route: [mtb, horse, ski, bicycle, horse, hiking, mountain hiking, foot]
-    type: linestring
+    type: relation_member
   symbol_polygon:
     fields:
     - {key: area, name: area, type: string}

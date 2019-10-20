@@ -1,5 +1,5 @@
 
-ALTER TABLE contour ADD modulo integer;
+ALTER TABLE contour ADD COLUMN IF NOT EXISTS modulo integer;
 
 UPDATE contour SET modulo =
 (CASE
@@ -24,13 +24,11 @@ WHERE COALESCE(H1.access,H1.bicycle,H1.horse,H1.inline_skates,H1.motorcar,H1.mot
 
 --CREATE INDEX i__highway_access_centroids__centroid ON highway_access_centroids USING GIST ( centroid );
 
-DROP TABLE IF EXISTS highway_access_density;
-CREATE TABLE highway_access_density AS
-SELECT H1.osm_id AS osm_id,Count(H2.osm_id) AS density FROM highway_access_centroids H1
-JOIN highway_access_centroids H2 ON ST_DWithin(H1.centroid,H2.centroid,1000)  AND H1.osm_id <> H2.osm_id
-GROUP BY H1.osm_id;
-
-
+--DROP TABLE IF EXISTS highway_access_density;
+--CREATE TABLE highway_access_density AS
+--SELECT H1.osm_id AS osm_id,Count(H2.osm_id) AS density FROM highway_access_centroids H1
+--JOIN highway_access_centroids H2 ON ST_DWithin(H1.centroid,H2.centroid,1000)  AND H1.osm_id <> H2.osm_id
+--GROUP BY H1.osm_id;
 
 CREATE INDEX IF NOT EXISTS idx__osm_landcover__way_area ON osm_landcover(way_area);
 CREATE INDEX IF NOT EXISTS idx__osm_landcover__building ON osm_landcover(building);
@@ -44,6 +42,13 @@ CREATE INDEX IF NOT EXISTS idx__osm_building__name ON osm_building(name);
 CREATE INDEX IF NOT EXISTS idx__osm_building__building ON osm_building(building);
 
 CREATE INDEX IF NOT EXISTS idx__osm_waterway__name ON osm_waterway(name);
+CREATE INDEX IF NOT EXISTS idx__osm_waterway__waterway ON osm_waterway(waterway);
 CREATE INDEX IF NOT EXISTS idx__stream__osm_id ON stream(osm_id);
 CREATE INDEX IF NOT EXISTS idx__stream__length ON stream(length);
 CREATE INDEX IF NOT EXISTS idx__stream__spring_id ON stream(spring_id);
+
+CREATE INDEX IF NOT EXISTS idx__symbol_density__osm_id ON symbol_density(osm_id);
+CREATE INDEX IF NOT EXISTS idx__symbol_density__count ON symbol_density(count);
+
+
+

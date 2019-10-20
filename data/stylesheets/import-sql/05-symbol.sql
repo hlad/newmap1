@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS osm_symbol;
+DROP TABLE IF EXISTS osm_symbol CASCADE;
 CREATE TABLE osm_symbol AS
 SELECT
     osm_id,name,int_name,"name:en","name:de","name:cs",historic,leisure,man_made,shop,sport,
@@ -16,7 +16,12 @@ SELECT
     highway,railway,aeroway,power,wikipedia,website,colour,cuisine,parking,maxheight,
     fee,surveillance,memorial,operator,cargo,transport,public_transport,
     z_order,ST_Centroid(way) AS way
-FROM osm_symbol_polygon
+FROM osm_symbol_polygon;
+
+UPDATE osm_symbol SET castle_type = 'no' WHERE castle_type = '';
+UPDATE osm_symbol SET ruins = 'no' WHERE ruins = '';
+UPDATE osm_symbol SET historic = 'no' WHERE historic = '';
+UPDATE osm_symbol SET building = 'no' WHERE building = '';
 
 CREATE INDEX osm_symbol__osm_id_idx ON osm_symbol(osm_id);
 CREATE INDEX osm_symbol__historic__idx ON osm_symbol(historic);

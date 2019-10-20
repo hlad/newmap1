@@ -5,6 +5,8 @@ volumes:
 services:
   postgres:
     image: "openmaptiles/postgis:2.9"
+    command: >
+        postgres -c shared_preload_libraries=pg_stat_statements -c pg_stat_statements.max=8192 -c pg_stat_statements.track=all -c max_connections=500 -c effective_cache_size=8192MB -c shared_buffers=16384MB -c work_mem=128MB -c max_parallel_workers_per_gather=8 -c dynamic_shared_memory_type=posix
     volumes:
     - pgdata:/var/lib/postgresql/data
     networks:
@@ -86,6 +88,7 @@ services:
     networks:
       - postgres_conn
     volumes:
+      - ./build/osmcsymbol_png:/osmcsymbol_png
       - ./build/osmcsymbol:/build
       - ./data/osmcsymbol:/osmcsymbol
   generate-highway-access:
@@ -103,6 +106,12 @@ services:
     env_file: .env
     networks:
       - postgres_conn
+  calc_densities:
+    build: "./calc-densities"
+    image: map1/calc-densities
+    env_file: .env
+    networks:
+      - postgres_conn
   render-map:
     build: "./render-map"
     image: map1/render-map
@@ -115,7 +124,7 @@ services:
       - ./build/pattern:/pattern
       - ./build/shield:/shield
       - ./build/symbol:/symbol
-      - ./build/osmcsymbol:/osmcsymbol
+      - ./build/osmcsymbol://osmcsymbol/generated
       - ./build/highway-access:/highway-access
       - ./build/mapnik-styles:/mapnik-styles
       - ./build/render:/render
@@ -133,12 +142,32 @@ services:
       - ./build/pattern:/pattern
       - ./build/shield:/shield
       - ./build/symbol:/symbol
-      - ./build/osmcsymbol:/osmcsymbol
+      - ./build/osmcsymbol:/osmcsymbol/generated
       - ./build/highway-access:/highway-access
       - ./build/dem:/dem
       - ./build/mapnik-styles:/mapnik-styles
       - ./build/render:/render
       - ./jupyter-notebooks:/notebooks
+  frontend:
+    build: "./frontend"
+    image: map1/frontend
+    volumes:
+     - ./build/render:/usr/share/nginx/html/tiles
+    ports:
+     - "80"
+    env_file: .env
+
+  grafana:
+    image: grafana/grafana
+    env_file: .env
+    networks:
+      - postgres_conn
+    ports:
+      - "3000"
+    volumes:
+      - ./grafana:/var/lib/grafana
+    user: "${UID}:${GID}"
+
 networks:
   postgres_conn:
     driver: bridge

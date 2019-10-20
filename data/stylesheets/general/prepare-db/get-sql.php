@@ -15,12 +15,12 @@
     //require_once 'river_names.list.php';
     
     $sqls = array(
-        array('symbol','symbols',sql_symbol),
-        //array('text-symbol','text_symbol',sql_text_symbol),
-        array('shield-peak','peak',sql_shieldPeak),
+        array('symbol','symbols',sql_symbol,'table'),
+//         array('text-symbol','text_symbol',sql_text_symbol),
+//         array('shield-peak','peak',sql_shieldPeak),
         array('text-place','places',sql_text_place),
-        //array('text-highway','text_highway',sql_text_highway),
-        array('text-highway','highways_access',sql_text_highway_access),
+//         array('text-highway','text_highway',sql_text_highway),
+//         array('text-highway','highways_access',sql_text_highway_access),
         array('aeroway','aeroways',sql_aeroway),
         array('aeroway','aeroareas',sql_aeroarea),
         array('aerialway','aerialways',sql_aerialway),
@@ -32,13 +32,13 @@
         array('power','powers',sql_power),
         array('power','powerpoints',sql_powerpoint),
         array('highway','highways',sql_highway),
-        array('highway','highway_areas',sql_highway_area),
+//         array('highway','highway_areas',sql_highway_area),
         array('landcover','landcovers',sql_landcover),
         array('landcover','landcover_lines',sql_landcover_line),
         array('landcover','landcover_points',sql_landcover_point),
         array('railway','railways',sql_railway),
         array('waters','waterways',sql_waterway),
-        array('text-waters','text_waterway',sql_text_waterway),
+        //array('text-waters','text_waterway',sql_text_waterway),
         array('waters','waterareas',sql_waterarea),
         array('waters','waterpoints',sql_waterpoint),
         array('boundary','adminboundaries',sql_boundary),
@@ -49,9 +49,11 @@
     
     foreach ( $sqls as $sql ) {
         require_once "sql/{$sql[0]}.sql.php";
-        echo "DROP VIEW IF EXISTS {$sql[1]};\n";
-        echo "CREATE VIEW {$sql[1]} AS (" . $sql[2]() . ");\n";
+        $type = count($sql) > 3 ? $sql[3] : 'VIEW';
+        echo "DROP {$type} IF EXISTS {$sql[1]} CASCADE;\n";
+        echo "CREATE {$type} {$sql[1]} AS (" . $sql[2]() . ");\n";
     }
+
 
     /*
     foreach ( $PLACE_SHORT_NAMES as $pattern => $__tmp ) {

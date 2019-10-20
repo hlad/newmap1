@@ -10,7 +10,7 @@ function _getWaterwayColSql() {
 function _getWaterwayGradeSql($col) {	
 	return "
 	    CASE
-		WHEN L.waterway='stream' AND L.name IS NULL THEN 1
+		WHEN L.waterway='stream' AND (L.name IS NULL OR L.name = '') THEN 1
 		ELSE floor(least(35,greatest(5,log($col)*7-17)))::integer
 	    END
 	";
@@ -136,7 +136,7 @@ return <<<EOD
 	FROM osm_waterarea
 	WHERE
 		    ($propertyWhereQuery)
-		AND building IS NULL
+		AND (building IS NULL or building = '')
 	    AND ($where)
 EOD;
 }

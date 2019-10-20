@@ -235,11 +235,11 @@
 						if ( !$first ) echo ','; $first = false;
 						require "layer/symbol.mml.php";
 					}										
-					if ( $RENDER_SHIELD_PEAK  ) {
+					if ( $RENDER_SHIELD_PEAK AND false  ) {
 						if ( !$first ) echo ','; $first = false;
 						require "layer/shield-peak.mml.php";
 					}					
-					if ( $RENDER_TEXT_ROUTE AND false  ) {
+					if ( $RENDER_TEXT_ROUTE ) {
 						if ( !$first ) echo ','; $first = false;
 						require "layer/text-route.mml.php";
 					}
