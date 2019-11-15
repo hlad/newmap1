@@ -106,7 +106,7 @@ services:
     env_file: .env
     networks:
       - postgres_conn
-  calc_densities:
+  calc-densities:
     build: "./calc-densities"
     image: map1/calc-densities
     env_file: .env

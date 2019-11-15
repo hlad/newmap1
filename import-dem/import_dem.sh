@@ -30,4 +30,4 @@ for dem_file in `ls "$DEM_DIR"/*.tif | sort -V`; do
 done
 
 
-raster2pgsql -c -I -Y -t 256x256 $HILLSHADE_DIR/*.tif | PGPASSWORD=$POSTGRES_PASSWORD psql -U $POSTGRES_USER -d $POSTGRES_DB -h $POSTGRES_HOST -p $POSTGRES_PORT
+raster2pgsql -c -I -Y -t 256x256 $HILLSHADE_DIR/*.tif hillshade | PGPASSWORD=$POSTGRES_PASSWORD psql -U $POSTGRES_USER -d $POSTGRES_DB -h $POSTGRES_HOST -p $POSTGRES_PORT

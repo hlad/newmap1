@@ -47,8 +47,8 @@ CREATE INDEX IF NOT EXISTS idx__stream__osm_id ON stream(osm_id);
 CREATE INDEX IF NOT EXISTS idx__stream__length ON stream(length);
 CREATE INDEX IF NOT EXISTS idx__stream__spring_id ON stream(spring_id);
 
-CREATE INDEX IF NOT EXISTS idx__symbol_density__osm_id ON symbol_density(osm_id);
-CREATE INDEX IF NOT EXISTS idx__symbol_density__count ON symbol_density(count);
+--CREATE INDEX IF NOT EXISTS idx__symbol_density__osm_id ON symbol_density(osm_id);
+--CREATE INDEX IF NOT EXISTS idx__symbol_density__count ON symbol_density(count);
 
 
 

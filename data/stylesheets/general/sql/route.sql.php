@@ -147,7 +147,7 @@ return <<<EOD
 		20 as density,
 		R.network
         FROM osm_route R
-        LEFT JOIN highway T1 ON T1.osm_id = R.member_id
+        LEFT JOIN osm_highway T1 ON T1.osm_id = R.member_id
         WHERE (SELECT Count(*) FROM osm_route R2 WHERE R2.member_id = R.member_id AND R.osm_id < R2.osm_id) = $offset
             AND R.route IN ('foot','hiking')
 EOD;
@@ -194,7 +194,7 @@ return <<<EOD
 		R.network,
 		'no' AS oneway
         FROM osm_route R
-        LEFT JOIN highway T1 ON T1.osm_id = R.member_id
+        LEFT JOIN osm_highway T1 ON T1.osm_id = R.member_id
         WHERE (SELECT Count(*) FROM osm_route R2 WHERE R2.member_id = R.member_id AND R.osm_id < R2.osm_id) = $offset
             AND R.route IN ('bicycle','mtb')
 EOD;
@@ -243,7 +243,7 @@ return <<<EOD
 		1 AS offsetside,
 		R.route
         FROM osm_route R
-        LEFT JOIN highway T1 ON T1.osm_id = R.member_id
+        LEFT JOIN osm_highway T1 ON T1.osm_id = R.member_id
         WHERE (SELECT Count(*) FROM osm_route R2 WHERE R2.member_id = R.member_id AND R.osm_id < R2.osm_id) = $offset
             AND R.route IN ('ski')
 EOD;

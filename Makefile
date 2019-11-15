@@ -44,6 +44,9 @@ import-sql: db-start
 import-dem: db-start
 	docker-compose run --rm import-dem
 
+calc-densities: db-start
+	docker-compose run --rm calc-densities
+
 generate-osmcsymbols: db-start
 	docker-compose run --rm  generate-osmcsymbols
 

@@ -32,7 +32,7 @@
         array('power','powers',sql_power),
         array('power','powerpoints',sql_powerpoint),
         array('highway','highways',sql_highway),
-//         array('highway','highway_areas',sql_highway_area),
+        array('highway','highway_areas',sql_highway_area),
         array('landcover','landcovers',sql_landcover),
         array('landcover','landcover_lines',sql_landcover_line),
         array('landcover','landcover_points',sql_landcover_point),

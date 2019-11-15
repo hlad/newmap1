@@ -83,7 +83,7 @@ function sql_symbol_short($priority) {
 		$types = empty($types) ? 'false' : 'type IN ('.implode(',',$types).')';
     return "
 			SELECT * FROM symbols S
-			JOIN symbol_density D ON S.osm_id = D.osm_id
+			CROSS JOIN LATERAL (SELECT density AS count FROM symbol_density D ORDER BY ST_Transform(S.way,4326) <-> D.geom LIMIT 1) T
 			WHERE name IS NOT NULL AND name != '' AND count < $count AND $types
 			ORDER BY grade DESC
     ";
