@@ -33,14 +33,20 @@ compile_layers(){
 	fi
 
 	for LAYER in $OUTPUT_LAYERS; do
-    compile_layer $ZOOMS $LAYER &
+	  if [ -z "$2" ] || [ "$2" == "$LAYER" ]; then
+      compile_layer $ZOOMS $LAYER &
+    fi
   done
 
   wait
 }
 
 for ((ZOOMS=MIN_ZOOM;ZOOMS<=MAX_ZOOM;ZOOMS++)); do
-	compile_layers $ZOOMS &
+  if [ -z "$2" ] || [ "$2" == $ZOOMS ]; then
+	  compile_layers $ZOOMS $1 &
+	fi
 done
 
 wait
+
+echo ""

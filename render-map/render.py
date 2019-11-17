@@ -6,6 +6,8 @@ import asyncpg
 import asyncio
 
 import numpy as np
+from render_map_service import render
+from tqdm import tqdm
 
 import math
 
@@ -47,13 +49,16 @@ METATILE_SIZE = 12
 
 def main():
 
-    parser = argparse.ArgumentParser(description='Schelude redner region')
+    parser = argparse.ArgumentParser(description='Schelude render region')
 
-    parser.add_argument('min_lon', type=float)
-    parser.add_argument('min_lat', type=float)
-    parser.add_argument('max_lon', type=float)
-    parser.add_argument('max_lat', type=float)
-    parser.add_argument('zooms', type=lambda x: [int(a) for a in x.split(',')])
+    min_lon, min_lat, max_lon, max_lat = [float(a) for a in os.environ['BBOX'].split(',')]
+    zooms = list(range(int(os.environ['MIN_ZOOM']), int(os.environ['MAX_ZOOM']) + 1))
+
+    parser.add_argument('min_lon', type=lambda x: float(x) if x.strip() != '' else min_lon)
+    parser.add_argument('min_lat', type=lambda x: float(x) if x.strip() != '' else min_lat)
+    parser.add_argument('max_lon', type=lambda x: float(x) if x.strip() != '' else max_lon)
+    parser.add_argument('max_lat', type=lambda x: float(x) if x.strip() != '' else max_lat)
+    parser.add_argument('zooms', type=lambda x: [int(a) for a in x.split(',')] if x.strip() != '' else zooms)
 
     args = parser.parse_args()
 
@@ -76,8 +81,9 @@ def main():
 
     metatiles = [(mnx, mny, mxx, mxy, zoom) for zoom in zooms for mnx, mxx in xs[zoom] for mny, mxy in ys[zoom]]
 
-    for mnx, mny, mxx, mxy, zoom in metatiles:
-        add_task(mnx, mny, mxx, mxy, zoom)
+    for mnx, mny, mxx, mxy, zoom in tqdm(metatiles):
+        # add_task(mnx, mny, mxx, mxy, zoom)
+        render(-1, mnx, mny, mxx, mxy, zoom)
 
 
 if __name__ == "__main__":

@@ -1,21 +1,27 @@
 
-ALTER TABLE contour ADD COLUMN IF NOT EXISTS modulo integer;
 
-UPDATE contour SET modulo =
-(CASE
-  WHEN ele::integer % 500 = 0 THEN 500
-  WHEN ele::integer % 200 = 0 THEN 200
-  WHEN ele::integer % 100 = 0 THEN 100
-  WHEN ele::integer %  50 = 0 THEN  50
-  WHEN ele::integer %  20 = 0 THEN  20
-  WHEN ele::integer %  10 = 0 THEN  10
-  WHEN ele::integer %   5 = 0 THEN   5
-  ELSE 5
-END);
+
+ALTER TABLE contour RENAME TO contour_raw;
+CREATE TABLE contour AS
+SELECT
+    ele,
+    (CASE
+      WHEN ele::integer % 500 = 0 THEN 500
+      WHEN ele::integer % 200 = 0 THEN 200
+      WHEN ele::integer % 100 = 0 THEN 100
+      WHEN ele::integer %  50 = 0 THEN  50
+      WHEN ele::integer %  20 = 0 THEN  20
+      WHEN ele::integer %  10 = 0 THEN  10
+      WHEN ele::integer %   5 = 0 THEN   5
+      ELSE 5
+    END) AS modulo,
+    ST_Subdivide(ST_Transform(wkb_geometry,3857)) AS wkb_geometry
+FROM contour_raw
 
 CREATE INDEX IF NOT EXISTS contour__modulo__idx ON contour(modulo);
-
 CREATE INDEX IF NOT EXISTS contour__ele_idx on contour(ele);
+CREATE INDEX IF NOT EXISTS contour__geom_idx on contour using gist(wkb_geometry);
+
 
 DROP VIEW IF EXISTS highway_access_centroids;
 CREATE VIEW highway_access_centroids AS
@@ -46,6 +52,9 @@ CREATE INDEX IF NOT EXISTS idx__osm_waterway__waterway ON osm_waterway(waterway)
 CREATE INDEX IF NOT EXISTS idx__stream__osm_id ON stream(osm_id);
 CREATE INDEX IF NOT EXISTS idx__stream__length ON stream(length);
 CREATE INDEX IF NOT EXISTS idx__stream__spring_id ON stream(spring_id);
+
+CREATE INDEX idx__osm_route__member_id ON osm_route(member_id);
+CREATE INDEX idx__osm_route__member_id_osm_id ON osm_route(member_id, osm_id);
 
 --CREATE INDEX IF NOT EXISTS idx__symbol_density__osm_id ON symbol_density(osm_id);
 --CREATE INDEX IF NOT EXISTS idx__symbol_density__count ON symbol_density(count);

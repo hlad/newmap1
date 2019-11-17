@@ -27,13 +27,19 @@ import-osm: db-start
 	docker-compose run --rm import-osm
 
 generate-sql: db-start
-	docker-compose run --rm  generate-sql
+	docker-compose run --rm generate-sql
 
-generate-cartocss: db-start
+generate-sql-dynamic: db-start
+	docker-compose run --rm generate-sql bash generate_sql.sh dynamic ${what}
+
+generate-styles: db-start
 	docker-compose run --rm  generate-cartocss
 
+generate-cartocss: db-start
+	docker-compose run --rm  generate-cartocss bash generate_cartocss.sh carto "${what}" "${layer}" "${zoom}"
+
 compile-cartocss: db-start
-	docker-compose run --rm  compile-cartocss
+	docker-compose run --rm  compile-cartocss bash compile_cartocss.sh "${layer}" "${zoom}"
 
 generate-vodak-sql: db-start
 	docker-compose run --rm  generate-vodak-sql
@@ -56,12 +62,17 @@ generate-highway-access: db-start
 relations2lines: db-start
 	docker-compose run --rm  relations2lines
 
-import-osmsql: db-start
-	docker-compose run --rm import-osm
-	docker-compose run --rm import-sql
+refresh-styles: generate-cartocss compile-cartocss
 
-render-map: db-start
-	docker-compose run --rm render-map
+render-map-start:
+	docker-compose up -d render-map
+
+
+render-map: render-map-start
+	docker-compose run render-map python3 render.py "${x1}" "${y1}" "${x2}" "${y2}" "${zooms}"
+
+render-map-clear:
+	docker-compose run render-map python3 clear.py "${x1}" "${y1}" "${x2}" "${y2}" "${zooms}"
 
 jupyter: db-start
 	echo ${UID}:${GID}

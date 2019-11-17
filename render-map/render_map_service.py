@@ -11,6 +11,7 @@ import mapnik
 from multiprocessing import Pool
 import numpy as np
 import struct
+from tqdm import tqdm
 
 mapnik.register_fonts('/fonts')
 
@@ -51,9 +52,7 @@ def wkbImage(raw):
     for i in range(h['nbands']):
         # Determine pixtype for this band
         pixtype = struct.unpack('B', raw[offset:offset+1])[0]>>4
-        print(pixtype)
         # For now, we only handle unsigned byte
-        print(len(raw))
         if pixtype == 4:
             band = np.frombuffer(raw, dtype='uint8', count=h['width']*h['height'], offset=offset+1)
             img.append((np.reshape(band, ((h['height'], h['width'])))))
@@ -140,8 +139,8 @@ def render(id, mnx, mny, mxx, mxy, zoom):
 
         pic = Image.new('RGBA', (sizex, sizey), (255, 255, 255, 255))
 
-        for layer_name in ['landcover', 'hillshade', 'contour', 'way', 'building',
-                           'ferry', 'boundary', 'route', 'fishnet', 'text']:
+        for layer_name in tqdm(['landcover', 'hillshade', 'contour', 'way', 'building',
+                           'ferry', 'boundary', 'route', 'fishnet', 'text'], leave=False):
             if layer_name != 'hillshade':
                 while True:
                     try:

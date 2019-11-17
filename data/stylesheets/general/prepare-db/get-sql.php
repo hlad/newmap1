@@ -9,7 +9,9 @@
             ROOT . '/general/'
         );
     }
-    
+
+    $what = isset($argv[7]) && !empty($argv[7]) ? explode(',', $argv[7]) : [];
+
     //require_once 'place_short_names.list.php';
     
     //require_once 'river_names.list.php';
@@ -48,10 +50,12 @@
     );
     
     foreach ( $sqls as $sql ) {
-        require_once "sql/{$sql[0]}.sql.php";
-        $type = count($sql) > 3 ? $sql[3] : 'VIEW';
-        echo "DROP {$type} IF EXISTS {$sql[1]} CASCADE;\n";
-        echo "CREATE {$type} {$sql[1]} AS (" . $sql[2]() . ");\n";
+        if ( empty($what) || in_array($sql[0], $what) ) {
+            require_once "sql/{$sql[0]}.sql.php";
+            $type = count($sql) > 3 ? $sql[3] : 'VIEW';
+            echo "DROP {$type} IF EXISTS {$sql[1]} CASCADE;\n";
+            echo "CREATE {$type} {$sql[1]} AS (" . $sql[2]() . ");\n";
+        }
     }
 
 
