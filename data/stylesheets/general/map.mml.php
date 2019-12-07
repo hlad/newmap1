@@ -78,13 +78,14 @@
 		<?php endif; ?>	
 		<?php if ( $RENDER_FERRY ): ?>
 			,"style/~ferry.mss"
-		<?php endif; ?>	
+		<?php endif; ?>
+
+		<?php if ( $RENDER_SYMBOL ): ?>
+			,"style/~symbol.mss"
+		<?php endif; ?>
 		
 		
 		<?php if ( $RENDER_TEXT ): ?>
-			<?php if ( $RENDER_SYMBOL ): ?>
-				,"style/~symbol.mss"
-			<?php endif; ?>		
 			<?php if ( $RENDER_TEXT_PLACE ): ?>
 				,"style/~text-place.mss"
 			<?php endif; ?>
@@ -221,7 +222,14 @@
 			if ( $RENDER_FISHNET ) {
 				if ( !$first ) echo ','; $first = false;
 				require "layer/fishnet.mml.php";
-			}						
+			}
+
+            foreach (array_merge($RENDER_TEXT_PRIORITIES ,array(-1)) as $priority) {
+                if ( $RENDER_SYMBOL ) {
+                    if ( !$first ) echo ','; $first = false;
+                    require "layer/symbol.mml.php";
+                }
+            }
 			
 														
 			if ( $RENDER_TEXT ) {
@@ -231,11 +239,7 @@
 						if ( !$first ) echo ','; $first = false;
 						require "layer/text-place.mml.php";
 					}
-					if ( $RENDER_SYMBOL ) {
-						if ( !$first ) echo ','; $first = false;
-						require "layer/symbol.mml.php";
-					}										
-					if ( $RENDER_SHIELD_PEAK AND false  ) {
+					if ( $RENDER_SHIELD_PEAK ) {
 						if ( !$first ) echo ','; $first = false;
 						require "layer/shield-peak.mml.php";
 					}					

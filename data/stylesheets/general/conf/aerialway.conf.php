@@ -69,7 +69,7 @@ $AERIALWAYPOINT = array(
 );
 
 $AERIALWAY_TEXT_ZOOMS = array(
-	13 => 3, 14 => 2, 15 => 2, 16 =>1, 17 => 1, 18 => 1
+	13 => 4, 14 => 3, 15 => 2, 16 =>1, 17 => 1, 18 => 1
 );
 
-$AERIALWAY_TEXT_SIZE = array(13 => 6, 18 => 15);
+$AERIALWAY_TEXT_SIZE = array(13 => 6, 13 => 9, 18 => 15);

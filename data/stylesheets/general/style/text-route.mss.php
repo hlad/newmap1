@@ -13,9 +13,9 @@
 			shield-fill: <?php echo linear($ROUTE_REF_COLOR[$grade],$zoom)?>;
 			shield-size: <?php echo round(exponential($ROUTE_REF_SIZE[$grade],$zoom))?>;
 			shield-placement: line;
-			shield-opacity: 0.9;
+			shield-opacity: 0.8;
 			shield-min-distance: <?php echo round(exponential($ROUTE_REF_MINIMUM_DISTANCE[$grade],$zoom))?>;
-			shield-spacing: 200;			
+			shield-spacing: 500;
 			shield-file: url('/shield/~route-ref-<?php echo $zoom?>-<?php echo $grade?>-[ref_length].svg');
 		}
 	<?php endforeach;?>	
@@ -39,9 +39,9 @@
 		.textOsmcsymbol.priority<?php echo $priority?>[zoom = <?php echo $zoom?>] {			
 			shield-face-name: "<?php echo FONT_BOOK_SANS ?>";		
 			shield-placement: line;
-			shield-opacity: 0.9;
+			shield-opacity: 0.8;
 			shield-min-distance: <?php echo round(exponential($ROUTE_OSMCSYMBOL_MINDISTANCE,$zoom))?>;
-			shield-spacing: 300;			
+			shield-spacing: 500;
 			shield-file: url('/osmcsymbol/generated/[file].png');
 		}
 	<?php endif; ?>

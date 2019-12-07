@@ -16,13 +16,13 @@ $ROUTE_REF_PRIORITIES = array (
 11 => array(),
 12 => array(),
 13 => array(
-		ROUTE_BICYCLE_ICN     => 1,
-		ROUTE_BICYCLE_NCN     => 1,
+		ROUTE_BICYCLE_ICN     => 3,
+		ROUTE_BICYCLE_NCN     => 3,
 	),	
 14 => array(
-		ROUTE_BICYCLE_ICN     => 1,
-		ROUTE_BICYCLE_NCN     => 1,
-		ROUTE_BICYCLE_RCN     => 1,		
+		ROUTE_BICYCLE_ICN     => 2,
+		ROUTE_BICYCLE_NCN     => 2,
+		ROUTE_BICYCLE_RCN     => 2,
 	),
 15 => array(
 		ROUTE_BICYCLE_ICN     => 1,
@@ -64,25 +64,25 @@ $ROUTE_NAME_PRIORITIES = array (
 11 => array(),
 12 => array(),
 13 => array(
-		ROUTE_HIKING_MAJOR   => 2,		
+		ROUTE_HIKING_MAJOR   => 4,
 	),	
 14 => array(
-		ROUTE_HIKING_MAJOR   => 1,
-		ROUTE_HIKING_LOCAL   => 1,
-		ROUTE_HIKING_RUIN    => 1,
-		ROUTE_HIKING_UNKNOWN => 1,
+		ROUTE_HIKING_MAJOR   => 3,
+		ROUTE_HIKING_LOCAL   => 4,
+		ROUTE_HIKING_RUIN    => 4,
+		ROUTE_HIKING_UNKNOWN => 4,
 	),	
 15 => array(
-		ROUTE_HIKING_MAJOR   => 1,
-		ROUTE_HIKING_LOCAL   => 1,
-		ROUTE_HIKING_RUIN    => 1,
-		ROUTE_HIKING_UNKNOWN => 1,
+		ROUTE_HIKING_MAJOR   => 2,
+		ROUTE_HIKING_LOCAL   => 3,
+		ROUTE_HIKING_RUIN    => 3,
+		ROUTE_HIKING_UNKNOWN => 3,
 	),
 16 => array(
 		ROUTE_HIKING_MAJOR   => 1,
-		ROUTE_HIKING_LOCAL   => 1,
-		ROUTE_HIKING_RUIN    => 1,
-		ROUTE_HIKING_UNKNOWN => 1,
+		ROUTE_HIKING_LOCAL   => 2,
+		ROUTE_HIKING_RUIN    => 2,
+		ROUTE_HIKING_UNKNOWN => 2,
 	),
 17 => array(
 		ROUTE_HIKING_MAJOR   => 1,
@@ -165,10 +165,10 @@ ROUTE_BICYCLE_LCN => array(13 => '#f3ff00'),
  * Route ref text size grade x zoom maping
  */
 $ROUTE_NAME_SIZE = array(
-ROUTE_HIKING_MAJOR   => array(13 => 12, 15 => 15),
-ROUTE_HIKING_LOCAL   => array(13 => 12, 15 => 14),
-ROUTE_HIKING_RUIN    => array(14 => 12, 15 => 13),
-ROUTE_HIKING_UNKNOWN => array(14 => 12, 15 => 13),
+ROUTE_HIKING_MAJOR   => array(13 => 11, 15 => 15),
+ROUTE_HIKING_LOCAL   => array(13 => 11, 15 => 14),
+ROUTE_HIKING_RUIN    => array(14 => 11, 15 => 13),
+ROUTE_HIKING_UNKNOWN => array(14 => 11, 15 => 13),
 );
 
 
@@ -176,10 +176,10 @@ ROUTE_HIKING_UNKNOWN => array(14 => 12, 15 => 13),
  * Route ref text size grade x zoom maping
  */
 $ROUTE_NAME_SIZE = array(
-ROUTE_HIKING_MAJOR   => array(13 => 12, 15 => 15),
-ROUTE_HIKING_LOCAL   => array(13 => 12, 15 => 14),
-ROUTE_HIKING_RUIN    => array(14 => 12, 15 => 13),
-ROUTE_HIKING_UNKNOWN => array(14 => 12, 15 => 13),
+ROUTE_HIKING_MAJOR   => array(13 => 8, 15 => 12),
+ROUTE_HIKING_LOCAL   => array(13 => 7, 15 => 11),
+ROUTE_HIKING_RUIN    => array(14 => 6, 15 => 10),
+ROUTE_HIKING_UNKNOWN => array(14 => 5, 15 => 9),
 );
 
 
@@ -192,10 +192,10 @@ ROUTE_HIKING_UNKNOWN => array(14 => 12, 15 => 13),
 $ROUTE_OSMCSYMBOL_PRIORITIES = array (
 13 => 4,		
 14 => 4,	
-15 => 3,
+15 => 4,
 16 => 3,
-17 => 2,
-18 => 2,
+17 => 3,
+18 => 3,
 );
 
 
@@ -203,7 +203,7 @@ $ROUTE_OSMCSYMBOL_PRIORITIES = array (
 /**
  * Route osmcsymbol text size grade x zoom maping
  */
-$ROUTE_OSMCSYMBOL_SIZE = array(13 => 12);
+$ROUTE_OSMCSYMBOL_SIZE = array(13 => 10, 14 => 11, 16 =>12);
 
 $ROUTE_REF_MINIMUM_DISTANCE  = array(
 ROUTE_BICYCLE_ICN => array(15 => 150),
@@ -239,5 +239,5 @@ $ROUTE_REF_SHIELD_PADDING_WIDTH = $ROUTE_REF_SHIELD_LETTER_WIDTH;
 /**
  * Minmial distance of route osmcsymbol shield
  */
-$ROUTE_OSMCSYMBOL_MINDISTANCE = array(13=>15);
+$ROUTE_OSMCSYMBOL_MINDISTANCE = array(13=>30);
 

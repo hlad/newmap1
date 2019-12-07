@@ -18,6 +18,7 @@
 			text-halo-fill: <?php echo waterway_name_halo_fill($grade)?>;
 			text-placement: line;
 			text-dy: <?php echo $dySign * waterway_name_dy($zoom,$grade)?>;
+			text-vertical-alignment: middle;
 			text-label-position-tolerance: 100;
 			text-spacing: <?php echo round(waterway_name_size($zoom,$grade) * linear($WATERWAY_NAME_SPACING, $zoom)) ?>;
 			<?php if ( $dySign == -1 ):?>

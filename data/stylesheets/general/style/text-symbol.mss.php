@@ -5,13 +5,13 @@
 <?php foreach ( $RENDER_ZOOMS as $zoom ):?>
     .textSymbol[zoom = <?php echo $zoom?>] {
 	<?php $i = 0; foreach ( $SYMBOL as $selector => $a ): ++$i; ?>
-	    <?php if ( !empty($a['zooms']) && array_key_exists($zoom, $a['zooms']) ): ?>
-		.priority<?php echo $a['zooms'][$zoom] ?> {
+	    <?php if ( !empty($a['text-zooms']) && array_key_exists($zoom, $a['text-zooms']) ): ?>
+		.priority<?php echo $a['text-zooms'][$zoom] ?> {
 		    [type = <?php echo $i?>] {
 			text-face-name: "<?php echo FONT_ITALIC_SERIF ?>";
 			text-name: "[name]";		    
 			text-fill: <?php echo !empty($a['text-color'])?linear($a['text-color'],$zoom):'#000000'?>;
-			<?php $textSize = !empty($a['text-size'])?exponential($a['text-size'],$zoom):13; ?>
+			<?php $textSize = !empty($a['text-size'])?exponential($a['text-size'],$zoom):9; ?>
 			text-size: <?php echo text_limiter($textSize) ?>;			
 			
 			<?php if ( !empty($a['opacity']) ): ?>
@@ -57,14 +57,13 @@
 			<?php if ( !empty($a['wrap-width']) ): ?>
 			    text-wrap-width: <?php echo $a['wrap-width'];?>;
 			<?php else: ?>
-			    text-wrap-width: <?php echo $textSize * 5 ?>;
+			    text-wrap-width: <?php echo $textSize * 10 ?>;
 			<?php endif; ?>
 			
 			text-placement-type: simple;
-			text-placements: "X,N,S,E,W,NE,SE,NW,SW,<?php echo text_limiter($textSize*0.9)?>,<?php echo text_limiter($textSize*0.8)?>,<?php echo text_limiter($textSize*0.7)?>,<?php echo text_limiter($textSize*0.62)?>,<?php echo text_limiter($textSize*0.55)?>,<?php echo text_limiter($textSize*0.49)?>,<?php echo text_limiter($textSize*0.44)?>,<?php echo text_limiter($textSize*0.4)?>";
-			<?php if( $a['zooms'][$zoom] == 4 ): ?>
-				text-min-distance: 30px;
-			<?php endif; ?>
+			text-placements: "X,N,S,E,W,NE,SE,NW,SW,<?php echo text_limiter($textSize*0.9)?>,<?php echo text_limiter($textSize*0.75)?>,<?php echo text_limiter($textSize*0.5)?>,<?php echo text_limiter($textSize*0.25)?>";
+
+			text-min-distance: <?php echo text_limiter($textSize*1.75)?>px;
 		    }
 		}		
 	    <?php endif; ?>

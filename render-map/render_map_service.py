@@ -12,6 +12,7 @@ from multiprocessing import Pool
 import numpy as np
 import struct
 from tqdm import tqdm
+from color_to_alpha import color_to_alpha
 
 mapnik.register_fonts('/fonts')
 
@@ -82,7 +83,7 @@ def get_hillshade(minlon, minlat, maxlon, maxlat):
         )
         width = maxlon - minlon
         height = maxlat - minlat
-        row = await conn.fetchrow(query, minlon-width/100, minlat-height/100, maxlon+width/100, maxlat+height/100)
+        row = await conn.fetchrow(query, minlon-width/20, minlat-height/20, maxlon+width/20, maxlat+height/20)
         await conn.close()
 
         return row
@@ -90,7 +91,7 @@ def get_hillshade(minlon, minlat, maxlon, maxlat):
     asyncio.set_event_loop(loop)
     ret = loop.run_until_complete(_do())
     tileim = wkbImage(ret[0])[0]
-    tileim = tileim[tileim.shape[0]//100:-tileim.shape[0]//100,tileim.shape[1]//100:-tileim.shape[1]//100]
+    tileim = tileim[int(tileim.shape[0]/1.1/20):-int(tileim.shape[0]/1.1/20),int(tileim.shape[1]/1.1/20):-int(tileim.shape[1]/1.1/20)]
     return Image.frombytes('L',(tileim.shape[1], tileim.shape[0]),tileim.tostring())
 
 
@@ -140,7 +141,7 @@ def render(id, mnx, mny, mxx, mxy, zoom):
         pic = Image.new('RGBA', (sizex, sizey), (255, 255, 255, 255))
 
         for layer_name in tqdm(['landcover', 'hillshade', 'contour', 'way', 'building',
-                           'ferry', 'boundary', 'route', 'fishnet', 'text'], leave=False):
+                           'ferry', 'boundary', 'route', 'fishnet', 'symbol', 'text'], leave=False):
             if layer_name != 'hillshade':
                 while True:
                     try:
@@ -177,10 +178,17 @@ def render(id, mnx, mny, mxx, mxy, zoom):
 
                 Tracer.start("render_{}_compositing".format(zoom))
                 tileim = Image.frombytes('RGBA', (sizex, sizey), tileim.tostring())
+                if layer_name == 'boundary':
+                    tileim = color_to_alpha(tileim, [255, 255, 255, 255])
+                    tileim = np.array(tileim, dtype=np.uint8)
+                    tileim[:, 3] //= 2
+                    tileim = Image.fromarray(tileim, mode='RGBA')
+
                 pic = Image.alpha_composite(pic, tileim)
                 Tracer.end("render_{}_compositing".format(zoom))
             else:
                 tileim = get_hillshade(mnlon, mnlat, mxlon, mxlat)
+
                 tileim = tileim.resize(
                     (sizex, sizey),
                     Image.ANTIALIAS if sizex < tileim.width else Image.BILINEAR
@@ -195,7 +203,7 @@ def render(id, mnx, mny, mxx, mxy, zoom):
                 tileim = np.maximum(low_limit - ((low_limit - tileim) / low_compression), tileim)
                 tileim = np.minimum(high_limit + ((tileim - high_limit) / high_compression), tileim)
                 tileim += (1 - high_limit) * (1.0 - 1.0 / high_compression)
-                tileim = 255 * (1 - tileim)
+                tileim = 95 * (1-tileim)
 
                 tileim = Image.fromarray(tileim.astype(np.uint8), mode='L')
 

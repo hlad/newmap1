@@ -21,7 +21,8 @@
     .pistearea[zoom = <?php echo $zoom;?>][way_area >= <?php echo pixelareas($LANDCOVER_MINIMAL_AREA,$zoom)?>] {
 		<?php foreach ( $PISTEAREA AS $selector => $a ): ?>
 		    <?php if ( !empty($a['zooms']) &&  in_array($zoom,$a['zooms']) ):?>							
-			    polygon-fill: <?php echo linear($a['color'],$zoom)?>;			    			
+			    polygon-fill: <?php echo linear($a['color'],$zoom)?>;
+			    polygon-opacity: 0.25;
 		    <?php endif;?>
 		    <?php if ( !empty($a['pattern-zooms']) && in_array($zoom,$a['pattern-zooms']) ): ?>			
 			    <?php if ( !empty($a['pattern-file']) ): ?>

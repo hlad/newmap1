@@ -8,14 +8,14 @@ require_once "conf/boundary.conf.php";
  * PA boudnary name text size pixelarea x zoom maping
  */
 $PABOUNDARY_NAME_SIZE = array(    
-    3300 => array( 8 =>  9),
-   10000 => array( 8 => 14),
-   33000 => array( 8 => 22),
-  100000 => array( 8 => 36),
-  330000 => array( 8 => 55),
- 1000000 => array( 8 => 90),
- 3300000 => array( 8 => 150),
-10000000 => array( 8 => 220),
+    3300 => array( 8 =>  7),
+   10000 => array( 8 => 12),
+   33000 => array( 8 => 20),
+  100000 => array( 8 => 33),
+  330000 => array( 8 => 45),
+ 1000000 => array( 8 => 70),
+ 3300000 => array( 8 => 110),
+10000000 => array( 8 => 140),
 );
 
 $PABOUNDARY_NAME_COLOR = array(8 => '#ffffff');

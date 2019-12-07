@@ -95,7 +95,7 @@ def calc_density(tblname, src_tblname, agg_queries, where_query, zoom):
 
         aws = [one_step(x, y, zoom) for x in np.arange(minx, maxx) for y in np.arange(miny, maxy)]
 
-        for next_to_complete in tqdm(as_completed(aws), total=len(aws)):
+        for next_to_complete in tqdm(as_completed(aws), total=len(aws), desc=tblname):
             lon, lat, row = await next_to_complete
 
         conn = await pool.acquire()
@@ -119,6 +119,29 @@ def calc_density(tblname, src_tblname, agg_queries, where_query, zoom):
 
 def main():
     calc_density('symbol_density', 'osm_symbol', {'density': 'COUNT(*)'}, "1=1", 13)
+    calc_density('peak_density11', 'osm_peaks', {
+        'average': 'COALESCE(avg(ele), 0)',
+        'maximum': 'COALESCE(max(ele), 0)'
+    }, "1=1", 11)
+
+
+    calc_density('peak_density9', 'osm_peaks', {
+        'average': 'COALESCE(avg(ele), 0)',
+        'maximum': 'COALESCE(max(ele), 0)'
+    }, "1=1", 9)
+
+
+    calc_density('peak_density7', 'osm_peaks', {
+        'average': 'COALESCE(avg(ele), 0)',
+        'maximum': 'COALESCE(max(ele), 0)'
+    }, "1=1", 7)
+
+
+    calc_density('peak_density5', 'osm_peaks', {
+        'average': 'COALESCE(avg(ele), 0)',
+        'maximum': 'COALESCE(max(ele), 0)'
+    }, "1=1", 5)
+
 
 
 if __name__ == "__main__":

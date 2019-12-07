@@ -11,23 +11,8 @@ function sql_shieldPeak_short() {
 }
 
 function sql_shiledPeakGrade() {
-    $wayC = 'P.way';
-    $eleC = 'P.ele';
-    $wayC2 = 'P2.way';
-    $eleC2 = 'P2.ele';
 return <<<EOD
-    (-20 + 2/log(2) * log((
-	SELECT
-	    SUM(d/3.318)
-	FROM (
-		SELECT 
-		    ST_Distance($wayC2,$wayC)/(row_number() over (order by ST_Distance(P2.way,P.way) nulls last)) as d
-		FROM osm_peaks P2
-		WHERE $eleC2 > $eleC
-		ORDER BY ST_Distance($wayC2,$wayC2) ASC 
-		LIMIT 14
-	     ) AS foo
-    )))
+    (SELECT (-20 + 2/log(2) * log(Avg(d)/3.318)) FROM (SELECT ST_Distance(p.way, p2.way) AS d FROM osm_peaks P2 WHERE p2.ele > p.ele ORDER BY p.way <-> p2.way LIMIT 5) T)
 EOD;
 }
 
@@ -45,8 +30,7 @@ return <<<EOD
 	FROM osm_peaks P
 	WHERE 
 		    P."natural" = 'peak'
-		AND ((P.name IS NOT NULL AND P.name<>'') OR P.ele IS NOT NULL)
+		AND ((P.name IS NOT NULL AND P.name<>'') AND P.ele IS NOT NULL)
 		AND ($where)
-	ORDER BY P.ele IS NULL, P.ele DESC	
 EOD;
 }

@@ -550,11 +550,39 @@ tables:
     - {name: z_order, type: wayzorder}
     - {name: way_area, type: area}
     - {name: osm_id, type: id}
-    - {name: member_id, type: member_id}
-    - {name: member_index, type: member_index}
-    - {name: member_role, type: member_role}
-    - {name: member_type, type: member_type}
     - {name: way, type: validated_geometry}
+    mapping:
+      piste:type: [downhill]
+      route: [piste]
+    type: linestring
+  pisteway:
+    fields:
+      - {key: area, name: area, type: bool}
+      - {key: 'piste:type', name: 'piste:type', type: string}
+      - {key: 'piste:difficulty', name: 'piste:difficulty', type: string}
+      - {key: 'piste:grooming', name: 'piste:grooming', type: string}
+      - {key: 'piste:name', name: 'piste:name', type: string}
+      - {key: colour, name: colour, type: string}
+      - {key: symbol, name: symbol, type: string}
+      - {key: osmcsymbol, name: osmcsymbol, type: string}
+      - {key: description, name: description, type: string}
+      - {key: distance, name: distance, type: string}
+      - {key: operator, name: operator, type: string}
+      - {key: network, name: network, type: string}
+      - {key: ref, name: ref, type: string}
+      - {key: website, name: website, type: string}
+      - {key: name, name: name, type: string}
+      - {key: bridge, name: bridge, type: string}
+      - {key: tunnel, name: tunnel, type: string}
+      - {key: layer, name: layer, type: integer}
+      - {name: z_order, type: wayzorder}
+      - {name: way_area, type: area}
+      - {name: osm_id, type: id}
+      - {name: member_id, type: member_id}
+      - {name: member_index, type: member_index}
+      - {name: member_role, type: member_role}
+      - {name: member_type, type: member_type}
+      - {name: way, type: validated_geometry}
     mapping:
       piste:type: [downhill]
       route: [piste]

@@ -59,5 +59,7 @@ CREATE INDEX idx__osm_route__member_id_osm_id ON osm_route(member_id, osm_id);
 --CREATE INDEX IF NOT EXISTS idx__symbol_density__osm_id ON symbol_density(osm_id);
 --CREATE INDEX IF NOT EXISTS idx__symbol_density__count ON symbol_density(count);
 
-
+CREATE INDEX IF NOT EXISTS idx__osm_peaks__natural ON osm_peaks("natural");
+CREATE INDEX IF NOT EXISTS idx__osm_peaks__name ON osm_peaks(name);
+CREATE INDEX IF NOT EXISTS idx__osm_peaks__ele ON osm_peaks(ele);
 

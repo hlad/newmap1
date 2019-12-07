@@ -4,12 +4,12 @@ require_once "conf/text.conf.php";
 
 function shield_peak_priorities($zoom,$grade) {		
 	$sz = shield_peak_text_size($zoom,$grade);
-	$factor = linear(array(11 => 1, 12 => 1.3),$zoom);	
-	if ( $sz > 40*$factor ) return 0;
-	if ( $sz > 20*$factor ) return 1;
-	if ( $sz > 10*$factor) return 2;
-	if ( $sz > 8.0 ) return 3;
-	if ( $sz > 5.5 ) return 4;		
+	$factor = linear(array(11 => 1, 12 => 1, 13 => 1, 14 => 1, 16 => 1),$zoom);
+	if ( $sz > 30*$factor ) return 0;
+	if ( $sz > 15*$factor ) return 1;
+	if ( $sz > 8*$factor) return 2;
+	if ( $sz > 5*$factor ) return 3;
+	if ( $sz > 3*$factor ) return 4;
 	return false;
 }
 

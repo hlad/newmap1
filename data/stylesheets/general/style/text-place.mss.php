@@ -28,10 +28,8 @@
 				<?php endif; ?>
 				text-opacity: <?php echo urb_name_opacity($zoom,$grade)?>;
 				text-placement-type: simple;
-				text-placements: "X,N,S,E,W,NE,SE,NW,SW,<?php echo text_limiter($size*0.9)?>,<?php echo text_limiter($size*0.8)?>,<?php echo text_limiter($size*0.7)?>,<?php echo text_limiter($size*0.62)?>,<?php echo text_limiter($size*0.55)?>,<?php echo text_limiter($size*0.49)?>,<?php echo text_limiter($size*0.44)?>,<?php echo text_limiter($size*0.4)?>";
-				<?php if( $priority == 4 ): ?>
-					text-min-distance: 25px;
-				<?php endif; ?>
+				text-placements: "X,N,S,E,W,NE,SE,NW,SW,<?php echo text_limiter($size*0.9)?>,<?php echo text_limiter($size*0.75)?>,<?php echo text_limiter($size*0.5)?>,<?php echo text_limiter($size*0.25)?>";
+				text-min-distance: <?php echo text_limiter($size*1.75)?>px;
 				text-clip: false;
 			}
 		
@@ -59,10 +57,8 @@
 				<?php endif; ?>
 				text-opacity: <?php echo suburb_name_opacity($zoom, $grade)?>;
 				text-placement-type: simple;
-				text-placements: "X,N,S,E,W,NE,SE,NW,SW,<?php echo text_limiter($size*0.9)?>,<?php echo text_limiter($size*0.8)?>,<?php echo text_limiter($size*0.7)?>,<?php echo text_limiter($size*0.62)?>,<?php echo text_limiter($size*0.55)?>,<?php echo text_limiter($size*0.49)?>,<?php echo text_limiter($size*0.44)?>,<?php echo text_limiter($size*0.4)?>";
-				<?php if( $priority == 4 ): ?>
-					text-min-distance: 30px;
-				<?php endif; ?>
+				text-placements: "X,N,S,E,W,NE,SE,NW,SW,<?php echo text_limiter($size*0.9)?>,<?php echo text_limiter($size*0.75)?>,<?php echo text_limiter($size*0.5)?>,<?php echo text_limiter($size*0.25)?>";
+				text-min-distance: <?php echo text_limiter($size*1.75)?>px;
 				text-clip: false;
 			}
 		
@@ -76,14 +72,12 @@
 			text-fill: <?php echo locality_name_color($zoom)?>;
 			text-size: <?php echo text_limiter($size) ?>;
 			text-halo-radius: <?php echo exponential(locality_name_halo_radius(),$zoom)?>;
-			text-halo-fill: rgba(255,255,255,0.6);			
+			text-halo-fill: rgba(255,255,255,0.4);
 			text-wrap-width: <?php echo round(locality_name_wrap_width($zoom))?>;			
 			text-opacity: <?php echo locality_name_opacity($zoom)?>;
 			text-placement-type: simple;
-			text-placements: "X,N,S,E,W,NE,SE,NW,SW,<?php echo text_limiter($size*0.9)?>,<?php echo text_limiter($size*0.8)?>,<?php echo text_limiter($size*0.7)?>,<?php echo text_limiter($size*0.62)?>,<?php echo text_limiter($size*0.55)?>,<?php echo text_limiter($size*0.49)?>,<?php echo text_limiter($size*0.44)?>,<?php echo text_limiter($size*0.4)?>";
-			<?php if( $priority == 4 ): ?>
-				text-min-distance: 30px;
-			<?php endif; ?>
+			text-placements: "X,N,S,E,W,NE,SE,NW,SW,<?php echo text_limiter($size*0.9)?>,<?php echo text_limiter($size*0.75)?>,<?php echo text_limiter($size*0.5)?>,<?php echo text_limiter($size*0.25)?>";
+			text-min-distance: <?php echo text_limiter($size*1.75)?>px;
 			text-clip: false;	
 		}		
 	<?php endif;?>	

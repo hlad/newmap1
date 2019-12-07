@@ -5,7 +5,7 @@ require_once "conf/waters.conf.php";
 
 $_SYMBOL_ATTRACTIVE_COLOR = array(12 => '#aa00aa');
 
-$SYMBOL_DENSITY = array(11 => 5, 12 => 20,13 => 50, 14 => 200, 15 => 1000,16 => 20000);
+$SYMBOL_DENSITY = array(11 => 200, 12 => 800,13 => 3200, 14 => 12800, 15 => 51200,16 => 204800);
 
 $_SYMBOL_HALO_COLOR = array(12 => '#FFFAAA');
 
@@ -14,7 +14,7 @@ $_SYMBOL_TRANSPORT_COLOR = array(12 => '#071133');
 $_SYMBOL_TRANSPORT_HALO_COLOR = array(12 => '#E4EEFF');
 $_SYMBOL_TRANSPORT_HALO_OPACITY = array(12 => 0.4);
 
-$_SYMBOL_HISTORIC_COLOR = array(12 => '#880000');
+$_SYMBOL_HISTORIC_COLOR = array(12 => '#aa5555');
 $_SYMBOL_HISTORIC_HALO_COLOR = $_SYMBOL_HALO_COLOR;
 
 $_SYMBOL_AMENITY_COLOR = array(12 => '#555555');
@@ -29,17 +29,17 @@ $_SYMBOL_SHOP_HALO_COLOR = array(12 => '#ffddf5');
 $_SYMBOL_NATURAL_COLOR = array(12 => '#448800');
 $_SYMBOL_NATURAL_HALO_COLOR = $_SYMBOL_HALO_COLOR;
 
-$_SYMBOl_SIZE_HUGE   = array(11=>20,14=>34,18=>45);
-$_SYMBOl_SIZE_BIG    = array(11=>15,14=>28,18=>35);
-$_SYMBOl_SIZE_NORMAL = array(11=>11.5,14=>19,18=>23);
-$_SYMBOl_SIZE_SMALL  = array(11=> 9,14=>14,18=>18);
-$_SYMBOl_SIZE_TINY   = array(11=> 7,14=>11.5,18=>14);
+$_SYMBOl_SIZE_HUGE   = array(11=>12, 12=>15, 15=>25,18=>45);
+$_SYMBOl_SIZE_BIG    = array(11=>10.5, 12=>13, 15=>21,18=>35);
+$_SYMBOl_SIZE_NORMAL = array(11=>9, 12=>11, 1215=>17,18=>23);
+$_SYMBOl_SIZE_SMALL  = array(11=>7.5, 12=>9, 15=>14,18=>18);
+$_SYMBOl_SIZE_TINY   = array(11=>6, 12=>7, 15=>12,18=>14);
 
-$_SYMBOl_TEXT_SIZE_HUGE   = array(11=>15,15=>19,18=>23);
-$_SYMBOl_TEXT_SIZE_BIG    = array(11=>12,15=>15,18=>18);
-$_SYMBOl_TEXT_SIZE_NORMAL = array(11=> 9,15=>11.5,18=>14);
-$_SYMBOl_TEXT_SIZE_SMALL  = array(11=> 7,15=> 9,18=>11);
-$_SYMBOl_TEXT_SIZE_TINY   = array(11=> 5,15=> 7,18=> 9);
+$_SYMBOl_TEXT_SIZE_HUGE   = array(12=>7,15=>10,18=>23);
+$_SYMBOl_TEXT_SIZE_BIG    = array(12=>6.5,15=>9,18=>18);
+$_SYMBOl_TEXT_SIZE_NORMAL = array(12=>6,15=>8,18=>14);
+$_SYMBOl_TEXT_SIZE_SMALL  = array(12=>5,15=> 7,18=>11);
+$_SYMBOl_TEXT_SIZE_TINY   = array(12=>4,15=> 6,18=> 9);
 
 $_SYMBOl_ZOOMS_HUGE    = array(11 => 4, 12 => 3, 13 => 3, 14 => 2, 15 => 2, 16 => 1, 17 => 1, 18 => 1);
 $_SYMBOl_ZOOMS_HUGELOW = array(11 => 4, 12 => 4, 13 => 3, 14 => 3, 15 => 2, 16 => 2, 17 => 1, 18 => 1);
@@ -48,12 +48,21 @@ $_SYMBOl_ZOOMS_NORMAL  = array(                  13 => 4, 14 => 3, 15 => 3, 16 =
 $_SYMBOl_ZOOMS_SMALL   = array(                           14 => 4, 15 => 3, 16 => 3, 17 => 2, 18 => 2);
 $_SYMBOl_ZOOMS_TINY    = array(                                    15 => 4, 16 => 4, 17 => 3, 18 => 2);
 
+$_SYMBOl_TEXT_ZOOMS_HUGE    = array(12 => 4, 13 => 3, 14 => 3, 15 => 2, 16 => 2, 17 => 1, 18 => 1, 19 => 1);
+$_SYMBOl_TEXT_ZOOMS_HUGELOW = array(12 => 4, 13 => 4, 14 => 3, 15 => 3, 16 => 2, 17 => 2, 18 => 1, 19 => 1);
+$_SYMBOl_TEXT_ZOOMS_BIG     = array(         13 => 4, 14 => 3, 15 => 3, 16 => 2, 17 => 2, 18 => 1, 19 => 1);
+$_SYMBOl_TEXT_ZOOMS_NORMAL  = array(                  14 => 4, 15 => 3, 16 => 3, 17 => 2, 18 => 2, 19 => 1);
+$_SYMBOl_TEXT_ZOOMS_SMALL   = array(                           15 => 4, 16 => 3, 17 => 3, 18 => 2, 19 => 2);
+$_SYMBOl_TEXT_ZOOMS_TINY    = array(                                    16 => 4, 17 => 4, 18 => 3, 19 => 2);
+
+
 /**
  * Zoom x symbol look maping
  */
 $SYMBOL = array(
 	"[historic='castle'][castle_type='no'][ruins='no'],[historic='castle'][castle_type='stately'][ruins='no'],[historic='castle'][castle_type='schloss'][ruins='no'],[historic='castle'][castle_type='burg;schloss'][ruins='no'],[historic='castle'][castle_type='palace'][ruins='no'],[historic='castle'][castle_type='manor'][ruins='no'],[historic='castle'][castle_type='castle'][ruins='no'],[historic='castle'][castle_type='defensive;stately'][ruins='no'],[historic='castle'][castle_type='chateau'][ruins='no'],[historic='castle'][castle_type='kremlin'][ruins='no']  " => array(
 			'zooms'        => $_SYMBOl_ZOOMS_HUGE,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_HUGE,
 			'symbol-file'  => 'castle-stately',
 			'symbol-size'  => $_SYMBOl_SIZE_HUGE,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_HUGE,
@@ -65,6 +74,7 @@ $SYMBOL = array(
 
 	"[historic='castle'][castle_type='defensive'],[historic='castle'][castle_type='burg'],[historic='castle'][castle_type='fortress'],[historic='castle'][castle_type='festung'],[historic='castle'][castle_type='tower'],[historic='castle'][castle_type='tower'],[historic='castle'][castle_type='castrum'],[historic='castle'][castle_type='mansion'],[historic='castle'][castle_type='citadel'],[historic='castle'][castle_type='fortification'],[historic='castle'][castle_type='medieval']" => array(
 			'zooms'        => $_SYMBOl_ZOOMS_HUGE,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_HUGE,
 			'symbol-file'  => 'castle-defensive',
 			'symbol-size'  => $_SYMBOl_SIZE_HUGE,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_HUGE,
@@ -77,6 +87,7 @@ $SYMBOL = array(
 
 	"[ruins!='no'][historic='castle'],[ruins='castle']" => array(
 			'zooms'        => $_SYMBOl_ZOOMS_HUGE,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_HUGE,
 			'symbol-file'  => 'ruins',
 			'symbol-size'  => $_SYMBOl_SIZE_BIG,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_BIG,
@@ -87,9 +98,10 @@ $SYMBOL = array(
 		),
 
 	"[building='church'],[amenity='place_of_worship'][historic!='monastery'][historic!='wayside_shrine'][historic!='wayside_cross'][building!='chapel'][\"place_of_worship:type\"!='chapel'][place_of_worship!='chapel'][\"place_of_worship:type\"!='monastery'][place_of_worship!='monastery']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_BIG,
+			'zooms'        => $_SYMBOl_ZOOMS_NORMAL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_NORMAL,
 			'symbol-file'  => 'church',
-			'symbol-size'  => $_SYMBOl_SIZE_NORMAL,
+			'symbol-size'  => $_SYMBOl_SIZE_BIG,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_NORMAL,
 			'symbol-color' => $_SYMBOL_HISTORIC_COLOR,
 			'text-color'   => $_SYMBOL_HISTORIC_COLOR,
@@ -99,8 +111,9 @@ $SYMBOL = array(
 
 	"[building='chapel'],[\"place_of_worship:type\"='chapel'],[place_of_worship='chapel']"=> array(
 			'zooms'        => $_SYMBOl_ZOOMS_NORMAL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_NORMAL,
 			'symbol-file'  => 'chapel',
-			'symbol-size'  => $_SYMBOl_SIZE_SMALL,
+			'symbol-size'  => $_SYMBOl_SIZE_NORMAL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_SMALL,
 			'symbol-color' => $_SYMBOL_HISTORIC_COLOR,
 			'text-color'   => $_SYMBOL_HISTORIC_COLOR,
@@ -109,9 +122,10 @@ $SYMBOL = array(
 		),
 	"[military='bunker'][historic='yes']" => array(
 			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-file'  => 'military_bunker',
 			'symbol-size'  => $_SYMBOl_SIZE_TINY,
-			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
+			'text-size'    => $_SYMBOl_TEXT_SIZE_NONE,
 			'symbol-color' => $_SYMBOL_HISTORIC_COLOR,
 			'text-color'   => $_SYMBOL_HISTORIC_COLOR,
 			'symbol-halo'  => $_SYMBOL_HISTORIC_HALO_COLOR,
@@ -119,6 +133,7 @@ $SYMBOL = array(
 		),
 	"[historic='monastery'],[\"place_of_worship:type\"='monastery'],[place_of_worship='monastery']"=> array(
 			'zooms'        => $_SYMBOl_ZOOMS_HUGE,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_HUGE,
 			'symbol-file'  => 'monastery',
 			'symbol-size'  => $_SYMBOl_SIZE_BIG,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_BIG,
@@ -129,6 +144,7 @@ $SYMBOL = array(
 		),
 	"[historic='archaeological_site']" => array(
 			'zooms'        => $_SYMBOl_ZOOMS_BIG,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_BIG,
 			'symbol-file'  => 'archaeological_site',
 			'symbol-size'  => $_SYMBOl_SIZE_NORMAL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_NORMAL,
@@ -139,6 +155,7 @@ $SYMBOL = array(
 		),
 	"[historic='city_gate']" => array(
 			'zooms'        => $_SYMBOl_ZOOMS_BIG,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_BIG,
 			'symbol-file'  => 'city_gate',
 			'symbol-size'  => $_SYMBOl_SIZE_NORMAL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_NORMAL,
@@ -149,6 +166,7 @@ $SYMBOL = array(
 		),
 	"[historic='monument']" => array(
 			'zooms'        => $_SYMBOl_ZOOMS_BIG,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_BIG,
 			'symbol-file'  => 'monument',
 			'symbol-size'  => $_SYMBOl_SIZE_NORMAL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_NORMAL,
@@ -159,6 +177,7 @@ $SYMBOL = array(
 		),
 	"[historic='memorial'],[historic='heritage']" => array(
 			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_SMALL,
 			'symbol-file'  => 'memorial',
 			'symbol-size'  => $_SYMBOl_SIZE_TINY,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
@@ -169,6 +188,7 @@ $SYMBOL = array(
 		),
 	"[historic='wayside_cross'],[amenity='place_of_worship'][historic='no'][building='no']" => array(
 			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_SMALL,
 			'symbol-file'  => 'waysidecross',
 			'symbol-size'  => $_SYMBOl_SIZE_TINY,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
@@ -179,6 +199,7 @@ $SYMBOL = array(
 		),
 	"[historic='wayside_shrine']" => array(			
 			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_SMALL,
 			'symbol-file'  => 'waysideshrine',
 			'symbol-size'  => $_SYMBOl_SIZE_TINY,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
@@ -188,7 +209,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_HISTORIC_HALO_COLOR,
 		),
 	"[historic='boundary_stone']" => array(			
-			'zooms'        => $_SYMBOl_ZOOMS_NORMAL,
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_SMALL,
 			'symbol-file'  => 'boundary_stone',
 			'symbol-size'  => $_SYMBOl_SIZE_TINY,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
@@ -199,6 +221,7 @@ $SYMBOL = array(
 		),	
 	"[historic='battlefield']" => array(			
 			'zooms'        => $_SYMBOl_ZOOMS_NORMAL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_NORMAL,
 			'symbol-file'  => 'battlefield',
 			'symbol-size'  => $_SYMBOl_SIZE_SMALL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_SMALL,
@@ -210,6 +233,7 @@ $SYMBOL = array(
 		
 	"[man_made='tower'][\"tower:type\"='observation'],[man_made='tower'][tourism='attraction']" => array(			
 			'zooms'        => $_SYMBOl_ZOOMS_BIG,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_BIG,
 			'symbol-file'  => 'tower-observation',
 			'symbol-size'  => $_SYMBOl_SIZE_BIG,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_BIG,
@@ -220,6 +244,7 @@ $SYMBOL = array(
 		),
 	"[man_made='lighthouse']" => array(			
 			'zooms'        => $_SYMBOl_ZOOMS_BIG,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_BIG,
 			'symbol-file'  => 'lighthouse',
 			'symbol-size'  => $_SYMBOl_SIZE_NORMAL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_NORMAL,
@@ -231,6 +256,7 @@ $SYMBOL = array(
 	
 	"[man_made='tower'][\"tower:type\"='communication']" => array(
 			'zooms'        => $_SYMBOl_ZOOMS_NORMAL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_SMALL,
 			'symbol-file'  => 'tower-comunication',
 			'symbol-size'  => $_SYMBOl_SIZE_NORMAL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_NORMAL,
@@ -241,6 +267,7 @@ $SYMBOL = array(
 		),	
 	"[man_made='water_tower']" => array(
 			'zooms'        => $_SYMBOl_ZOOMS_NORMAL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_SMALL,
 			'symbol-file'  => 'tower-water',
 			'symbol-size'  => $_SYMBOl_SIZE_NORMAL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_NORMAL,
@@ -251,9 +278,10 @@ $SYMBOL = array(
 		),
 	"[tourism='viewpoint']" => array(			
 			'zooms'        => $_SYMBOl_ZOOMS_NORMAL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_SMALL,
 			'symbol-file'  => 'viewpoint',
-			'symbol-size'  => $_SYMBOl_SIZE_NORMAL,
-			'text-size'    => $_SYMBOl_TEXT_SIZE_NORMAL,
+			'symbol-size'  => $_SYMBOl_SIZE_TINY,
+			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-color' => $_SYMBOL_HISTORIC_COLOR,
 			'text-color'   => $_SYMBOL_HISTORIC_COLOR,
 			'symbol-halo'  => $_SYMBOL_HISTORIC_HALO_COLOR,
@@ -261,6 +289,7 @@ $SYMBOL = array(
 		),	
 	"[tourism='museum']" => array(			
 			'zooms'        => $_SYMBOl_ZOOMS_BIG,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_BIG,
 			'symbol-file'  => 'museum',
 			'symbol-size'  => $_SYMBOl_SIZE_NORMAL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_NORMAL,
@@ -272,6 +301,7 @@ $SYMBOL = array(
 		
 	"[tourism='zoo']" => array(			
 			'zooms'        => $_SYMBOl_ZOOMS_BIG,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_BIG,
 			'symbol-file'  => 'zoo',
 			'symbol-size'  => $_SYMBOl_SIZE_BIG,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_BIG,
@@ -282,7 +312,8 @@ $SYMBOL = array(
 		),	
 		
 	"[tourism='camp_site']" => array(			
-			'zooms'        => $_SYMBOl_ZOOMS_HUGELOW,
+			'zooms'        => $_SYMBOl_ZOOMS_HUGE,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_NORMAL,
 			'symbol-file'  => 'camp',
 			'symbol-size'  => $_SYMBOl_SIZE_NORMAL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_SMALL,
@@ -292,7 +323,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_HISTORIC_HALO_COLOR,		
 		),	
 	"[tourism='information'][information='guidepost']" => array(			
-			'zooms'        => $_SYMBOl_ZOOMS_BIG,
+			'zooms'        => $_SYMBOl_ZOOMS_NORMAL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_NORMAL,
 			'symbol-file'  => 'information-guidepost',
 			'symbol-size'  => $_SYMBOl_SIZE_SMALL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_SMALL,
@@ -302,7 +334,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_HISTORIC_HALO_COLOR,		
 		),	
 	"[tourism='information'][information='board']" => array(			
-			'zooms'        => $_SYMBOl_ZOOMS_NORMAL,
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_SMALL,
 			'symbol-file'  => 'information-board',
 			'symbol-size'  => $_SYMBOl_SIZE_SMALL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_SMALL,
@@ -312,7 +345,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_HISTORIC_HALO_COLOR,	
 		),	
 	"[tourism='information'][information='map']" => array(			
-			'zooms'        => $_SYMBOl_ZOOMS_NORMAL,
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_SMALL,
 			'symbol-file'  => 'information-map',
 			'symbol-size'  => $_SYMBOl_SIZE_SMALL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_SMALL,
@@ -323,6 +357,7 @@ $SYMBOL = array(
 		),	
 	"[tourism='information'][information='office']" => array(			
 			'zooms'        => $_SYMBOl_ZOOMS_NORMAL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_NORMAL,
 			'symbol-file'  => 'information-office',
 			'symbol-size'  => $_SYMBOl_SIZE_NORMAL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_NORMAL,
@@ -333,6 +368,7 @@ $SYMBOL = array(
 		),	
 	"[tourism='artwork']" => array(			
 			'zooms'        => $_SYMBOl_ZOOMS_NORMAL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_NORMAL,
 			'symbol-file'  => 'artwork-statue',
 			'symbol-size'  => $_SYMBOl_SIZE_SMALL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
@@ -343,6 +379,7 @@ $SYMBOL = array(
 		),
 	"[amenity='atm']" => array(			
 			'zooms'        => $_SYMBOl_ZOOMS_TINY,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-file'  => 'atm',
 			'symbol-size'  => $_SYMBOl_SIZE_TINY,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
@@ -353,6 +390,7 @@ $SYMBOL = array(
 		),
 	"[amenity='bank']" => array(
 			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-file'  => 'bank',
 			'symbol-size'  => $_SYMBOl_SIZE_SMALL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_SMALL,
@@ -363,6 +401,7 @@ $SYMBOL = array(
 		),
 	"[amenity='bench']" => array(
 			'zooms'        => $_SYMBOl_ZOOMS_TINY,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-file'  => 'bench',
 			'symbol-size'  => $_SYMBOl_SIZE_TINY,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
@@ -373,6 +412,7 @@ $SYMBOL = array(
 		),
 	"[natural='cave_entrance']" => array(
 			'zooms'        => $_SYMBOl_ZOOMS_BIG,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_BIG,
 			'symbol-file'  => 'cave',
 			'symbol-size'  => $_SYMBOl_SIZE_BIG,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_BIG,
@@ -383,6 +423,7 @@ $SYMBOL = array(
 		),	
 	"[amenity='doctors'],[amenity='dentist']" => array(
 			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-file'  => 'doctors',
 			'symbol-size'  => $_SYMBOl_SIZE_TINY,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
@@ -393,6 +434,7 @@ $SYMBOL = array(
 		),
 	"[amenity='hospital']" => array(
 			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-file'  => 'hospital',
 			'symbol-size'  => $_SYMBOl_SIZE_SMALL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_SMALL,
@@ -403,6 +445,7 @@ $SYMBOL = array(
 		),
 	"[amenity='clinic'],[amenity='nursing_home']" => array(
 			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-file'  => 'hospital',
 			'symbol-size'  => $_SYMBOl_SIZE_TINY,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
@@ -413,6 +456,7 @@ $SYMBOL = array(
 		),
 	"[amenity='drinking_water']" => array(
 			'zooms'        => $_SYMBOl_ZOOMS_TINY,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-file'  => 'drinking-water',
 			'symbol-size'  => $_SYMBOl_SIZE_TINY,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
@@ -422,7 +466,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_HISTORIC_HALO_COLOR,	
 		),
 	"[amenity='fuel']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_HUGELOW,
+			'zooms'        => $_SYMBOl_ZOOMS_HUGE,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_SMALL,
 			'symbol-file'  => 'fuel',
 			'symbol-size'  => $_SYMBOl_SIZE_SMALL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_SMALL,
@@ -433,6 +478,7 @@ $SYMBOL = array(
 		),
 	"[tourism='guest_house'],[tourism='hostel'],[tourism='motel'],[tourism='hut'],[tourism='alpine_hut']" => array(
 			'zooms'        => $_SYMBOl_ZOOMS_NORMAL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_SMALL,
 			'symbol-file'  => 'guest-house',
 			'symbol-size'  => $_SYMBOl_SIZE_SMALL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_SMALL,
@@ -443,6 +489,7 @@ $SYMBOL = array(
 		),
 	"[tourism='hotel']" => array(
 			'zooms'        => $_SYMBOl_ZOOMS_NORMAL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_SMALL,
 			'symbol-file'  => 'hotel',
 			'symbol-size'  => $_SYMBOl_SIZE_SMALL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_SMALL,
@@ -454,6 +501,7 @@ $SYMBOL = array(
 		
 	"[man_made='hunting_stand'],[amenity='hunting_stand']" => array(
 			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-file'  => 'hunting-stand',
 			'symbol-size'  => $_SYMBOl_SIZE_TINY,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
@@ -464,6 +512,7 @@ $SYMBOL = array(
 		),	
 	"[amenity='parking']" => array(
 			'zooms'        => $_SYMBOl_ZOOMS_BIG,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-file'  => 'parking',
 			'symbol-size'  => $_SYMBOl_SIZE_SMALL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
@@ -474,6 +523,7 @@ $SYMBOL = array(
 		),
 	"[amenity='parking_entrance']" => array(
 			'zooms'        => $_SYMBOl_ZOOMS_BIG,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-file'  => 'parking_entrance',
 			'symbol-size'  => $_SYMBOl_SIZE_SMALL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
@@ -484,6 +534,7 @@ $SYMBOL = array(
 		),
 	"[amenity='pharmacy']" => array(
 			'zooms'        => $_SYMBOl_ZOOMS_TINY,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-file'  => 'pharmacy',
 			'symbol-size'  => $_SYMBOl_SIZE_TINY,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
@@ -494,6 +545,7 @@ $SYMBOL = array(
 		),
 	"[tourism='picnic_site'],[leisure='picnic_table']" => array(
 			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-file'  => 'picnic',
 			'symbol-size'  => $_SYMBOl_SIZE_TINY,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
@@ -504,6 +556,7 @@ $SYMBOL = array(
 		),
 	"[amenity='post_box']" => array(
 			'zooms'        => $_SYMBOl_ZOOMS_TINY,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-file'  => 'postbox',
 			'symbol-size'  => $_SYMBOl_SIZE_TINY,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
@@ -514,6 +567,7 @@ $SYMBOL = array(
 		),
 	"[amenity='post_office']" => array(
 			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-file'  => 'postoffice',
 			'symbol-size'  => $_SYMBOl_SIZE_SMALL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_SMALL,
@@ -524,6 +578,7 @@ $SYMBOL = array(
 		),
 	"[amenity='pub'],[amenity='bar'],[amenity='nightclub']" => array(
 			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-file'  => 'pub',
 			'symbol-size'  => $_SYMBOl_SIZE_SMALL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_SMALL,
@@ -534,6 +589,7 @@ $SYMBOL = array(
 		),
 	"[amenity='cafe']" => array(
 			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-file'  => 'cafe',
 			'symbol-size'  => $_SYMBOl_SIZE_SMALL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_SMALL,
@@ -544,6 +600,7 @@ $SYMBOL = array(
 	),
 	"[amenity='restaurant'],[amenity='fast_food'],[amenity='biergarten']" => array(
 			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-file'  => 'restaurant',
 			'symbol-size'  => $_SYMBOl_SIZE_SMALL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_SMALL,
@@ -554,6 +611,7 @@ $SYMBOL = array(
 		),
 	"[amenity='shelter']" => array(
 			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-file'  => 'shelter',
 			'symbol-size'  => $_SYMBOl_SIZE_TINY,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
@@ -564,6 +622,7 @@ $SYMBOL = array(
 		),
 	"[natural='spring']" => array(
 			'zooms'        => $_SYMBOl_ZOOMS_NORMAL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_NORMAL,
 			'symbol-file'  => 'spring',
 			'symbol-size'  => $_SYMBOl_SIZE_TINY,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
@@ -574,6 +633,7 @@ $SYMBOL = array(
 		),
 	"[amenity='theatre']" => array(
 			'zooms'        => $_SYMBOl_ZOOMS_BIG,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_BIG,
 			'symbol-file'  => 'theatre',
 			'symbol-size'  => $_SYMBOl_SIZE_NORMAL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_NORMAL,
@@ -584,6 +644,7 @@ $SYMBOL = array(
 		),	
 	"[man_made='watermill']" => array(
 			'zooms'        => $_SYMBOl_ZOOMS_BIG,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_BIG,
 			'symbol-file'  => 'watermill',
 			'symbol-size'  => $_SYMBOl_SIZE_NORMAL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_NORMAL,
@@ -594,6 +655,7 @@ $SYMBOL = array(
 		),	
 	"[man_made='water_well']" => array(
 			'zooms'        => $_SYMBOl_ZOOMS_BIG,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_BIG,
 			'symbol-file'  => 'waterwell',
 			'symbol-size'  => $_SYMBOl_SIZE_NORMAL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_NORMAL,
@@ -604,6 +666,7 @@ $SYMBOL = array(
 		),	
 	"[man_made='windmill']" => array(
 			'zooms'        => $_SYMBOl_ZOOMS_BIG,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_BIG,
 			'symbol-file'  => 'windmill',
 			'symbol-size'  => $_SYMBOl_SIZE_NORMAL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_NORMAL,
@@ -614,6 +677,7 @@ $SYMBOL = array(
 		),	
 	"[amenity='fountain']" => array(
 			'zooms'        => $_SYMBOl_ZOOMS_NORMAL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_NORMAL,
 			'symbol-file'  => 'fontain',
 			'symbol-size'  => $_SYMBOl_SIZE_SMALL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_SMALL,
@@ -623,7 +687,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_HISTORIC_HALO_COLOR,	
 		),	
 	"[railway='tram_stop']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_NORMAL,			
+			'zooms'        => $_SYMBOl_ZOOMS_NORMAL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_SMALL,
 			'symbol-size'  => $_SYMBOl_SIZE_SMALL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'tram_stop',		
@@ -634,7 +699,8 @@ $SYMBOL = array(
 			'halo-opacity' => $_SYMBOL_TRANSPORT_HALO_OPACITY,
 		),
 	"[highway='bus_stop']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_BIG,			
+			'zooms'        => $_SYMBOl_ZOOMS_BIG,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_SMALL,
 			'symbol-size'  => $_SYMBOl_SIZE_SMALL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'bus_stop',		
@@ -645,7 +711,8 @@ $SYMBOL = array(
 			'halo-opacity' => $_SYMBOL_TRANSPORT_HALO_OPACITY,
 		),
 	"[aeroway='aerodrome']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_HUGE,			
+			'zooms'        => $_SYMBOl_ZOOMS_HUGE,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_BIG,
 			'symbol-size'  => $_SYMBOl_SIZE_HUGE,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_HUGE,
 			'symbol-file'  => 'aerodrom',		
@@ -656,7 +723,8 @@ $SYMBOL = array(
 			'halo-opacity' => $_SYMBOL_TRANSPORT_HALO_OPACITY,
 		),
 	"[railway='subway_entrance']" => array(
-			'zooms'        => array(12 => 4, 13 => 4, 14 => 4, 15 => 3, 16 => 1, 17 => 1, 18 => 1),			
+			'zooms'        => array(12 => 4, 13 => 4, 14 => 4, 15 => 3, 16 => 1, 17 => 1, 18 => 1),
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_SMALL,
 			'symbol-size'  => $_SYMBOl_SIZE_SMALL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'subway_entrance',		
@@ -667,9 +735,10 @@ $SYMBOL = array(
 			'halo-opacity' => $_SYMBOL_TRANSPORT_HALO_OPACITY,
 		),
 	"[railway='halt']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_HUGE,			
-			'symbol-size'  => $_SYMBOl_SIZE_NORMAL,
-			'text-size'    => $_SYMBOl_TEXT_SIZE_NORMAL,
+			'zooms'        => $_SYMBOl_ZOOMS_HUGE,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_SMALL,
+			'symbol-size'  => $_SYMBOl_SIZE_SMALL,
+			'text-size'    => $_SYMBOl_TEXT_SIZE_SMALL,
 			'symbol-file'  => 'station',		
 			'symbol-color' => $_SYMBOL_TRANSPORT_COLOR,
 			'text-color'   => $_SYMBOL_TRANSPORT_COLOR,
@@ -678,7 +747,8 @@ $SYMBOL = array(
 			'halo-opacity' => $_SYMBOL_TRANSPORT_HALO_OPACITY,
 		),
 	"[amenity='ferry_terminal']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_HUGE,			
+			'zooms'        => $_SYMBOl_ZOOMS_HUGE,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_SMALL,
 			'symbol-size'  => $_SYMBOl_SIZE_NORMAL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_SMALL,
 			'symbol-file'  => 'ferry_terminal',		
@@ -689,9 +759,10 @@ $SYMBOL = array(
 			'halo-opacity' => $_SYMBOL_TRANSPORT_HALO_COLOR,
 		),
 	"[railway='station'][transport!='subway']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_HUGE,			
-			'symbol-size'  => $_SYMBOl_SIZE_BIG,
-			'text-size'    => $_SYMBOl_TEXT_SIZE_BIG,
+			'zooms'        => $_SYMBOl_ZOOMS_HUGE,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_SMALL,
+			'symbol-size'  => $_SYMBOl_SIZE_NORMAL,
+			'text-size'    => $_SYMBOl_TEXT_SIZE_NORMAL,
 			'symbol-file'  => 'station',		
 			'symbol-color' => $_SYMBOL_TRANSPORT_COLOR,
 			'text-color'   => $_SYMBOL_TRANSPORT_COLOR,
@@ -700,7 +771,8 @@ $SYMBOL = array(
 			'halo-opacity' => $_SYMBOL_TRANSPORT_HALO_OPACITY,
 		),	
 		"[railway='station'][transport='subway']" => array(
-			'zooms'        => array(12 => 2, 13 => 1, 14 => 1, 15 => 2, 16 => 4, 17 => 4, 18 => 4),			
+			'zooms'        => array(12 => 2, 13 => 1, 14 => 1, 15 => 2, 16 => 4, 17 => 4, 18 => 4),
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_SMALL,
 			'symbol-size'  => $_SYMBOl_SIZE_NORMAL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_NORMAL,
 			'symbol-file'  => 'subway',		
@@ -711,7 +783,8 @@ $SYMBOL = array(
 			'halo-opacity' => $_SYMBOL_TRANSPORT_HALO_OPACITY,
 		),
 		"[amenity='car_rental']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_BIG,			
+			'zooms'        => $_SYMBOl_ZOOMS_BIG,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_SMALL,
 			'symbol-size'  => $_SYMBOl_SIZE_SMALL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'car_rental',		
@@ -722,7 +795,8 @@ $SYMBOL = array(
 			'halo-opacity' => $_SYMBOL_TRANSPORT_HALO_OPACITY,
 		),
 		"[amenity='car_sharing']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_NORMAL,			
+			'zooms'        => $_SYMBOl_ZOOMS_NORMAL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_SMALL,
 			'symbol-size'  => $_SYMBOl_SIZE_SMALL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'car_sharing',		
@@ -733,7 +807,8 @@ $SYMBOL = array(
 			'halo-opacity' => $_SYMBOL_TRANSPORT_HALO_OPACITY,
 		),
 		"[amenity='school']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_SMALL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'school',		
@@ -743,7 +818,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_AMENITY_HALO_COLOR,
 		),		
 		"[amenity='kindergarten']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_NORMAL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_SMALL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'school',		
@@ -753,7 +829,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_AMENITY_HALO_COLOR,
 		),
 		"[amenity='recycling'],[amenity='waste_basket']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_TINY,			
+			'zooms'        => $_SYMBOl_ZOOMS_TINY,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_TINY,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'recycling',		
@@ -763,7 +840,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_AMENITY_HALO_COLOR,
 		),
 		"[amenity='clock']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_TINY,			
+			'zooms'        => $_SYMBOl_ZOOMS_TINY,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_TINY,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'clock',		
@@ -773,7 +851,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_AMENITY_HALO_COLOR,
 		),
 		"[amenity='icecream']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_TINY,			
+			'zooms'        => $_SYMBOl_ZOOMS_TINY,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_TINY,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'icecream',		
@@ -783,7 +862,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_AMENITY_HALO_COLOR,			
 		),
 		"[amenity='bicycle_parking']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_TINY,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'bicycle_parking',		
@@ -794,7 +874,8 @@ $SYMBOL = array(
 			'halo-opacity' => $_SYMBOL_TRANSPORT_HALO_OPACITY,
 		),
 		"[amenity='motorcycle_parking']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_TINY,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'motorcycle_parking',		
@@ -805,7 +886,8 @@ $SYMBOL = array(
 			'halo-opacity' => $_SYMBOL_TRANSPORT_HALO_OPACITY,
 		),		
 		"[amenity='telephone']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_TINY,			
+			'zooms'        => $_SYMBOl_ZOOMS_TINY,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_TINY,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'telephone',		
@@ -815,7 +897,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_AMENITY_HALO_COLOR,
 		),
 		"[amenity='fire_hydrant']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_TINY,			
+			'zooms'        => $_SYMBOl_ZOOMS_TINY,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_TINY,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'fire_hydrant',		
@@ -826,6 +909,7 @@ $SYMBOL = array(
 		),
 		"[amenity='toilets']" => array(
 			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_TINY,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'toilets',		
@@ -836,6 +920,7 @@ $SYMBOL = array(
 		),
 		"[amenity='shower']" => array(
 			'zooms'        => $_SYMBOl_ZOOMS_TINY,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_TINY,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'shower',		
@@ -846,6 +931,7 @@ $SYMBOL = array(
 		),
 		"[amenity='taxi']" => array(
 			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_TINY,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'taxi',		
@@ -856,6 +942,7 @@ $SYMBOL = array(
 		),
 		"[amenity='car_wash']" => array(
 			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_TINY,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'car_wash',		
@@ -865,7 +952,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_AMENITY_HALO_COLOR,
 		),
 		"[amenity='public_building'],[amenity='comunity_centre']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_SMALL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_SMALL,
 			'symbol-file'  => 'public_building',		
@@ -875,7 +963,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_AMENITY_HALO_COLOR,
 		),
 		"[amenity='fire_station']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_SMALL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_SMALL,
 			'symbol-file'  => 'fire_station',		
@@ -885,7 +974,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_AMENITY_HALO_COLOR,
 		),
 		"[amenity='police']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_SMALL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_SMALL,
 			'symbol-file'  => 'police',		
@@ -895,7 +985,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_AMENITY_HALO_COLOR,
 		),
 		"[amenity='swimming_pool']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_BIG,			
+			'zooms'        => $_SYMBOl_ZOOMS_BIG,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_SMALL,
 			'symbol-size'  => $_SYMBOl_SIZE_NORMAL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_SMALL,
 			'symbol-file'  => 'swiming_pool',		
@@ -905,7 +996,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_AMENITY_HALO_COLOR,
 		),
 		"[amenity='townhall']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_NORMAL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_SMALL,
 			'symbol-file'  => 'townhall',		
@@ -915,7 +1007,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_AMENITY_HALO_COLOR,
 		),
 		"[amenity='library']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_NORMAL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_SMALL,
 			'symbol-file'  => 'library',		
@@ -925,7 +1018,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_AMENITY_HALO_COLOR,
 		),
 		"[amenity='university'],[amenity='college']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_NORMAL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_NORMAL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_SMALL,
 			'symbol-file'  => 'university',		
@@ -935,7 +1029,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_AMENITY_HALO_COLOR,
 		),
 		"[amenity='social_facility']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_NORMAL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_SMALL,
 			'symbol-file'  => 'university',		
@@ -945,7 +1040,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_AMENITY_HALO_COLOR,
 		),
 		"[amenity='marketplace']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_NORMAL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_SMALL,
 			'symbol-file'  => 'marketplace',		
@@ -955,7 +1051,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_AMENITY_HALO_COLOR,
 		),
 		"[amenity='cinema']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_NORMAL,			
+			'zooms'        => $_SYMBOl_ZOOMS_NORMAL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_NORMAL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_SMALL,
 			'symbol-file'  => 'cinema',		
@@ -965,7 +1062,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_AMENITY_HALO_COLOR,
 		),		
 		"[amenity='veterinary']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_NORMAL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_SMALL,
 			'symbol-file'  => 'veterinary',		
@@ -975,7 +1073,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_AMENITY_HALO_COLOR,
 		),
 		"[amenity='courthouse']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_NORMAL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_SMALL,
 			'symbol-file'  => 'courthouse',		
@@ -985,7 +1084,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_AMENITY_HALO_COLOR,
 		),
 		"[amenity='prison']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_NORMAL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_SMALL,
 			'symbol-file'  => 'prison',		
@@ -995,7 +1095,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_AMENITY_HALO_COLOR,
 		),
 		"[amenity='arts_centre']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_NORMAL,			
+			'zooms'        => $_SYMBOl_ZOOMS_NORMAL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_NORMAL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_SMALL,
 			'symbol-file'  => 'arts_centre',		
@@ -1005,7 +1106,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_AMENITY_HALO_COLOR,
 		),
 		"[amenity='embassy']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_BIG,			
+			'zooms'        => $_SYMBOl_ZOOMS_BIG,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_BIG,
 			'symbol-size'  => $_SYMBOl_SIZE_NORMAL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_NORMAL,
 			'symbol-file'  => 'embassy',		
@@ -1015,7 +1117,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_AMENITY_HALO_COLOR,
 		),
 		"[amenity='driving_school']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_NORMAL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_SMALL,
 			'symbol-file'  => 'driving_school',		
@@ -1025,7 +1128,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_AMENITY_HALO_COLOR,
 		),
 		"[amenity='studio']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_NORMAL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_SMALL,
 			'symbol-file'  => 'studio',		
@@ -1035,7 +1139,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_AMENITY_HALO_COLOR,
 		),
 		"[amenity='brothel']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_NORMAL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_SMALL,
 			'symbol-file'  => 'brothel',		
@@ -1045,7 +1150,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_AMENITY_HALO_COLOR,
 		),
 		"[amenity='sauna']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_NORMAL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_SMALL,
 			'symbol-file'  => 'sauna',		
@@ -1055,7 +1161,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_AMENITY_HALO_COLOR,
 		),
 		"[amenity='retirement_home']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_NORMAL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_SMALL,
 			'symbol-file'  => 'retirement_home',		
@@ -1065,7 +1172,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_AMENITY_HALO_COLOR,
 		),
 		"[shop='supermarket']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_TINY,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'supermarket',		
@@ -1075,7 +1183,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_SHOP_HALO_COLOR,
 		),
 		"[shop='convenience']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_TINY,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'convenience',		
@@ -1085,7 +1194,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_SHOP_HALO_COLOR,
 		),
 		"[shop='clothes']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_TINY,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'clothes',		
@@ -1095,7 +1205,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_SHOP_HALO_COLOR,
 		),
 		"[shop='bakery']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_TINY,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'bakery',		
@@ -1105,7 +1216,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_SHOP_HALO_COLOR,
 		),
 		"[shop='hairdresser']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_TINY,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'hairdresser',		
@@ -1115,7 +1227,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_SHOP_HALO_COLOR,
 		),
 		"[shop='car_repair']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_TINY,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'car_repair',		
@@ -1126,7 +1239,8 @@ $SYMBOL = array(
 
 		),
 		"[shop='car']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_TINY,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'car',		
@@ -1136,7 +1250,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_SHOP_HALO_COLOR,
 		),
 		"[shop='kiosk']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_TINY,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'kiosk',		
@@ -1146,7 +1261,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_SHOP_HALO_COLOR,
 		),		
 		"[shop='butcher']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_TINY,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'butcher',		
@@ -1156,7 +1272,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_SHOP_HALO_COLOR,
 		),
 		"[shop='florist']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_TINY,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'florist',		
@@ -1166,7 +1283,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_SHOP_HALO_COLOR,
 		),
 		"[shop='alcohol']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_TINY,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'alcohol',		
@@ -1176,7 +1294,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_SHOP_HALO_COLOR,
 		),
 		"[shop='mall']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_BIG,			
+			'zooms'        => $_SYMBOl_ZOOMS_BIG,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_BIG,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_BIG,
 			'symbol-file'  => 'department_store',		
@@ -1186,7 +1305,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_SHOP_HALO_COLOR,
 		),
 		"[shop='bicycle']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_NORMAL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_TINY,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'bicycle',		
@@ -1196,7 +1316,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_SHOP_HALO_COLOR,
 		),
 		"[shop='furniture']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_TINY,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'furniture',		
@@ -1206,7 +1327,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_SHOP_HALO_COLOR,
 		),
 		"[shop='books']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_TINY,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'books',		
@@ -1216,7 +1338,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_SHOP_HALO_COLOR,
 		),		
 		"[shop='electronics']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_TINY,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'electronics',		
@@ -1226,7 +1349,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_SHOP_HALO_COLOR,
 		),
 		"[shop='shoes']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_TINY,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'shoes',		
@@ -1236,7 +1360,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_SHOP_HALO_COLOR,
 		),
 		"[shop='department_store']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_BIG,			
+			'zooms'        => $_SYMBOl_ZOOMS_BIG,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_BIG,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_BIG,
 			'symbol-file'  => 'department_store',		
@@ -1246,7 +1371,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_SHOP_HALO_COLOR,
 		),
 		"[shop='hardware']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_TINY,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'electronics',		
@@ -1256,7 +1382,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_SHOP_HALO_COLOR,
 		),
 		"[shop='optician']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_TINY,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'optician',		
@@ -1266,7 +1393,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_SHOP_HALO_COLOR,
 		),
 		"[shop='jewelry']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_TINY,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'jewelry',		
@@ -1276,7 +1404,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_SHOP_HALO_COLOR,
 		),
 		"[shop='chemist']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_TINY,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'chemist',		
@@ -1286,7 +1415,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_SHOP_HALO_COLOR,
 		),
 		"[shop='gift']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_TINY,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'gift',		
@@ -1296,7 +1426,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_SHOP_HALO_COLOR,
 		),
 		"[shop='garden_centre']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_TINY,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'garden_centre',		
@@ -1306,7 +1437,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_SHOP_HALO_COLOR,
 		),
 		"[shop='greengrocer']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_TINY,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'greengrocer',		
@@ -1316,7 +1448,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_SHOP_HALO_COLOR,
 		),
 		"[shop='mobile_phone']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_TINY,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'mobile_phone',		
@@ -1326,7 +1459,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_SHOP_HALO_COLOR,
 		),
 		"[shop='beverages']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_TINY,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'beverages',		
@@ -1336,7 +1470,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_SHOP_HALO_COLOR,
 		),
 		"[shop='computer']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_TINY,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'electronics',		
@@ -1346,7 +1481,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_SHOP_HALO_COLOR,
 		),		
 		"[shop='sports']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_TINY,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'multi',		
@@ -1355,7 +1491,8 @@ $SYMBOL = array(
 			'symbol-halo'  => $_SYMBOL_SHOP_HALO_COLOR,
 		),
 		"[shop='laundry']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_TINY,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'laundry',		
@@ -1365,7 +1502,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_SHOP_HALO_COLOR,
 		),
 		"[shop='toys']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_TINY,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'toys',		
@@ -1375,7 +1513,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_SHOP_HALO_COLOR,
 		),
 		"[shop='confectionery']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_TINY,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'confectionery',		
@@ -1385,7 +1524,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_SHOP_HALO_COLOR,
 		),
 		"[shop='travel_agency']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_TINY,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'travel_agency',		
@@ -1395,7 +1535,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_SHOP_HALO_COLOR,
 		),
 		"[shop='stationery']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_TINY,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'supermarket',		
@@ -1405,7 +1546,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_SHOP_HALO_COLOR,
 		),
 		"[shop='hifi']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_TINY,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'hifi',		
@@ -1415,7 +1557,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_SHOP_HALO_COLOR,
 		),		
 		"[shop='dry_cleaning']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_TINY,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'dry_cleaning',		
@@ -1425,7 +1568,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_SHOP_HALO_COLOR,
 		),
 		"[shop='variety_store']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_TINY,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'variety_store',		
@@ -1435,7 +1579,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_SHOP_HALO_COLOR,
 		),	
 		"[sport='soccer'],[sport='football']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_SMALL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'soccer',		
@@ -1445,7 +1590,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_SPORT_HALO_COLOR,
 		),
 		"[sport='tennis']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_SMALL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'tennis',		
@@ -1455,7 +1601,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_SPORT_HALO_COLOR,
 		),		
 		"[sport='baseball']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_SMALL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'baseball',		
@@ -1465,7 +1612,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_SPORT_HALO_COLOR,
 		),		
 		"[sport='swimming']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_SMALL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'swimming',		
@@ -1475,7 +1623,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_SPORT_HALO_COLOR,
 		),	
 		"[sport='hillclimbing']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_SMALL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'hillclimbing',		
@@ -1485,7 +1634,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_SPORT_HALO_COLOR,
 		),		
 		"[sport='multi']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_SMALL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'multi',		
@@ -1495,7 +1645,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_SPORT_HALO_COLOR,
 		),		
 		"[sport='basketball']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_SMALL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'basketball',		
@@ -1505,7 +1656,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_SPORT_HALO_COLOR,
 		),	
 		"[sport='golf']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_NORMAL,			
+			'zooms'        => $_SYMBOl_ZOOMS_NORMAL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_NORMAL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'golf',		
@@ -1515,7 +1667,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_SPORT_HALO_COLOR,
 		),
 		"[sport='athletics']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_SMALL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'athletics',		
@@ -1525,7 +1678,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_SPORT_HALO_COLOR,
 		),
 		"[sport='equestrian']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_SMALL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'horse_racing',		
@@ -1535,7 +1689,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_SPORT_HALO_COLOR,
 		),
 		"[sport='bowls']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_SMALL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'bowls',		
@@ -1545,7 +1700,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_SPORT_HALO_COLOR,
 		),
 		"[sport='skiing']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_SMALL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'skiing',		
@@ -1555,7 +1711,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_SPORT_HALO_COLOR,
 		),
 		"[sport='volleyball']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_SMALL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'volleyball',		
@@ -1565,7 +1722,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_SPORT_HALO_COLOR,
 		),
 		"[sport='shooting']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_SMALL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'shooting',		
@@ -1575,7 +1733,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_SPORT_HALO_COLOR,
 		),		
 		"[sport='skateboard']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_SMALL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'skateboard',		
@@ -1585,7 +1744,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_SPORT_HALO_COLOR,
 		),
 		"[sport='cricket']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_SMALL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'cricket',		
@@ -1595,7 +1755,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_SPORT_HALO_COLOR,
 		),		
 		"[sport='beachvolleyball']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_SMALL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'volleyball',		
@@ -1605,7 +1766,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_SPORT_HALO_COLOR,
 		),
 		"[sport='table_tennis']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_SMALL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'table_tennis',		
@@ -1615,7 +1777,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_SPORT_HALO_COLOR,
 		),
 		"[sport='gymnastics']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_SMALL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'gymnastics',		
@@ -1625,7 +1788,8 @@ $SYMBOL = array(
 			'halo-color'   => $_SYMBOL_SPORT_HALO_COLOR,
 		),
 		"[sport='boules']" => array(
-			'zooms'        => $_SYMBOl_ZOOMS_SMALL,			
+			'zooms'        => $_SYMBOl_ZOOMS_SMALL,
+			'text-zooms'   => $_SYMBOl_TEXT_ZOOMS_TINY,
 			'symbol-size'  => $_SYMBOl_SIZE_SMALL,
 			'text-size'    => $_SYMBOl_TEXT_SIZE_TINY,
 			'symbol-file'  => 'bowls',		

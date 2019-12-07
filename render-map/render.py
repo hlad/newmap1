@@ -49,11 +49,12 @@ METATILE_SIZE = 12
 
 def main():
 
-    parser = argparse.ArgumentParser(description='Schelude render region')
+    parser = argparse.ArgumentParser(description='Schedule/render region')
 
     min_lon, min_lat, max_lon, max_lat = [float(a) for a in os.environ['BBOX'].split(',')]
     zooms = list(range(int(os.environ['MIN_ZOOM']), int(os.environ['MAX_ZOOM']) + 1))
 
+    parser.add_argument('-s', '--schedule', dest='schedule', help='Schedule', action='store_true')
     parser.add_argument('min_lon', type=lambda x: float(x) if x.strip() != '' else min_lon)
     parser.add_argument('min_lat', type=lambda x: float(x) if x.strip() != '' else min_lat)
     parser.add_argument('max_lon', type=lambda x: float(x) if x.strip() != '' else max_lon)
@@ -82,8 +83,10 @@ def main():
     metatiles = [(mnx, mny, mxx, mxy, zoom) for zoom in zooms for mnx, mxx in xs[zoom] for mny, mxy in ys[zoom]]
 
     for mnx, mny, mxx, mxy, zoom in tqdm(metatiles):
-        # add_task(mnx, mny, mxx, mxy, zoom)
-        render(-1, mnx, mny, mxx, mxy, zoom)
+        if args.schedule:
+            add_task(mnx, mny, mxx, mxy, zoom)
+        else:
+            render(-1, mnx, mny, mxx, mxy, zoom)
 
 
 if __name__ == "__main__":

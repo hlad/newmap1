@@ -15,6 +15,7 @@ COPY requirements.txt ./
 RUN pip3 install --no-cache-dir -r requirements.txt
 
 COPY render_map_service.py ./
+COPY color_to_alpha.py ./
 COPY render.py ./
 COPY clear.py ./
 

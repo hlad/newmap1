@@ -19,7 +19,7 @@ return <<<EOD
 	"piste:type" AS pisteway,
 	COALESCE("piste:difficulty",'no') AS difficulty,
 	"piste:grooming" AS grooming,
-	"piste:name" AS name, 
+	name AS name,
 	    $layerSql as 
 	layer,
 	osm_id
@@ -48,7 +48,7 @@ return <<<EOD
 	"piste:type" AS pisteway,
 	COALESCE("piste:difficulty",'no') AS difficulty,
 	"piste:grooming" AS grooming,
-	"piste:name" AS name, 
+	name AS name,
 	($layerSql) AS layer,
 	osm_id,
 	way_area,

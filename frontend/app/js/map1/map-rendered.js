@@ -60,10 +60,10 @@ map1.Map = OpenLayers.Class(OpenLayers.Map,{
         
         this.zoomTo(8)
         
-        this.layerUtfgrid = new map1.utfgrid.Layer({
-            url: DATA_TILE_URLS            
-        });
-        this.addLayer(this.layerUtfgrid)
+//        this.layerUtfgrid = new map1.utfgrid.Layer({
+//            url: DATA_TILE_URLS
+//        });
+//        this.addLayer(this.layerUtfgrid)
         
         this.controlNavigation = new OpenLayers.Control.Navigation({
             dragPanOptions: {
@@ -80,8 +80,8 @@ map1.Map = OpenLayers.Class(OpenLayers.Map,{
         
         
         
-        this.controlUtfgridMouseMove = new map1.utfgrid.ControlMouseMove(self,{layers: [self.layerUtfgrid]})
-        this.addControl(this.controlUtfgridMouseMove)
+//        this.controlUtfgridMouseMove = new map1.utfgrid.ControlMouseMove(self,{layers: [self.layerUtfgrid]})
+//        this.addControl(this.controlUtfgridMouseMove)
               
         
         this.searchPanel = new map1.gui.SideBar('#panel-search','#button-start')

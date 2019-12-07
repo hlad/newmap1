@@ -13,10 +13,10 @@ function urb_priorities($zoom,$grade) {
 	$z3 = linear(array(5 => 1.5, 10 => 2.5, 12 => 1),$zoom);
 	$factor = linear(array(5 => 0.7, 8 => 0.8, 11 => 1, 12 => 1.3, 15 => 1.0),$zoom);
 	if ( $sz > 96*$factor ) return -1;
-	if ( $sz > 32*$factor ) return 0;
-	if ( $sz > 16*$factor ) return 1;
-	if ( $sz > $z2*8.0*$factor) return 2;
-	if ( $sz > $z3*4.0*$factor ) return 3;
+	if ( $sz > 40*$factor ) return 0;
+	if ( $sz > 20*$factor ) return 1;
+	if ( $sz > $z2*12.0*$factor) return 2;
+	if ( $sz > $z3*8.0*$factor ) return 3;
 	if ( $sz > 2.0*$factor ) return 4;			
 	return false;
 }
@@ -39,8 +39,8 @@ function urb_name_opacity($zoom,$grade) {
 
 $URB_NAME_UPPERCASE_SIZE = array(5 => 25, 13 => 40);
 
-$URB_NAME_SIZE_ZOOM_EXPEX = array(4 => 1.72,5 => 1.30, 8 => 1.40, 11 => 1.28);
-$URB_NAME_SIZE_GRADE_EXPEX = array(5 => 1.105,7 => 1.09, 15 => 1.08,30 => 1.07);
+$URB_NAME_SIZE_ZOOM_EXPEX = array(4 => 1.72,5 => 1.30, 8 => 1.40, 11 => 1.28, 13 => 1.25);
+$URB_NAME_SIZE_GRADE_EXPEX = array(5 => 1.095,7 => 1.08, 11=>1.15, 15 => 1.06,30 => 1.05);
 
 /**
  * Urb name text size grade x zoom maping
@@ -54,10 +54,10 @@ function urb_name_size($zoom,$grade) {
  * Urb name text halo radius grade x zoom maping
  */
 function urb_name_halo_radius($grade) {	
-	return array(12 => 3);
+	return array(10 => 2, 14=>4);
 }
 
-$URB_NAME_HALO_OPACITY = array(5=>0.1,7=>0.16,9=>0.33);
+$URB_NAME_HALO_OPACITY = array(5=>0.1,7=>0.16,9=>0.5);
 
 /**
  * Urb name dy grade x zoom maping
@@ -72,7 +72,7 @@ function urb_name_dy($zoom,$grade) {
  * Urb name wrap width grade x zoom maping
  */
 function urb_name_wrap_width($zoom,$grade) {
-	return urb_name_size($zoom,$grade) * 3.5;
+	return urb_name_size($zoom,$grade) * 5;
 }
 
 /**
@@ -130,10 +130,10 @@ function suburb_name_opacity($zoom,$grade) {
 $SUBURB_NAME_UPPERCASE_SIZE = array(5 => 50, 13 => 50);
 
 $SUBURB_NAME_SIZE_ZOOM_EXPEX = array(5 => 1.5, 8 => 1.55, 12 => 1.55,14 => 1.65,15 => 1.75);
-$SUBURB_NAME_SIZE_GRADE_EXPEX = array(5 => 1.08);
+$SUBURB_NAME_SIZE_GRADE_EXPEX = array(5 => 1.07);
 
 
-$SUBURB_NAME_HALO_OPACITY = array(13 => 0.7,16=>0.4);
+$SUBURB_NAME_HALO_OPACITY = array(13 => 0.5,16=>0.5);
 
 /**
  * Suburb name text size grade x zoom maping
@@ -147,14 +147,14 @@ function suburb_name_size($zoom,$grade) {
  * Suburb name text halo radius grade x zoom maping
  */
 function suburb_name_halo_radius($grade) {
-	return array(12 => 4,14=>5,16 => 2);
+	return array(12 => 3,14=>2.5,16 => 4);
 }
 
 /**
  * Suburb name wrap width grade x zoom maping
  */
 function suburb_name_wrap_width($zoom,$grade) {
-	return suburb_name_size($zoom,$grade) * 4;
+	return suburb_name_size($zoom,$grade) * 16;
 }
 
 /**
@@ -184,15 +184,15 @@ function locality_name_color($zoom) {
 /**
  * Locality name text size grade x zoom maping
  */
-function locality_name_size($zoom) {		
-	return 7 * pow(1.1,($zoom - 12));	
+function locality_name_size($zoom) {
+    return linear(array(11=>5,12=>5.5,13=>6,14=>7,15=>8,18=>12),$zoom);
 } 
 
 /**
  * Locality name text halo radius grade x zoom maping
  */
 function locality_name_halo_radius() {
-	return array(14 => 2);
+	return array(14 => 1);
 }
 
 
