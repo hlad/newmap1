@@ -40,6 +40,13 @@ CREATE INDEX IF NOT EXISTS idx__osm_landcover__way_area ON osm_landcover(way_are
 CREATE INDEX IF NOT EXISTS idx__osm_landcover__building ON osm_landcover(building);
 
 CREATE INDEX IF NOT EXISTS idx__osm_highway__layer ON osm_highway(layer);
+CREATE INDEX IF NOT EXISTS idx__osm_highway__highway ON osm_highway(highway);
+CREATE INDEX IF NOT EXISTS idx__osm_highway__surface ON osm_highway(surface);
+CREATE INDEX IF NOT EXISTS idx__osm_highway__tracktype ON osm_highway(tracktype);
+CREATE INDEX IF NOT EXISTS idx__osm_highway__bridge ON osm_highway(bridge);
+CREATE INDEX IF NOT EXISTS idx__osm_highway__tunnel ON osm_highway(tunnel);
+
+
 CREATE INDEX IF NOT EXISTS idx__osm_railway__layer ON osm_railway(layer);
 
 CREATE INDEX IF NOT EXISTS idx__osm_building__way_area ON osm_building(way_area);

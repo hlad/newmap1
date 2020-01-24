@@ -67,13 +67,13 @@ def wkbImage(raw):
     return img
 
 
-def get_hillshade(minlon, minlat, maxlon, maxlat):
+def get_hillshade(minlon, minlat, maxlon, maxlat, scale=25):
     async def _do():
         query = '''
-            SELECT ST_AsBinary(ST_Clip(ST_Transform(ST_Union(rast),3857), ST_Transform(ST_MakeEnvelope($1, $2, $3, $4, 4326),3857)))
+            SELECT ST_AsBinary(ST_Clip(ST_Transform(ST_Union(ST_Rescale(rast,{},{})),3857), ST_Transform(ST_MakeEnvelope($1, $2, $3, $4, 4326),3857)))
             FROM hillshade
             WHERE ST_Intersects(rast, ST_Transform(ST_MakeEnvelope($1, $2, $3, $4, 4326),3035));
-        '''
+        '''.format(scale, scale)
         conn = await asyncpg.connect(
             host=os.environ['POSTGRES_HOST'],
             port=os.environ['POSTGRES_PORT'],
@@ -187,7 +187,20 @@ def render(id, mnx, mny, mxx, mxy, zoom):
                 pic = Image.alpha_composite(pic, tileim)
                 Tracer.end("render_{}_compositing".format(zoom))
             else:
-                tileim = get_hillshade(mnlon, mnlat, mxlon, mxlat)
+                if zoom > 14:
+                    scale = 25
+                elif zoom > 13:
+                    scale = 50
+                elif zoom > 12:
+                    scale = 100
+                elif zoom > 11:
+                    scale = 200
+                elif zoom > 10:
+                    scale = 400
+                else:
+                    scale = 800
+
+                tileim = get_hillshade(mnlon, mnlat, mxlon, mxlat, scale=scale)
 
                 tileim = tileim.resize(
                     (sizex, sizey),
