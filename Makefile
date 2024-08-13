@@ -71,7 +71,7 @@ render-map-schedule: render-map-start
 	docker-compose run render-map python3 render.py --schedule "${x1}" "${y1}" "${x2}" "${y2}" "${zooms}"
 
 render-map: db-start
-	docker-compose run render-map python3 render.py "${x1}" "${y1}" "${x2}" "${y2}" "${zooms}"
+	docker-compose run --rm render-map python3 render.py "${x1}" "${y1}" "${x2}" "${y2}" "${zooms}"
 
 render-map-clear:
 	docker-compose run render-map python3 clear.py "${x1}" "${y1}" "${x2}" "${y2}" "${zooms}"
