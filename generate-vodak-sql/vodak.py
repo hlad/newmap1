@@ -16,11 +16,11 @@ ways.execute('''
 	SELECT DISTINCT osm_id,ST_StartPoint(way),ST_EndPoint(way),ST_Length(way),name FROM osm_waterway WHERE waterway IN ('river','stream') AND name IS NOT NULL AND osm_id > 0
 ''')
 
-print '''
+print('''
 	DROP TABLE IF EXISTS stream;
-'''
+''')
 
-print '''
+print('''
 	CREATE TABLE stream (
 		osm_id INT,
 		length FLOAT,
@@ -29,7 +29,7 @@ print '''
 		total_length FLOAT,
 		total_grade INT
 	);
-'''
+''')
 
 count.execute('''
 	SELECT Count(*) FROM osm_waterway WHERE waterway IN ('river','stream') AND name IS NOT NULL;
@@ -168,12 +168,12 @@ def _goOverStream(streams,ids,lensprings,p,j,i = 0,lengthA = 0,thisIds = set(), 
 		
 		if osmId in ids:
 			if ids[osmId] < lengthA + length:
-				print "UPDATE stream SET length = %f, spring_id = %d WHERE osm_id = %d;" % (lengthA + length,springId,osmId)
+				print("UPDATE stream SET length = %f, spring_id = %d WHERE osm_id = %d;" % (lengthA + length,springId,osmId))
 				ids[osmId] = lengthA + length
 			else:
 				continue
 		else:
-			print "INSERT INTO stream (osm_id,length,spring_id) VALUES (%d,%f,%d);" % (osmId,lengthA + length,springId)
+			print("INSERT INTO stream (osm_id,length,spring_id) VALUES (%d,%f,%d);" % (osmId,lengthA + length,springId))
 			ids[osmId] = lengthA + length
 			i += 1
 		
