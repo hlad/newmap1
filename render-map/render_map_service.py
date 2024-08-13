@@ -140,7 +140,9 @@ def render(id, mnx, mny, mxx, mxy, zoom):
 
         pic = Image.new('RGBA', (sizex, sizey), (255, 255, 255, 255))
 
-        for layer_name in tqdm(['landcover', 'hillshade', 'contour', 'way', 'building',
+#        for layer_name in tqdm(['landcover', 'hillshade', 'contour', 'way', 'building',
+#                           'ferry', 'boundary', 'route', 'fishnet', 'symbol', 'text'], leave=False):
+        for layer_name in tqdm(['landcover', 'contour', 'way', 'building',
                            'ferry', 'boundary', 'route', 'fishnet', 'symbol', 'text'], leave=False):
             if layer_name != 'hillshade':
                 while True:
