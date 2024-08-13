@@ -15,7 +15,7 @@ services:
      - "5432"
     env_file: .env
   import-osm:
-    image: "openmaptiles/import-osm:0.5"
+    image: "openmaptiles/import-osm:latest"
     env_file: .env
     environment:
       DIFF_MODE: ${DIFF_MODE}
