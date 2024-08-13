@@ -69,9 +69,9 @@
     */
 ?>
 
-CREATE IF NOT EXISTS INDEX i__symbols__way ON symbols USING GIST (way);
-CREATE IF NOT EXISTS INDEX i__symbols__type ON symbols(type);
-CREATE IF NOT EXISTS INDEX i__symbols__name ON symbols(name);
+CREATE INDEX IF NOT EXISTS i__symbols__way ON symbols USING GIST (way);
+CREATE INDEX IF NOT EXISTS i__symbols__type ON symbols(type);
+CREATE INDEX IF NOT EXISTS i__symbols__name ON symbols(name);
 
 CREATE INDEX i__highways__type ON osm_highway(
     (CASE
