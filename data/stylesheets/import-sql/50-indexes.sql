@@ -16,7 +16,7 @@ SELECT
       ELSE 5
     END) AS modulo,
     ST_Subdivide(ST_Transform(wkb_geometry,3857)) AS wkb_geometry
-FROM contour_raw
+FROM contour_raw;
 
 CREATE INDEX IF NOT EXISTS contour__modulo__idx ON contour(modulo);
 CREATE INDEX IF NOT EXISTS contour__ele_idx on contour(ele);
