@@ -14,8 +14,8 @@ import os
 
 def main():
 
-    print time.strftime("%H:%M:%S", time.localtime()), " - script started"
-    print "  Searching RelationIDs and Lines in route..."
+    print(time.strftime("%H:%M:%S", time.localtime()), " - script started")
+    print("  Searching RelationIDs and Lines in route...")
     # Create connection to DB server.
 
     connection = connect("dbname='{}' user='{}' password='{}' port='{}' host='{}'".format(
@@ -77,8 +77,8 @@ def main():
                 lineInfo = "LINE;" + str(row[0]) + ";" + str(row[1]) + ";" + str(row[2]) + ";" + str(row[3]) + ";" + str(row[4]) + ";" + str(row[5]) + ";" + str(row[6]) + ";" + str(row[7]) + ";" + str(row[8]) + ";" + str(row[9]) + ";" + str(row[10]) + ";" + str(row[11]) + ";" + str(row[12]) + ";" + str(row[13])
                 relations.append(relation.Relation(lineInfo))
 
-    print time.strftime("%H:%M:%S", time.localtime()), " - RelationIDs and Lines found."
-    print "  Getting Relation details from route_rels..."
+    print(time.strftime("%H:%M:%S", time.localtime()), " - RelationIDs and Lines found.")
+    print("  Getting Relation details from route_rels...")
     # Select important columns just for our IDs
     for id in relationIDs:
         relationCursor.execute('''
@@ -90,16 +90,16 @@ def main():
         # Make Relation object with parsed data
         relations.append(relation.Relation(row))
 
-    print time.strftime("%H:%M:%S", time.localtime()), " - relations details found."
-    print "  Making single routes from relations with all osmc:symbols..."
+    print(time.strftime("%H:%M:%S", time.localtime()), " - relations details found.")
+    print("  Making single routes from relations with all osmc:symbols...")
 
     # Find final routes and append all corresponding osmcSymbols
     routes = routesFromRels(relations)
 
     listOfRoutes = routes.values()
     listOfRoutes.sort()
-    print time.strftime("%H:%M:%S", time.localtime()), " - routes now have osmc:symbols."
-    print "  Finding firstNode and lastNode for each route in route_ways..."
+    print(time.strftime("%H:%M:%S", time.localtime()), " - routes now have osmc:symbols.")
+    print("  Finding firstNode and lastNode for each route in route_ways...")
 
     # Clean previous routes.
     auxiliaryCursor.execute("DROP TABLE IF EXISTS routes")
@@ -137,8 +137,8 @@ def main():
 #            print r.id, ": ", routes[r.id].firstNode, ", ", routes[r.id].lastNode
         else:
             routes.pop(r.id)
-    print time.strftime("%H:%M:%S", time.localtime()), " - firstNodes and lastNodes are found."
-    print "  Finding route neighbours based on first and last nodes..."
+    print(time.strftime("%H:%M:%S", time.localtime()), " - firstNodes and lastNodes are found.")
+    print("  Finding route neighbours based on first and last nodes...")
 
     # Find end nodes and their routes
     nodes = findNodes(routes)
@@ -155,11 +155,11 @@ def main():
             routes[routes[r].id].previousRoutes.append(rid)
 
     #remove unconnected tracks with highway=track and tracktype=grade1 and mtb:scale is null
-    print time.strftime("%H:%M:%S", time.localtime()), "  Removing disconnected tracks."
+    print(time.strftime("%H:%M:%S", time.localtime()), "  Removing disconnected tracks.")
     routes = removeUnconnected(routes, nodes)
-    print "  Tracks removed."
+    print("  Tracks removed.")
 
-    print time.strftime("%H:%M:%S", time.localtime()), "  Finding dangerous nodes (column warning)."
+    print(time.strftime("%H:%M:%S", time.localtime()), "  Finding dangerous nodes (column warning).")
     # Find nodeIDs, where track's attribute mtb:scale changes rapidly (difference >= 2),
     # create new column warning in routes with the difference
     dangerNodes = findDangerousNodes(nodes, routes)
@@ -167,8 +167,8 @@ def main():
     insertDangerNodes(dangerNodes, pointCursor)
     pointCursor.close()
 
-    print time.strftime("%H:%M:%S", time.localtime()), " - neighbours are found."
-    print "  Determining offset for each route..."
+    print(time.strftime("%H:%M:%S", time.localtime()), " - neighbours are found.")
+    print("  Determining offset for each route...")
 
     # Find offset polarity
 #    listOfRoutes = routes.values()
@@ -179,8 +179,8 @@ def main():
 #        print "For cycle: ", r.id, r.osmcSigns[0]
         setOffset(routes, r.id, "next")
         setOffset(routes, r.id, "previous")
-    print time.strftime("%H:%M:%S", time.localtime()), " - offset is found."
-    print "  Inserting of routes into new empty table routes..."
+    print(time.strftime("%H:%M:%S", time.localtime()), " - offset is found.")
+    print("  Inserting of routes into new empty table routes...")
 
     # Determine maximum number of different osmcSymbols at one route
     maxSigns = 0
@@ -258,7 +258,7 @@ def main():
                 INSERT INTO routes
                   VALUES (%s)
             ''' % (row))
-    print " Finished inserting routes into new table."
+    print(" Finished inserting routes into new table.")
 
     auxiliaryCursor.execute('''
         DROP TABLE IF EXISTS route_centroids;
@@ -468,11 +468,11 @@ def main():
     GROUP BY R2.osm_id,R2.way,R2.route,R2.offsetside,R2.highway,R2.tracktype,R2."mtb:scale",R2."mtb:scale:uphill",R2.sac_scale,R2.color,R2.density,R2.osmcsymbol,R2.network,R2.oneway )
     ''');
 
-    print "Relations:   ", len(relations)
-    print "max Signs:   ", maxSigns
-    print "Routes:      ", len(routes)
-    print "Nodes:       ", len(nodes)
-    print "Danger nodes:", len(dangerNodes)
+    print("Relations:   ", len(relations))
+    print("max Signs:   ", maxSigns)
+    print("Routes:      ", len(routes))
+    print("Nodes:       ", len(nodes))
+    print("Danger nodes:", len(dangerNodes))
 #    print routes[39952857].nextRoutes, routes[44013159].previousRoutes
 #    print nodes[559611826]
 
@@ -480,7 +480,7 @@ def main():
     auxiliaryCursor.close()
     connection.commit()
     
-    print time.strftime("%H:%M:%S", time.localtime()), " - Relations2lines finished successfully."
+    print(time.strftime("%H:%M:%S", time.localtime()), " - Relations2lines finished successfully.")
     # end of main function
 ################################################################################
 
@@ -620,7 +620,7 @@ def removeUnconnected(routes, nodes):
             connectedGradeOne += component
         else:
             disconnectedGradeOne += component
-    print time.strftime("%H:%M:%S", time.localtime()), "  Components found, connection determined, now cleaning after removal..."
+    print(time.strftime("%H:%M:%S", time.localtime()), "  Components found, connection determined, now cleaning after removal...")
     iterations = 0
     for id in disconnectedGradeOne:
         if len(routes[id].osmcSigns) <= 1:

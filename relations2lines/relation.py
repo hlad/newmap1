@@ -1,4 +1,4 @@
-import symbol
+#import symbol
 import re
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
@@ -146,7 +146,7 @@ class Relation:
                     id = int(member.lstrip('w'))
                     parts.append(id)
                 except ValueError:
-                    print 'Member ' + member + ' starts with "w", but it is not a way!'
+                    print('Member ' + member + ' starts with "w", but it is not a way!')
         return parts
 
 #    def copyRoutes(self, routes):
